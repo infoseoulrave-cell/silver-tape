@@ -233,7 +233,7 @@ export const PRODUCTS: Product[] = [
     ],
     matVariants: MAT_VARIANTS,
     tags: ['pop-surreal', 'humor', 'museum', 'duck'],
-    featured: true,
+    featured: false,
     editionSize: 50,
     createdAt: '2026-02-25',
     hasPosterVersion: true,
