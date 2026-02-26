@@ -1,0 +1,75 @@
+.card {
+  display: block;
+  transition: var(--ho-transition);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--ho-space-md);
+  background: var(--ho-bg-card);
+  aspect-ratio: 3 / 4;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.card:hover .imageWrap {
+  border-color: rgba(191,255,0,0.15);
+  box-shadow: 0 0 20px rgba(191,255,0,0.05);
+}
+
+.badge {
+  position: absolute;
+  top: var(--ho-space-sm);
+  left: var(--ho-space-sm);
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  font-family: var(--ho-font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+.info {
+  padding: 0 2px;
+}
+
+.name {
+  font-family: var(--ho-font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  color: var(--ho-text);
+}
+
+.category {
+  font-size: 0.75rem;
+  color: var(--ho-text-muted);
+  text-transform: capitalize;
+  margin-bottom: var(--ho-space-sm);
+}
+
+.price {
+  font-family: var(--ho-font-accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ho-text-secondary);
+}

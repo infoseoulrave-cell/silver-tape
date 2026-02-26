@@ -1,0 +1,303 @@
+.showcase {
+  padding: var(--ho-space-3xl) 0;
+  background: var(--ho-bg);
+}
+
+.container {
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  padding: 0 var(--ho-space-xl);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--ho-space-2xl);
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-xs);
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ho-text);
+  line-height: 1.1;
+}
+
+.sub {
+  font-family: var(--ho-font-body);
+  font-size: 1rem;
+  color: var(--ho-text-secondary);
+  margin-top: var(--ho-space-sm);
+}
+
+/* Featured Split Card */
+.featuredSplit {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 560px;
+  background: var(--ho-bg-card);
+  overflow: hidden;
+  margin-bottom: var(--ho-space-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.featuredImg {
+  position: relative;
+  overflow: hidden;
+}
+
+.featuredImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.featuredSplit:hover .featuredImg img {
+  transform: scale(1.03);
+}
+
+.featuredPanel {
+  background: var(--ho-bg-card);
+  padding: var(--ho-space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  width: fit-content;
+}
+
+.featuredCategory {
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ho-text-muted);
+  margin-top: var(--ho-space-md);
+}
+
+.featuredTitle {
+  font-family: var(--ho-font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ho-text);
+  line-height: 1.2;
+  margin: var(--ho-space-sm) 0;
+  text-transform: uppercase;
+}
+
+.featuredArtist {
+  font-family: var(--ho-font-body);
+  font-size: 0.875rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-lg);
+}
+
+.featuredPrice {
+  font-family: var(--ho-font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-lg);
+}
+
+.won {
+  font-family: var(--ho-font-body);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: var(--ho-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  border: 2px solid var(--ho-accent);
+  transition: all var(--ho-transition);
+  width: fit-content;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--ho-accent);
+}
+
+/* Product Grid */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.card {
+  background: var(--ho-bg-card);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--ho-transition);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.card:hover {
+  border-color: rgba(191, 255, 0, 0.15);
+  box-shadow: 0 0 30px rgba(191, 255, 0, 0.05);
+}
+
+.cardImgWrap {
+  position: relative;
+  width: 100%;
+  padding-top: 133%;
+  overflow: hidden;
+  background: var(--ho-bg-elevated);
+}
+
+.cardImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.cardBadges {
+  position: absolute;
+  top: var(--ho-space-md);
+  left: var(--ho-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ho-space-xs);
+  z-index: 2;
+}
+
+.badgeGold {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+}
+
+.badgeBlue {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ho-blue);
+  color: var(--ho-bg);
+}
+
+.cardInfo {
+  padding: var(--ho-space-md);
+}
+
+.cardCat {
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ho-text-muted);
+}
+
+.cardName {
+  font-family: var(--ho-font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ho-text);
+  line-height: 1.3;
+  margin: var(--ho-space-xs) 0;
+  text-transform: uppercase;
+}
+
+.cardArtist {
+  font-family: var(--ho-font-body);
+  font-size: 0.8rem;
+  color: var(--ho-text-muted);
+}
+
+.cardPrice {
+  font-family: var(--ho-font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ho-text);
+  margin-top: var(--ho-space-sm);
+}
+
+.viewAll {
+  text-align: center;
+  margin-top: var(--ho-space-2xl);
+}
+
+.btnDark {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: var(--ho-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ho-text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--ho-transition);
+}
+
+.btnDark:hover {
+  border-color: var(--ho-accent);
+  color: var(--ho-accent);
+  box-shadow: 0 0 20px rgba(191, 255, 0, 0.1);
+}
+
+@media (max-width: 1023px) {
+  .featuredSplit { grid-template-columns: 1fr; min-height: auto; }
+  .featuredImg { aspect-ratio: 4/3; }
+  .grid3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .container { padding: 0 var(--ho-space-md); }
+  .featuredPanel { padding: var(--ho-space-xl) var(--ho-space-md); }
+  .grid3 { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .cardInfo { padding: var(--ho-space-sm); }
+  .cardName { font-size: 0.85rem; }
+}

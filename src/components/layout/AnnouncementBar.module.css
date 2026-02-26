@@ -1,0 +1,30 @@
+.bar {
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  overflow: hidden;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  display: flex;
+  white-space: nowrap;
+  animation: ho-marquee 25s linear infinite;
+}
+
+.item {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 var(--ho-space-2xl);
+  color: var(--ho-bg);
+}
+
+.accent {
+  color: var(--ho-bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

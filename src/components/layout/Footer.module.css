@@ -1,0 +1,81 @@
+.footer {
+  background: var(--ho-bg-elevated);
+  color: #fff;
+  padding: var(--ho-space-3xl) var(--ho-space-xl) var(--ho-space-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--ho-space-2xl);
+}
+
+.brand .logo {
+  font-family: var(--ho-font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--ho-space-md);
+}
+
+.brandAccent {
+  color: var(--ho-accent);
+}
+
+.brand p {
+  font-size: 0.875rem;
+  color: var(--ho-text-muted);
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.col h4 {
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-lg);
+  opacity: 0.8;
+}
+
+.col a {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: 10px;
+  transition: all var(--ho-transition);
+}
+
+.col a:hover {
+  color: var(--ho-text);
+  padding-left: 4px;
+}
+
+.bottom {
+  max-width: var(--ho-content-width);
+  margin: var(--ho-space-xl) auto 0;
+  padding-top: var(--ho-space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ho-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1023px) {
+  .inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 767px) {
+  .inner { grid-template-columns: 1fr; gap: var(--ho-space-xl); }
+  .bottom { flex-direction: column; gap: var(--ho-space-sm); }
+}

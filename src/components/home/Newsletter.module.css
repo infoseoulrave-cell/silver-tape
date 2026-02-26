@@ -1,0 +1,85 @@
+.section {
+  padding: var(--ho-space-3xl) var(--ho-space-xl);
+  background: var(--ho-bg);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-md);
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--ho-text);
+  text-transform: uppercase;
+  margin-bottom: var(--ho-space-sm);
+}
+
+.desc {
+  font-family: var(--ho-font-body);
+  font-size: 0.95rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-xl);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form {
+  display: flex;
+  max-width: 460px;
+  margin: 0 auto;
+  gap: 0;
+}
+
+.input {
+  flex: 1;
+  padding: 14px 20px;
+  font-family: var(--ho-font-body);
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--ho-bg-card);
+  color: var(--ho-text);
+  outline: none;
+  transition: border-color var(--ho-transition);
+}
+
+.input::placeholder {
+  color: var(--ho-text-muted);
+}
+
+.input:focus {
+  border-color: var(--ho-accent);
+  box-shadow: 0 0 20px rgba(191, 255, 0, 0.08);
+}
+
+.btn {
+  padding: 14px 28px;
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  border: 1px solid var(--ho-accent);
+  transition: all var(--ho-transition);
+}
+
+.btn:hover {
+  background: var(--ho-accent-hover);
+  box-shadow: 0 0 20px rgba(191, 255, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .form { flex-direction: column; gap: var(--ho-space-sm); }
+}

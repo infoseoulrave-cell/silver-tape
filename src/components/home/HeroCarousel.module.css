@@ -1,0 +1,170 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  margin-top: 100px;
+  background: var(--ho-bg);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.2) 0%,
+    rgba(10, 10, 10, 0.1) 30%,
+    rgba(10, 10, 10, 0.5) 60%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  right: 0;
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  padding: 0 var(--ho-space-xl);
+  z-index: 2;
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-md);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: ho-fadeUp 0.6s ease-out forwards;
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-transform: uppercase;
+  max-width: 700px;
+  margin-bottom: var(--ho-space-md);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: ho-fadeUp 0.8s ease-out 0.2s forwards;
+}
+
+.subtitle {
+  font-family: var(--ho-font-body);
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--ho-space-xl);
+  opacity: 0;
+  animation: ho-fadeUp 0.6s ease-out 0.3s forwards;
+}
+
+.cta {
+  display: flex;
+  gap: var(--ho-space-md);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: ho-fadeUp 0.6s ease-out 0.5s forwards;
+}
+
+.dots {
+  position: absolute;
+  bottom: var(--ho-space-xl);
+  right: var(--ho-space-xl);
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.dot {
+  width: 32px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all var(--ho-transition);
+  border: none;
+}
+
+.dotActive {
+  background: var(--ho-accent);
+  width: 48px;
+}
+
+/* Buttons */
+.btnPrimary {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: var(--ho-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  border: 2px solid var(--ho-accent);
+  transition: all var(--ho-transition);
+}
+
+.btnPrimary:hover {
+  background: transparent;
+  color: var(--ho-accent);
+  box-shadow: 0 0 30px rgba(191, 255, 0, 0.2);
+}
+
+.btnSecondary {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: var(--ho-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--ho-transition);
+}
+
+.btnSecondary:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 767px) {
+  .hero { height: 85vh; min-height: 500px; margin-top: 100px; }
+  .subtitle { font-size: 0.95rem; }
+  .content { bottom: 8%; padding: 0 var(--ho-space-md); }
+  .cta { flex-direction: column; }
+  .cta a { text-align: center; }
+}

@@ -1,0 +1,23 @@
+.breadcrumb {
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  padding: var(--ho-space-md) var(--ho-space-xl);
+  font-size: 0.8rem;
+  color: var(--ho-text-muted);
+}
+
+.link {
+  transition: var(--ho-transition);
+}
+
+.link:hover {
+  color: var(--ho-accent);
+}
+
+.sep {
+  margin: 0 6px;
+}
+
+.current {
+  color: var(--ho-text-secondary);
+}

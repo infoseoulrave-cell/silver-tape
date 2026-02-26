@@ -1,0 +1,187 @@
+/* ============================================
+   HANGOVER — Global Design System v2
+   "Get Wasted on Art"
+   Dark Mode / Underground Art Collective
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  /* Core Palette — Dark Mode */
+  --ho-bg: #0a0a0a;
+  --ho-bg-elevated: #111111;
+  --ho-bg-card: #161616;
+  --ho-bg-hover: #1a1a1a;
+  --ho-surface: #1e1e1e;
+
+  /* Text */
+  --ho-text: #f0f0f0;
+  --ho-text-secondary: #888888;
+  --ho-text-muted: #555555;
+
+  /* Accents */
+  --ho-accent: #BFFF00;
+  --ho-accent-hover: #d4ff4d;
+  --ho-accent-dim: rgba(191, 255, 0, 0.15);
+  --ho-blue: #00d4ff;
+  --ho-pink: #ff2d7b;
+  --ho-purple: #a855f7;
+  --ho-orange: #ff6b35;
+  --ho-gold: #C9A96E;
+
+  /* Legacy compat */
+  --ho-red: #ff2d7b;
+  --ho-red-hover: #e0256b;
+  --ho-black: #0a0a0a;
+  --ho-dark: #f0f0f0;
+  --ho-cream: #0a0a0a;
+  --ho-offwhite: #111111;
+  --ho-gray: #888888;
+  --ho-light: #222222;
+  --ho-border: #2a2a2a;
+  --ho-green: #BFFF00;
+
+  /* Typography */
+  --ho-font-heading: var(--font-space-grotesk), 'SF Pro Display', -apple-system, sans-serif;
+  --ho-font-body: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+  --ho-font-accent: var(--font-playfair-display), Georgia, serif;
+  --ho-font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --ho-space-xs: 4px;
+  --ho-space-sm: 8px;
+  --ho-space-md: 16px;
+  --ho-space-lg: 24px;
+  --ho-space-xl: 40px;
+  --ho-space-2xl: 64px;
+  --ho-space-3xl: 100px;
+
+  /* Shadows */
+  --ho-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --ho-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --ho-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --ho-shadow-glow: 0 0 30px rgba(191, 255, 0, 0.15);
+  --ho-shadow-glow-blue: 0 0 30px rgba(0, 212, 255, 0.15);
+
+  /* Borders */
+  --ho-radius-sm: 4px;
+  --ho-radius-md: 8px;
+  --ho-radius-lg: 16px;
+  --ho-radius-xl: 24px;
+  --ho-radius-full: 9999px;
+
+  /* Transitions */
+  --ho-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ho-transition-fast: 0.15s ease;
+  --ho-transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --ho-max-width: 1440px;
+  --ho-content-width: 1200px;
+}
+
+/* --- Global Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ho-font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ho-text);
+  background-color: var(--ho-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ho-font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ho-text);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 600; }
+
+p {
+  font-family: var(--ho-font-body);
+  line-height: 1.6;
+  color: var(--ho-text-secondary);
+}
+
+/* --- Links --- */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--ho-transition-fast);
+}
+
+a:hover {
+  color: var(--ho-accent);
+}
+
+/* --- Buttons --- */
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* --- Selection Color --- */
+::selection {
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ho-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ho-text-muted);
+  border-radius: var(--ho-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ho-accent);
+}
+
+/* --- Utility Classes --- */
+.glow-text {
+  text-shadow: 0 0 40px rgba(191, 255, 0, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--ho-accent), var(--ho-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Responsive --- */
+@media (max-width: 767px) {
+  h3 { font-size: 1.125rem; }
+}

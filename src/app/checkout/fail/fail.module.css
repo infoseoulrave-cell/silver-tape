@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: var(--ho-space-xl);
+}
+
+.card {
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  background: var(--ho-bg-card);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: var(--ho-space-2xl) var(--ho-space-xl);
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--ho-pink);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--ho-space-lg);
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--ho-space-sm);
+  color: var(--ho-text);
+}
+
+.subtitle {
+  color: var(--ho-text-muted);
+  margin-bottom: var(--ho-space-xl);
+  line-height: 1.5;
+}
+
+.errorBox {
+  background: var(--ho-bg-elevated);
+  padding: var(--ho-space-md);
+  margin-bottom: var(--ho-space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.errorLabel {
+  font-family: var(--ho-font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ho-text-muted);
+}
+
+.errorCode {
+  font-family: var(--ho-font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ho-pink);
+}
+
+.actions {
+  display: flex;
+  gap: var(--ho-space-md);
+  justify-content: center;
+}
+
+.primaryBtn {
+  padding: 14px 28px;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  font-family: var(--ho-font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--ho-transition);
+}
+
+.primaryBtn:hover {
+  background: var(--ho-accent-hover);
+  box-shadow: 0 0 20px rgba(191,255,0,0.2);
+}
+
+.secondaryBtn {
+  padding: 14px 28px;
+  border: 2px solid rgba(255,255,255,0.15);
+  font-family: var(--ho-font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: var(--ho-transition);
+  color: var(--ho-text);
+  background: none;
+}
+
+.secondaryBtn:hover {
+  border-color: var(--ho-accent);
+  color: var(--ho-accent);
+}

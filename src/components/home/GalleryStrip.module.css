@@ -1,0 +1,100 @@
+.section {
+  padding: var(--ho-space-3xl) 0 var(--ho-space-2xl);
+  background: var(--ho-bg-elevated);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--ho-space-xl);
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-xs);
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ho-text);
+  line-height: 1.1;
+}
+
+.sub {
+  font-family: var(--ho-font-body);
+  font-size: 1rem;
+  color: var(--ho-text-secondary);
+  margin-top: var(--ho-space-sm);
+}
+
+.track {
+  display: flex;
+  gap: 4px;
+  animation: stripScroll 40s linear infinite;
+  width: max-content;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.card {
+  flex-shrink: 0;
+  width: 300px;
+  cursor: pointer;
+  transition: all var(--ho-transition);
+}
+
+.card:hover {
+  opacity: 0.8;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 0;
+}
+
+.info {
+  padding: var(--ho-space-md) 0;
+}
+
+.cardTitle {
+  font-family: var(--ho-font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ho-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cardSub {
+  font-family: var(--ho-font-body);
+  font-size: 0.75rem;
+  color: var(--ho-text-muted);
+  margin-top: 2px;
+}
+
+.cardPrice {
+  font-family: var(--ho-font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ho-text-secondary);
+  margin-top: var(--ho-space-xs);
+}
+
+@media (max-width: 767px) {
+  .card { width: 260px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; overflow-x: auto; }
+}

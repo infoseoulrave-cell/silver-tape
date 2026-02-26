@@ -1,0 +1,125 @@
+.header {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all var(--ho-transition);
+}
+
+.scrolled {
+  top: 0;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(191, 255, 0, 0.08);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--ho-max-width);
+  margin: 0 auto;
+  padding: 0 var(--ho-space-xl);
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--ho-font-heading);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ho-text);
+  transition: all var(--ho-transition);
+}
+
+.logo:hover {
+  color: var(--ho-accent);
+  text-shadow: 0 0 30px rgba(191, 255, 0, 0.3);
+}
+
+.logoAccent {
+  color: var(--ho-accent);
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ho-text-secondary);
+  transition: all var(--ho-transition);
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--ho-accent);
+  transition: width var(--ho-transition);
+}
+
+.navLink:hover {
+  color: var(--ho-text);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.cartBtn {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: none;
+  color: var(--ho-text-secondary);
+  position: relative;
+  transition: all var(--ho-transition);
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--ho-radius-full);
+}
+
+.cartBtn:hover {
+  color: var(--ho-accent);
+  border-color: rgba(191, 255, 0, 0.3);
+  box-shadow: 0 0 20px rgba(191, 255, 0, 0.08);
+}
+
+.cartCount {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  background: var(--ho-accent);
+  color: var(--ho-bg);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .nav { display: none; }
+  .inner { padding: 0 var(--ho-space-md); }
+}
