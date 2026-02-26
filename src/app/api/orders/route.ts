@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { saveOrder } from '@/lib/order-storage';
+import { sendInitiateCheckoutEvent } from '@/lib/meta-conversions';
 import type { Order, ShippingInfo } from '@/types/order';
 import type { CartItem } from '@/types/cart';
 
@@ -59,6 +60,18 @@ export async function POST(request: NextRequest) {
     };
 
     await saveOrder(order);
+
+    // Meta Conversion API — InitiateCheckout 이벤트 (비차단)
+    sendInitiateCheckoutEvent(
+      calculatedTotal,
+      items.reduce((sum, i) => sum + i.quantity, 0),
+      {
+        name: shipping.name,
+        phone: shipping.phone,
+        clientIpAddress: request.headers.get('x-forwarded-for') ?? undefined,
+        clientUserAgent: request.headers.get('user-agent') ?? undefined,
+      },
+    ).catch(() => {});
 
     return NextResponse.json({
       orderId: order.orderId,

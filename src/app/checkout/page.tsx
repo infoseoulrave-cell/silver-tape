@@ -6,6 +6,7 @@ import Image from 'next/image';
 import type { TossPaymentsWidgets } from '@tosspayments/tosspayments-sdk';
 import { useCartStore } from '@/lib/cart-store';
 import { formatKRW } from '@/lib/format';
+import { trackInitiateCheckout } from '@/lib/meta-pixel-events';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import styles from './checkout.module.css';
 
@@ -32,6 +33,18 @@ export default function CheckoutPage() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // InitiateCheckout 이벤트 (체크아웃 진입 시 1회)
+  const trackedRef = useRef(false);
+  useEffect(() => {
+    if (mounted && items.length > 0 && !trackedRef.current) {
+      trackedRef.current = true;
+      trackInitiateCheckout({
+        numItems: items.reduce((sum, i) => sum + i.quantity, 0),
+        value: getTotalPrice(),
+      });
+    }
+  }, [mounted, items, getTotalPrice]);
 
   const totalPrice = mounted ? getTotalPrice() : 0;
   const shippingFee = totalPrice >= 50000 ? 0 : 3500;

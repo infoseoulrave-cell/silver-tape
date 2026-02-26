@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import type { Product, PrintVersion } from '@/types/product';
 import type { FrameColor } from '@/types/product';
 import { SIZE_OPTIONS, FRAME_OPTIONS, calculatePrice } from '@/data/pricing';
 import { formatKRW } from '@/lib/format';
 import { useCartStore } from '@/lib/cart-store';
+import { trackViewContent, trackAddToCart } from '@/lib/meta-pixel-events';
 import RainbowCelebration from '@/components/ui/RainbowCelebration';
 import styles from './ProductDetail.module.css';
 
@@ -62,6 +63,17 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const [celebrating, setCelebrating] = useState(false);
   const addBtnRef = useRef<HTMLButtonElement>(null);
 
+  // ViewContent 이벤트 (상품 페이지 진입 시 1회)
+  useEffect(() => {
+    const { total: initTotal } = calculatePrice(SIZE_OPTIONS[0].id, true);
+    trackViewContent({
+      contentId: product.id,
+      contentName: product.title,
+      contentCategory: product.category,
+      value: initTotal,
+    });
+  }, [product.id, product.title, product.category]);
+
   const hasFrame = currentFrame !== 'none';
   const { total, printPrice, frameAddon } = calculatePrice(currentSize, hasFrame);
   const originalPrice = Math.ceil(total * 1.3 / 1000) * 1000;
@@ -101,11 +113,16 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       printPrice: sizeObj.printPrice,
       framePrice: hasFrame ? sizeObj.frameAddon : 0,
     });
+    trackAddToCart({
+      contentId: product.id,
+      contentName: product.title,
+      value: total * quantity,
+    });
     setAddedFeedback(true);
     setCelebrating(true);
     setTimeout(() => setAddedFeedback(false), 2000);
     setTimeout(() => setCelebrating(false), 1500);
-  }, [addItem, product, currentImage, currentSize, currentFrame, quantity, sizeObj, hasFrame]);
+  }, [addItem, product, currentImage, currentSize, currentFrame, quantity, sizeObj, hasFrame, total]);
 
   const toggleAccordion = useCallback((index: number) => {
     setOpenAccordions(prev => {
