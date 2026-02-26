@@ -28,24 +28,46 @@ export default function GalleryStrip() {
   const items = [...STRIP_ITEMS, ...STRIP_ITEMS];
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const [enabled, setEnabled] = useState(true);
   const posRef = useRef(0);
   const rafRef = useRef<number>(0);
 
   const animate = useCallback(() => {
     if (!trackRef.current) return;
-    if (!paused) {
+    if (enabled && !paused) {
       posRef.current -= 0.5;
       const halfWidth = trackRef.current.scrollWidth / 2;
       if (Math.abs(posRef.current) >= halfWidth) posRef.current = 0;
       trackRef.current.style.transform = `translateX(${posRef.current}px)`;
     }
     rafRef.current = requestAnimationFrame(animate);
-  }, [paused]);
+  }, [paused, enabled]);
 
   useEffect(() => {
+    const mqMobile = window.matchMedia('(max-width: 767px)');
+    const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => {
+      setEnabled(!mqMobile.matches && !mqReduce.matches);
+    };
+    update();
+    mqMobile.addEventListener('change', update);
+    mqReduce.addEventListener('change', update);
+    return () => {
+      mqMobile.removeEventListener('change', update);
+      mqReduce.removeEventListener('change', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) {
+      posRef.current = 0;
+      if (trackRef.current) trackRef.current.style.transform = 'translateX(0px)';
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      return;
+    }
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [animate]);
+  }, [animate, enabled]);
 
   return (
     <section className={styles.section}>

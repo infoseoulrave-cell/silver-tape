@@ -31,7 +31,7 @@ export default function RelatedProducts({ currentProduct, studioSlug }: RelatedP
         <div className={styles.relatedTag}>You May Also Like</div>
         <h2 className={styles.relatedTitle}>함께 감상할 작품들</h2>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--ho-space-lg)' }}>
+      <div className={styles.relatedGrid}>
         {related.map(product => (
           <ProductCard key={product.id} product={product} studioSlug={slug} />
         ))}

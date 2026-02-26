@@ -36,6 +36,11 @@ const FRAME_NAMES: Record<FrameColor, string> = {
   none: 'Print Only',
 };
 
+const MAT_SWATCH_COLORS: Record<string, string> = {
+  'ink-black': '#1b1b1b',
+  'prussian-blue': '#1f2a44',
+};
+
 interface ThumbConfig {
   frame: FrameColor;
   miniFrame: string;
@@ -60,6 +65,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const [wished, setWished] = useState(false);
   const [openAccordions, setOpenAccordions] = useState<Set<number>>(new Set([0]));
   const [printVersion, setPrintVersion] = useState<PrintVersion>(product.hasPosterVersion ? 'poster' : 'art-only');
+  const [posterVariantId, setPosterVariantId] = useState(product.posterVariants?.[0]?.id ?? '');
+  const [matVariantId, setMatVariantId] = useState(product.matVariants?.[0]?.id ?? '');
   const [celebrating, setCelebrating] = useState(false);
   const addBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -79,10 +86,18 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const originalPrice = Math.ceil(total * 1.3 / 1000) * 1000;
   const discountPct = Math.round((1 - total / originalPrice) * 100);
 
-  const currentImage = printVersion === 'art-only'
-    ? product.artImage
-    : (product.posterImage ?? product.image);
+  const posterVariants = product.posterVariants ?? [];
+  const matVariants = product.matVariants ?? [];
+  const currentPosterVariant = posterVariants.find(v => v.id === posterVariantId) ?? posterVariants[0];
+  const currentMatVariant = matVariants.find(v => v.id === matVariantId) ?? matVariants[0];
+  const posterImage = currentPosterVariant?.image ?? product.posterImage ?? product.image;
+  const currentImage = printVersion === 'art-only' ? product.artImage : posterImage;
   const sizeObj = SIZE_OPTIONS.find(s => s.id === currentSize) ?? SIZE_OPTIONS[0];
+  const posterLabel = currentPosterVariant?.nameKo ?? currentPosterVariant?.name;
+  const artLabel = currentMatVariant?.nameKo ?? currentMatVariant?.name;
+  const artworkBgLabel = printVersion === 'poster'
+    ? (posterLabel ? `포스터 · ${posterLabel}` : '포스터 프린트')
+    : (artLabel ? `아트 · ${artLabel}` : '아트 프린트');
 
   const handleThumbClick = useCallback((index: number) => {
     const config = THUMB_CONFIGS[index];
@@ -108,7 +123,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       studioSlug: product.studioSlug,
       size: currentSize,
       frame: currentFrame,
-      artworkBg: 'Ink Black',
+      artworkBg: artworkBgLabel,
       quantity,
       printPrice: sizeObj.printPrice,
       framePrice: hasFrame ? sizeObj.frameAddon : 0,
@@ -122,7 +137,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     setCelebrating(true);
     setTimeout(() => setAddedFeedback(false), 2000);
     setTimeout(() => setCelebrating(false), 1500);
-  }, [addItem, product, currentImage, currentSize, currentFrame, quantity, sizeObj, hasFrame, total]);
+  }, [addItem, product, currentImage, currentSize, currentFrame, quantity, sizeObj, hasFrame, total, artworkBgLabel]);
 
   const toggleAccordion = useCallback((index: number) => {
     setOpenAccordions(prev => {
@@ -267,6 +282,52 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </button>
               </div>
 
+              {printVersion === 'poster' && posterVariants.length > 0 && (
+                <div className={styles.posterVariants}>
+                  <div className={styles.posterVariantsLabel}>매트 옵션</div>
+                  <div className={styles.posterVariantSwatches}>
+                    {posterVariants.map(variant => (
+                      <button
+                        key={variant.id}
+                        type="button"
+                        className={`${styles.posterVariantBtn} ${variant.id === currentPosterVariant?.id ? styles.posterVariantBtnActive : ''}`}
+                        onClick={() => setPosterVariantId(variant.id)}
+                        aria-pressed={variant.id === currentPosterVariant?.id}
+                      >
+                        {variant.nameKo ?? variant.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+            </div>
+          )}
+
+          {printVersion === 'art-only' && matVariants.length > 0 && (
+            <div className={styles.optionGroup}>
+              <div className={styles.optionLabel}>
+                배경 <span className={styles.optionSelected}>— {currentMatVariant?.nameKo ?? currentMatVariant?.name}</span>
+              </div>
+              <div className={styles.artSwatches}>
+                {matVariants.map(variant => {
+                  const swatchStyle = variant.image
+                    ? { backgroundImage: `url(${variant.image})`, backgroundSize: 'cover' }
+                    : { background: MAT_SWATCH_COLORS[variant.id] ?? '#d9d9d9' };
+                  return (
+                    <button
+                      key={variant.id}
+                      type="button"
+                      className={`${styles.artSwatch} ${variant.id === currentMatVariant?.id ? styles.artSwatchActive : ''}`}
+                      onClick={() => setMatVariantId(variant.id)}
+                      aria-pressed={variant.id === currentMatVariant?.id}
+                    >
+                      <span className={styles.artSwatchInner} style={swatchStyle} />
+                      <span className={styles.artSwatchName}>{variant.nameKo ?? variant.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           )}
 

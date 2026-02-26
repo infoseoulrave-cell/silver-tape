@@ -32,19 +32,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 2. 금액 위변조 검증
+    // 2. 이미 결제된 주문이면 idempotent 처리
+    if (order.status === 'paid') {
+      return NextResponse.json({
+        success: true,
+        orderId,
+        amount: order.totalAmount,
+        method: order.paymentMethod ?? 'PAID',
+        alreadyPaid: true,
+      });
+    }
+
+    // 3. 금액 위변조 검증
     if (order.totalAmount !== amount) {
       await updateOrder(orderId, { status: 'failed' });
       return NextResponse.json(
         { error: '결제 금액이 주문 금액과 일치하지 않습니다.' },
-        { status: 400 }
-      );
-    }
-
-    // 3. 이미 결제된 주문인지 확인
-    if (order.status === 'paid') {
-      return NextResponse.json(
-        { error: '이미 결제된 주문입니다.' },
         { status: 400 }
       );
     }

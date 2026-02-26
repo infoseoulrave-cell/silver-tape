@@ -9,26 +9,42 @@ interface HeroSlide {
   tag: string;
   title: string;
   subtitle: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
 }
 
 const SLIDES: HeroSlide[] = [
   {
-    image: '/images/hero/hero-neon-flamingo.png',
-    tag: 'HANGOVER — Cyberpunk × Nature',
-    title: 'Neon Flamingo',
-    subtitle: '사이버펑크가 자연과 만나는 곳. 빗물 웅덩이에 핑크 빛이 반사된다.',
+    image: '/images/hero/hero-melancholy-youth.png',
+    tag: 'HANGOVER — Neo-Pop Portrait',
+    title: 'Melancholy Youth',
+    subtitle: '감성적이면서 쿨한 네오팝 인물화. 무드보드가 곧 인테리어인 당신을 위해.',
+    primaryHref: '/studio/hangover',
+    primaryLabel: '전체 작품 보기',
+    secondaryHref: '#studios',
+    secondaryLabel: '스튜디오 둘러보기',
   },
   {
-    image: '/images/hero/hero-monument.png',
-    tag: 'VOID. — Anti-Monument',
-    title: 'Monument to Absence',
-    subtitle: '아무것도 기념하지 않는 기념비. 그래서 모든 것을 기념한다.',
+    image: '/images/hero/hero-glass-hammer.png',
+    tag: 'SENSIBILITY STAIR — Object Study',
+    title: 'Glass Hammer',
+    subtitle: '유리로 만든 망치. 깨지기 쉬운 힘에 대한 조용한 질문.',
+    primaryHref: '/studio/sensibility',
+    primaryLabel: '전체 작품 보기',
+    secondaryHref: '#studios',
+    secondaryLabel: '스튜디오 둘러보기',
   },
   {
     image: '/images/products/sensibility/sens-003-art.png',
     tag: 'SENSIBILITY STAIR — Material Tension',
     title: 'Emergency Foil',
     subtitle: '비상 담요는 체온을 지킨다. 이 작품은 체면을 지킨다.',
+    primaryHref: '/studio/sensibility',
+    primaryLabel: '전체 작품 보기',
+    secondaryHref: '#studios',
+    secondaryLabel: '스튜디오 둘러보기',
   },
 ];
 
@@ -113,11 +129,11 @@ export default function HeroCarousel() {
               <h1 className={styles.title}>{slide.title}</h1>
               <p className={styles.subtitle}>{slide.subtitle}</p>
               <div className={styles.cta}>
-                <Link href="/studio/hangover" className={styles.btnPrimary}>
-                  전체 작품 보기
+                <Link href={slide.primaryHref} className={styles.btnPrimary}>
+                  {slide.primaryLabel}
                 </Link>
-                <Link href="#studios" className={styles.btnSecondary}>
-                  스튜디오 둘러보기
+                <Link href={slide.secondaryHref} className={styles.btnSecondary}>
+                  {slide.secondaryLabel}
                 </Link>
               </div>
             </div>

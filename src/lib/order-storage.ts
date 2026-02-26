@@ -1,8 +1,12 @@
 import { promises as fs } from 'fs';
+import os from 'os';
 import path from 'path';
 import type { Order } from '@/types/order';
 
-const ORDERS_DIR = path.join(process.cwd(), 'data', 'orders');
+const ORDERS_DIR = process.env.ORDER_STORAGE_DIR
+  ?? (process.env.VERCEL
+    ? path.join(os.tmpdir(), 'silvertape-orders')
+    : path.join(process.cwd(), 'data', 'orders'));
 
 async function ensureDir() {
   await fs.mkdir(ORDERS_DIR, { recursive: true });

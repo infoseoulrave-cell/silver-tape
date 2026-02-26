@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-02-26T21:09:36.027Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-26T20:23:53.330Z",
+    "activeFeatures": [
+      "home",
+      "cart"
+    ],
+    "primaryFeature": "home",
+    "features": {
+      "home": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:16.854Z",
+          "lastUpdated": "2026-02-26T20:23:23.620Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\home\\HeroCarousel.tsx"
+      },
+      "cart": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:53.330Z",
+          "lastUpdated": "2026-02-26T20:23:53.330Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\cart\\CollectionFab.tsx"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-26T20:23:16.854Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-26T20:23:53.330Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-26T20:23:16.854Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:23.620Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:53.330Z",
+        "feature": "cart",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

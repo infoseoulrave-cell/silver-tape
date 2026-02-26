@@ -12,7 +12,7 @@
 /* ─── Gallery (left column) ─── */
 .gallery {
   position: sticky;
-  top: 88px;
+  top: var(--ho-sticky-offset);
 }
 
 .galleryMain {
@@ -185,7 +185,7 @@
 /* ─── Thumbnails ─── */
 .thumbs {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   gap: 10px;
 }
 
@@ -867,6 +867,12 @@
   color: var(--ho-text);
 }
 
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ho-space-lg);
+}
+
 /* ─── Lightbox ─── */
 .lightbox {
   position: fixed;
@@ -995,6 +1001,7 @@
   .product { gap: var(--ho-space-xl); }
   .infoTitle { font-size: 1.8rem; }
   .story { grid-template-columns: 1fr; }
+  .relatedGrid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1009,6 +1016,7 @@
   .price { font-size: 1.6rem; }
   .frameSwatches { flex-wrap: wrap; }
   .story { padding: var(--ho-space-2xl) var(--ho-space-md); }
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); gap: var(--ho-space-md); }
 }
 
 @media (max-width: 480px) {
@@ -1019,4 +1027,5 @@
   .swatchColor { width: 22px; height: 10px; }
   .actions { flex-direction: column; }
   .addBtn { height: 54px; font-size: 1rem; }
+  .relatedGrid { grid-template-columns: 1fr; }
 }

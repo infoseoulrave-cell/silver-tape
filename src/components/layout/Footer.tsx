@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
+const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '';
+const TWITTER_URL = process.env.NEXT_PUBLIC_TWITTER_URL ?? '';
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -33,8 +36,12 @@ export default function Footer() {
         </div>
         <div className={styles.col}>
           <h4>소셜</h4>
-          <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+          {INSTAGRAM_URL && (
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram</a>
+          )}
+          {TWITTER_URL && (
+            <a href={TWITTER_URL} target="_blank" rel="noopener noreferrer">Twitter</a>
+          )}
           <Link href="/#newsletter">뉴스레터</Link>
           <a href="mailto:hello@silvertape.art">문의하기</a>
         </div>
