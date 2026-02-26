@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import styles from './GalleryStrip.module.css';
 
 interface StripItem {
@@ -26,14 +26,26 @@ const STRIP_ITEMS: StripItem[] = [
 
 export default function GalleryStrip() {
   const items = [...STRIP_ITEMS, ...STRIP_ITEMS];
-  const [isMobile, setIsMobile] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const posRef = useRef(0);
+  const rafRef = useRef<number>(0);
+
+  const animate = useCallback(() => {
+    if (!trackRef.current) return;
+    if (!paused) {
+      posRef.current -= 0.5;
+      const halfWidth = trackRef.current.scrollWidth / 2;
+      if (Math.abs(posRef.current) >= halfWidth) posRef.current = 0;
+      trackRef.current.style.transform = `translateX(${posRef.current}px)`;
+    }
+    rafRef.current = requestAnimationFrame(animate);
+  }, [paused]);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 767);
-    check();
-    window.addEventListener('resize', check, { passive: true });
-    return () => window.removeEventListener('resize', check);
-  }, []);
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [animate]);
 
   return (
     <section className={styles.section}>
@@ -43,8 +55,13 @@ export default function GalleryStrip() {
         <p className={styles.sub}>벽에서 가장 빨리 사라지는 작품들.</p>
       </div>
 
-      <div className={styles.track}>
-        {(isMobile ? STRIP_ITEMS : items).map((item, i) => (
+      <div
+        className={styles.track}
+        ref={trackRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {items.map((item, i) => (
           <Link key={i} href={item.href} className={styles.card}>
             <Image
               src={item.image}

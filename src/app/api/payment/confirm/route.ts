@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getOrder, updateOrder } from '@/lib/order-storage';
 import { getTossAuthHeader, TOSS_CONFIRM_URL, isTossConfigured } from '@/lib/toss-payments';
+import { sendPurchaseEvent } from '@/lib/meta-conversions';
 import type { TossPaymentResponse } from '@/types/order';
 
 /**
@@ -78,6 +79,26 @@ export async function POST(request: NextRequest) {
         paidAt: paymentData.approvedAt,
       });
 
+      // 6. Meta Conversion API — Purchase 이벤트 (비차단)
+      sendPurchaseEvent(
+        {
+          orderId,
+          totalAmount: paymentData.totalAmount,
+          items: order.items.map(i => ({
+            id: i.productId,
+            title: i.productTitle,
+            price: (i.printPrice + i.framePrice) * i.quantity,
+            quantity: i.quantity,
+          })),
+        },
+        {
+          name: order.shipping.name,
+          phone: order.shipping.phone,
+          clientIpAddress: request.headers.get('x-forwarded-for') ?? undefined,
+          clientUserAgent: request.headers.get('user-agent') ?? undefined,
+        },
+      ).catch(() => {});
+
       return NextResponse.json({
         success: true,
         orderId,
@@ -93,6 +114,26 @@ export async function POST(request: NextRequest) {
       paymentMethod: '시뮬레이션',
       paidAt: new Date().toISOString(),
     });
+
+    // Meta Conversion API — Purchase 이벤트 (시뮬레이션, 비차단)
+    sendPurchaseEvent(
+      {
+        orderId,
+        totalAmount: amount,
+        items: order.items.map(i => ({
+          id: i.productId,
+          title: i.productTitle,
+          price: (i.printPrice + i.framePrice) * i.quantity,
+          quantity: i.quantity,
+        })),
+      },
+      {
+        name: order.shipping.name,
+        phone: order.shipping.phone,
+        clientIpAddress: request.headers.get('x-forwarded-for') ?? undefined,
+        clientUserAgent: request.headers.get('user-agent') ?? undefined,
+      },
+    ).catch(() => {});
 
     return NextResponse.json({
       success: true,

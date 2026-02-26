@@ -6,12 +6,12 @@
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Core Palette — Gallery Light */
-  --ho-bg: #f0eeeb;
-  --ho-bg-elevated: #e8e6e3;
+  /* Core Palette — Neutral Gray */
+  --ho-bg: #f0f0f0;
+  --ho-bg-elevated: #e8e8e8;
   --ho-bg-card: #ffffff;
-  --ho-bg-hover: #e3e1de;
-  --ho-surface: #dbd9d6;
+  --ho-bg-hover: #e2e2e2;
+  --ho-surface: #dadada;
 
   /* Text */
   --ho-text: #1a1a1a;
@@ -33,11 +33,11 @@
   --ho-red-hover: #b81e50;
   --ho-black: #1a1a1a;
   --ho-dark: #1a1a1a;
-  --ho-cream: #f0eeeb;
-  --ho-offwhite: #e8e6e3;
+  --ho-cream: #f0f0f0;
+  --ho-offwhite: #e8e8e8;
   --ho-gray: #888888;
-  --ho-light: #e0deda;
-  --ho-border: #d0cec9;
+  --ho-light: #dfdfdf;
+  --ho-border: #cfcfcf;
   --ho-green: #2d2d2d;
 
   /* Typography */

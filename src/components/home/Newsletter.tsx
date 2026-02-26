@@ -21,7 +21,7 @@ export default function Newsletter() {
       <div className={styles.tag}>Stay Wasted</div>
       <h2 className={styles.title}>매주 한 잔, 예술 한 방</h2>
       <p className={styles.desc}>
-        신작 공개, 비하인드 스토리, 한정판 소식을 가장 먼저. 스팸 없이, 예술만.
+        기대작 공개, 비하인드 스토리, 한정판 소식을 가장 먼저. 스팸 없이, 예술만.
       </p>
       {submitted ? (
         <p className={styles.success}>구독해주셔서 감사합니다. 다음 호에서 만나요.</p>

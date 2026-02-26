@@ -1,23 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getFeaturedProducts } from '@/data/products';
+import { getWeeklyPicks } from '@/data/products';
 import { SIZE_OPTIONS } from '@/data/pricing';
 import { formatPrice } from '@/lib/format';
 import styles from './ProductShowcase.module.css';
 
 export default function ProductShowcase() {
-  const featured = getFeaturedProducts();
-  const heroProduct = featured[0];
-  const gridProducts = featured.slice(1, 4);
+  const picks = getWeeklyPicks();
+  const heroProduct = picks[0];
+  const gridProducts = picks.slice(1, 4);
   const basePrice = SIZE_OPTIONS[0].printPrice;
 
   return (
     <section className={styles.showcase}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className={styles.tag}>Fresh Pour</div>
+          <div className={styles.tag}>Top Shelf</div>
           <h2 className={styles.title}>This Week&apos;s High</h2>
-          <p className={styles.sub}>이번 주, 가장 취하게 만드는 신작들</p>
+          <p className={styles.sub}>이번 주, 클릭이 가장 많은 기대작들</p>
         </div>
 
         {heroProduct && (
@@ -33,7 +33,7 @@ export default function ProductShowcase() {
               />
             </div>
             <div className={styles.featuredPanel}>
-              <span className={styles.badge}>Fresh Pour</span>
+              <span className={styles.badge}>Top Shelf</span>
               <div className={styles.featuredCategory}>{heroProduct.category}</div>
               <h3 className={styles.featuredTitle}>{heroProduct.title}</h3>
               <p className={styles.featuredArtist}>by {heroProduct.artist}</p>
@@ -51,12 +51,12 @@ export default function ProductShowcase() {
               <div className={styles.cardImgWrap}>
                 {i === 0 && (
                   <div className={styles.cardBadges}>
-                    <span className={styles.badgeGold}>Last Call</span>
+                    <span className={styles.badgeGold}>Most Clicked</span>
                   </div>
                 )}
                 {i === 1 && (
                   <div className={styles.cardBadges}>
-                    <span className={styles.badgeBlue}>Best</span>
+                    <span className={styles.badgeBlue}>Trending</span>
                   </div>
                 )}
                 <Image

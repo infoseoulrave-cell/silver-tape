@@ -1834,6 +1834,15 @@ export function getFeaturedProducts(): Product[] {
   return PRODUCTS.filter(p => p.featured);
 }
 
+/** 이번 주 기대작 — 클릭률 기반 큐레이션 */
+const WEEKLY_PICK_IDS = ['fun-003', 'fun-001', 'fun-002', 'pop-001'];
+
+export function getWeeklyPicks(): Product[] {
+  return WEEKLY_PICK_IDS
+    .map(id => PRODUCTS.find(p => p.id === id))
+    .filter((p): p is Product => p !== undefined);
+}
+
 export function getAllSlugs(): string[] {
   return PRODUCTS.map(p => p.slug);
 }

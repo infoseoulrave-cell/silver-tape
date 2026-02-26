@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getActiveStudios } from '@/data/studios';
 import { getFeaturedProducts, PRODUCTS } from '@/data/products';
 import HeroCarousel from '@/components/home/HeroCarousel';
+import ProductShowcase from '@/components/home/ProductShowcase';
 import GalleryStrip from '@/components/home/GalleryStrip';
 import BrandManifesto from '@/components/home/BrandManifesto';
 import ProductCard from '@/components/product/ProductCard';
@@ -26,6 +27,11 @@ export default function PlatformHome() {
     <main>
       {/* Hero Carousel — full-bleed visual impact */}
       <HeroCarousel />
+
+      {/* 이번 주 기대작 — Top Shelf */}
+      <ScrollReveal>
+        <ProductShowcase />
+      </ScrollReveal>
 
       {/* Trust Bar */}
       <ScrollReveal>

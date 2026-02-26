@@ -14,7 +14,7 @@ interface HeroSlide {
 const SLIDES: HeroSlide[] = [
   {
     image: '/images/hero/hero-rubber-duck.png',
-    tag: 'Fresh Pour — 이번 주 신작',
+    tag: 'Top Shelf — 이번 주 기대작',
     title: 'Rubber Duck Museum',
     subtitle: '미술관에 전시된 거대한 러버덕. 진지함과 유머의 경계.',
   },
@@ -117,7 +117,7 @@ export default function HeroCarousel() {
                   전체 작품 보기
                 </Link>
                 <Link href="/products" className={styles.btnSecondary}>
-                  이번 주 신작
+                  이번 주 기대작
                 </Link>
               </div>
             </div>

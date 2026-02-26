@@ -577,17 +577,18 @@
 
 .addBtn {
   flex: 1;
-  height: 50px;
+  height: 56px;
   background: var(--ho-accent);
   color: var(--ho-bg);
   font-family: var(--ho-font-heading);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: var(--ho-transition);
   border: none;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .addBtn:hover {
@@ -1017,4 +1018,5 @@
   .frameSwatch { width: 60px; height: 40px; }
   .swatchColor { width: 22px; height: 10px; }
   .actions { flex-direction: column; }
+  .addBtn { height: 54px; font-size: 1rem; }
 }

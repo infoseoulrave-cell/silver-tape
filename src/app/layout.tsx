@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
 import CollectionFab from '@/components/cart/CollectionFab';
+import MetaPixel from '@/components/analytics/MetaPixel';
 import '@/styles/globals.css';
 import '@/styles/animations.css';
 
@@ -61,6 +62,7 @@ export default function RootLayout({
         <Footer />
         <CartDrawer />
         <CollectionFab />
+        <MetaPixel />
       </body>
     </html>
   );

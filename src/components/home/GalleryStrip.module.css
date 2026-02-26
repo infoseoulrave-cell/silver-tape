@@ -36,22 +36,11 @@
   margin-top: var(--ho-space-sm);
 }
 
-/* Keyframe must live inside the module so CSS Modules can resolve it */
-@keyframes stripScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .track {
   display: flex;
   gap: var(--ho-space-md);
-  animation: stripScroll 60s linear infinite;
   width: max-content;
   will-change: transform;
-}
-
-.track:hover {
-  animation-play-state: paused;
 }
 
 .card {
@@ -105,12 +94,12 @@
 
 @media (max-width: 767px) {
   .track {
-    animation: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 0 var(--ho-space-md);
     scrollbar-width: none;
+    transform: none !important;
   }
   .track::-webkit-scrollbar { display: none; }
   .card {
@@ -120,8 +109,4 @@
   .card:hover {
     transform: none;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track { animation: none; overflow-x: auto; }
 }

@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/lib/cart-store';
 import styles from './CollectionFab.module.css';
 
 export default function CollectionFab() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const toggleCart = useCartStore(s => s.toggleCart);
+  const router = useRouter();
   const isOpen = useCartStore(s => s.isOpen);
   const getTotalItems = useCartStore(s => s.getTotalItems);
 
@@ -24,7 +25,7 @@ export default function CollectionFab() {
   return (
     <button
       className={`${styles.fab} ${visible ? styles.visible : ''}`}
-      onClick={toggleCart}
+      onClick={() => router.push('/cart')}
       aria-label={`내 컬렉션 — ${totalItems}개 작품`}
     >
       {/* Frame icon */}
