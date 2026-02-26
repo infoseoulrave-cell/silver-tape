@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   min-height: 600px;
   overflow: hidden;
   margin-top: 100px;
@@ -24,7 +24,7 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  animation: kenBurns 20s ease-in-out infinite alternate;
+  animation: kenBurns 30s ease-in-out infinite alternate;
 }
 
 .gradient {
@@ -56,7 +56,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-md);
   opacity: 0;
   transform: translateY(20px);
@@ -108,19 +108,31 @@
 
 .dot {
   width: 32px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.2);
+  height: 44px;
+  background: transparent;
   cursor: pointer;
   transition: all var(--ho-transition);
   border: none;
+  position: relative;
 }
 
-.dotActive {
-  background: var(--ho-accent);
+.dot::after {
+  content: '';
+  position: absolute;
+  bottom: 21px;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all var(--ho-transition);
+}
+
+.dotActive::after {
+  background: #fff;
   width: 48px;
 }
 
-/* Buttons */
+/* Buttons — on dark overlay, use white */
 .btnPrimary {
   display: inline-block;
   padding: 14px 36px;
@@ -129,16 +141,15 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--ho-accent);
-  color: var(--ho-bg);
-  border: 2px solid var(--ho-accent);
+  background: #fff;
+  color: #1a1a1a;
+  border: 2px solid #fff;
   transition: all var(--ho-transition);
 }
 
 .btnPrimary:hover {
   background: transparent;
-  color: var(--ho-accent);
-  box-shadow: 0 0 30px rgba(191, 255, 0, 0.2);
+  color: #fff;
 }
 
 .btnSecondary {
@@ -161,10 +172,28 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+/* ─── Keyframes ─── */
+@keyframes kenBurns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1%, -1%); }
+}
+
+@keyframes ho-fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg { animation: none; }
+  .tag, .title, .subtitle, .cta { animation: none; opacity: 1; transform: none; }
+}
+
 @media (max-width: 767px) {
-  .hero { height: 85vh; min-height: 500px; margin-top: 100px; }
+  .hero { height: calc(100svh - 64px); min-height: 480px; margin-top: 64px; }
   .subtitle { font-size: 0.95rem; }
-  .content { bottom: 8%; padding: 0 var(--ho-space-md); }
+  .content { bottom: 12%; padding: 0 var(--ho-space-md); }
   .cta { flex-direction: column; }
   .cta a { text-align: center; }
 }

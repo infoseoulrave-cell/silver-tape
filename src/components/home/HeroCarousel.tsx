@@ -35,16 +35,25 @@ const SLIDES: HeroSlide[] = [
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef(0);
+  const heroRef = useRef<HTMLElement>(null);
 
   const goTo = useCallback((n: number) => {
     setCurrent(n);
   }, []);
 
-  const startAutoPlay = useCallback(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrent(prev => (prev + 1) % SLIDES.length);
-    }, 6000);
+  const goNext = useCallback(() => {
+    setCurrent(prev => (prev + 1) % SLIDES.length);
   }, []);
+
+  const goPrev = useCallback(() => {
+    setCurrent(prev => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  const startAutoPlay = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(goNext, 6000);
+  }, [goNext]);
 
   useEffect(() => {
     startAutoPlay();
@@ -53,6 +62,33 @@ export default function HeroCarousel() {
     };
   }, [startAutoPlay]);
 
+  // Touch swipe support
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX;
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      const diff = touchStartX.current - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        if (diff > 0) goNext();
+        else goPrev();
+        startAutoPlay();
+      }
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [goNext, goPrev, startAutoPlay]);
+
   const handleDotClick = (n: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     goTo(n);
@@ -60,7 +96,7 @@ export default function HeroCarousel() {
   };
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} ref={heroRef}>
       {SLIDES.map((slide, i) => (
         <div
           key={i}

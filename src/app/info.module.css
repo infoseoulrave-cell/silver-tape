@@ -1,0 +1,234 @@
+/* ─── Shared Info Page Styles ─── */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--ho-space-3xl) var(--ho-space-xl) var(--ho-space-2xl);
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ho-text-muted);
+  margin-bottom: var(--ho-space-md);
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ho-text);
+  margin-bottom: var(--ho-space-sm);
+}
+
+.subtitle {
+  font-family: var(--ho-font-accent);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-2xl);
+}
+
+.body {
+  font-size: 0.95rem;
+  color: var(--ho-text-secondary);
+  line-height: 1.9;
+}
+
+.body h2 {
+  font-family: var(--ho-font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ho-text);
+  margin: var(--ho-space-2xl) 0 var(--ho-space-md);
+  padding-bottom: var(--ho-space-sm);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.body h2:first-child {
+  margin-top: 0;
+}
+
+.body h3 {
+  font-family: var(--ho-font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ho-text);
+  margin: var(--ho-space-lg) 0 var(--ho-space-sm);
+}
+
+.body p {
+  margin-bottom: var(--ho-space-md);
+}
+
+.body strong {
+  color: var(--ho-text);
+  font-weight: 600;
+}
+
+.body em {
+  font-family: var(--ho-font-accent);
+  color: var(--ho-text);
+}
+
+.body ul,
+.body ol {
+  padding-left: 1.5em;
+  margin-bottom: var(--ho-space-md);
+}
+
+.body li {
+  margin-bottom: 6px;
+}
+
+.body a {
+  color: var(--ho-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--ho-transition);
+}
+
+.body a:hover {
+  color: var(--ho-accent-hover);
+}
+
+/* ─── FAQ Specific ─── */
+.faqItem {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--ho-space-md) 0;
+  font-family: var(--ho-font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ho-text);
+  letter-spacing: 0.02em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--ho-transition);
+}
+
+.faqQuestion:hover {
+  color: var(--ho-accent);
+}
+
+.faqIcon {
+  font-size: 1.2rem;
+  color: var(--ho-text-muted);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: var(--ho-space-md);
+}
+
+.faqIconOpen {
+  transform: rotate(45deg);
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faqAnswerOpen {
+  max-height: 500px;
+  padding-bottom: var(--ho-space-lg);
+}
+
+.faqAnswer p {
+  font-size: 0.9rem;
+  color: var(--ho-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--ho-space-sm);
+}
+
+/* ─── About Feature Grid ─── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ho-space-lg);
+  margin: var(--ho-space-xl) 0;
+}
+
+.feature {
+  padding: var(--ho-space-lg);
+  background: var(--ho-bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.featureIcon {
+  font-size: 1.5rem;
+  margin-bottom: var(--ho-space-md);
+}
+
+.featureTitle {
+  font-family: var(--ho-font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ho-text);
+  margin-bottom: var(--ho-space-xs);
+}
+
+.featureDesc {
+  font-size: 0.8rem;
+  color: var(--ho-text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Contact Box ─── */
+.contactBox {
+  margin-top: var(--ho-space-2xl);
+  padding: var(--ho-space-xl);
+  background: var(--ho-bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.contactBox p {
+  font-size: 0.9rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-sm);
+}
+
+.contactBox a {
+  color: var(--ho-accent);
+  font-weight: 600;
+}
+
+/* ─── Legal (Terms/Privacy) ─── */
+.legal {
+  font-size: 0.85rem;
+  color: var(--ho-text-muted);
+  line-height: 1.8;
+}
+
+.legal h2 {
+  font-size: 1rem;
+}
+
+.lastUpdated {
+  font-size: 0.8rem;
+  color: var(--ho-text-muted);
+  margin-bottom: var(--ho-space-xl);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 767px) {
+  .page {
+    padding: var(--ho-space-2xl) var(--ho-space-md) var(--ho-space-xl);
+  }
+  .features {
+    grid-template-columns: 1fr;
+  }
+}

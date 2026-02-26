@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ProductGrid from '@/components/product/ProductGrid';
-import CategoryMasonry from '@/components/home/CategoryMasonry';
 import { getStudioBySlug, STUDIOS } from '@/data/studios';
-import { getProductsByStudio, getProductsByStudioAndCategory } from '@/data/products';
-import { CATEGORIES } from '@/data/categories';
+import { getProductsByStudio } from '@/data/products';
 import styles from './studio.module.css';
 
 interface StudioPageProps {
@@ -37,12 +35,7 @@ export default async function StudioPage({ params }: StudioPageProps) {
   if (!studio) notFound();
 
   const products = getProductsByStudio(studioSlug);
-  const featured = products.filter(p => p.featured);
-
-  // Get categories that have products in this studio
-  const studioCategories = CATEGORIES.filter(cat =>
-    getProductsByStudioAndCategory(studioSlug, cat.id).length > 0
-  );
+  const bestSellers = products.filter(p => p.featured);
 
   return (
     <main>
@@ -57,26 +50,16 @@ export default async function StudioPage({ params }: StudioPageProps) {
           <p className={styles.heroDesc}>{studio.descriptionKo}</p>
           <div className={styles.heroStats}>
             <span>{products.length} 작품</span>
-            <span className={styles.heroDot} />
-            <span>{studioCategories.length} 컬렉션</span>
           </div>
         </div>
       </div>
 
-      {/* Categories */}
-      {studioCategories.length > 0 && (
+      {/* Best Seller */}
+      {bestSellers.length > 0 && (
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>COLLECTIONS</h2>
-          <CategoryMasonry studioSlug={studioSlug} categories={studioCategories} />
-        </div>
-      )}
-
-      {/* Featured */}
-      {featured.length > 0 && (
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>FEATURED</h2>
+          <h2 className={styles.sectionTitle}>BEST SELLER</h2>
           <div className={styles.grid}>
-            <ProductGrid products={featured} studioSlug={studioSlug} />
+            <ProductGrid products={bestSellers} studioSlug={studioSlug} />
           </div>
         </div>
       )}

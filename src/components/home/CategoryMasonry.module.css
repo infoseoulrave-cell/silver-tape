@@ -14,7 +14,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-xs);
 }
 
@@ -39,7 +39,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 280px 280px 240px;
-  gap: 4px;
+  gap: var(--ho-space-sm);
   max-width: var(--ho-content-width);
   margin: 0 auto;
   padding: 0 var(--ho-space-xl);
@@ -88,7 +88,7 @@
   font-family: var(--ho-font-heading);
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-top: 4px;

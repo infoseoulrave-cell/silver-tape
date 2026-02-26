@@ -39,6 +39,7 @@ export interface Product {
   editionSize: number;
   createdAt: string;
   hasPosterVersion: boolean;
+  tagline?: string;
 }
 
 export interface Category {

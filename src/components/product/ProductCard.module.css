@@ -5,7 +5,6 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
 }
 
 .imageWrap {
@@ -14,7 +13,7 @@
   margin-bottom: var(--ho-space-md);
   background: var(--ho-bg-card);
   aspect-ratio: 3 / 4;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
 }
 
 .image {
@@ -25,12 +24,11 @@
 }
 
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .card:hover .imageWrap {
-  border-color: rgba(191,255,0,0.15);
-  box-shadow: 0 0 20px rgba(191,255,0,0.05);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .badge {

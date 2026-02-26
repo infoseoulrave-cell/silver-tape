@@ -22,15 +22,15 @@ export default function CartPage() {
 
   return (
     <main>
-      <Breadcrumb items={[{ label: '홈', href: '/' }, { label: '장바구니' }]} />
+      <Breadcrumb items={[{ label: '홈', href: '/' }, { label: '컬렉션' }]} />
       <div className={styles.container}>
-        <h1 className={styles.title}>YOUR TAB</h1>
+        <h1 className={styles.title}>MY COLLECTION</h1>
 
         {items.length === 0 ? (
           <div className={styles.empty}>
-            <p className={styles.emptyIcon}>&#127867;</p>
-            <h2 className={styles.emptyTitle}>아직 비어있어요</h2>
-            <p className={styles.emptyDesc}>예술에 취할 준비가 되셨나요?</p>
+            <p className={styles.emptyIcon}>&#128444;</p>
+            <h2 className={styles.emptyTitle}>컬렉션이 비어있어요</h2>
+            <p className={styles.emptyDesc}>당신의 벽을 위한 작품을 찾아보세요.</p>
             <Link href="/products" className={styles.emptyBtn}>
               작품 보러 가기
             </Link>

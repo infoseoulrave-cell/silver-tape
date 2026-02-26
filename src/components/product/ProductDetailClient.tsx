@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import type { Product, PrintVersion } from '@/types/product';
 import type { FrameColor } from '@/types/product';
 import { SIZE_OPTIONS, FRAME_OPTIONS, calculatePrice } from '@/data/pricing';
 import { formatKRW } from '@/lib/format';
 import { useCartStore } from '@/lib/cart-store';
+import RainbowCelebration from '@/components/ui/RainbowCelebration';
 import styles from './ProductDetail.module.css';
 
 interface ProductDetailClientProps {
@@ -50,7 +51,6 @@ const THUMB_CONFIGS: ThumbConfig[] = [
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const [currentFrame, setCurrentFrame] = useState<FrameColor>('black');
-  const [currentArtBg, setCurrentArtBg] = useState(0);
   const [currentSize, setCurrentSize] = useState(SIZE_OPTIONS[0].id);
   const [quantity, setQuantity] = useState(1);
   const [activeThumb, setActiveThumb] = useState(0);
@@ -59,7 +59,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const [wished, setWished] = useState(false);
   const [openAccordions, setOpenAccordions] = useState<Set<number>>(new Set([0]));
   const [printVersion, setPrintVersion] = useState<PrintVersion>(product.hasPosterVersion ? 'poster' : 'art-only');
-  const [posterVariantIdx, setPosterVariantIdx] = useState(0);
+  const [celebrating, setCelebrating] = useState(false);
+  const addBtnRef = useRef<HTMLButtonElement>(null);
 
   const hasFrame = currentFrame !== 'none';
   const { total, printPrice, frameAddon } = calculatePrice(currentSize, hasFrame);
@@ -68,14 +69,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
   const currentImage = printVersion === 'art-only'
     ? product.artImage
-    : (product.posterVariants?.[posterVariantIdx]?.image ?? product.posterImage ?? product.image);
+    : (product.posterImage ?? product.image);
   const sizeObj = SIZE_OPTIONS.find(s => s.id === currentSize) ?? SIZE_OPTIONS[0];
 
   const handleThumbClick = useCallback((index: number) => {
     const config = THUMB_CONFIGS[index];
     setActiveThumb(index);
     setCurrentFrame(config.frame);
-    setCurrentArtBg(config.artVariant);
   }, []);
 
   const handleFrameChange = useCallback((frame: FrameColor) => {
@@ -96,14 +96,16 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       studioSlug: product.studioSlug,
       size: currentSize,
       frame: currentFrame,
-      artworkBg: product.matVariants[currentArtBg]?.name ?? 'Ink Black',
+      artworkBg: 'Ink Black',
       quantity,
       printPrice: sizeObj.printPrice,
       framePrice: hasFrame ? sizeObj.frameAddon : 0,
     });
     setAddedFeedback(true);
+    setCelebrating(true);
     setTimeout(() => setAddedFeedback(false), 2000);
-  }, [addItem, product, currentImage, currentSize, currentFrame, currentArtBg, quantity, sizeObj, hasFrame]);
+    setTimeout(() => setCelebrating(false), 1500);
+  }, [addItem, product, currentImage, currentSize, currentFrame, quantity, sizeObj, hasFrame]);
 
   const toggleAccordion = useCallback((index: number) => {
     setOpenAccordions(prev => {
@@ -248,25 +250,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </button>
               </div>
 
-              {/* Poster Variant Selector (only for poster version with multiple variants) */}
-              {printVersion === 'poster' && product.posterVariants && product.posterVariants.length > 1 && (
-                <div className={styles.posterVariants}>
-                  <div className={styles.posterVariantsLabel}>매트 컬러</div>
-                  <div className={styles.posterVariantSwatches}>
-                    {product.posterVariants.map((variant, i) => (
-                      <button
-                        key={variant.id}
-                        className={`${styles.posterVariantBtn} ${posterVariantIdx === i ? styles.posterVariantBtnActive : ''}`}
-                        onClick={() => setPosterVariantIdx(i)}
-                        aria-pressed={posterVariantIdx === i}
-                        title={variant.nameKo}
-                      >
-                        {variant.nameKo}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           )}
 
@@ -320,32 +303,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </div>
           </div>
 
-          {/* Artwork Background */}
-          <div className={`${styles.optionGroup} ${styles.optionGroupBordered}`}>
-            <div className={styles.optionLabel}>
-              작품 배경 <span className={styles.optionSelected}>— {product.matVariants[currentArtBg]?.name ?? 'Ink Black'}</span>
-            </div>
-            <div className={styles.artSwatches}>
-              {product.matVariants.map((variant, i) => (
-                <div
-                  key={variant.id}
-                  className={`${styles.artSwatch} ${currentArtBg === i ? styles.artSwatchActive : ''}`}
-                  onClick={() => setCurrentArtBg(i)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${variant.nameKo} 배경`}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setCurrentArtBg(i); }}
-                >
-                  <div
-                    className={styles.artSwatchInner}
-                    style={{ background: variant.id === 'ink-black' ? '#0a0a0a' : '#0B2545' }}
-                  />
-                  <span className={styles.artSwatchName}>{variant.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Actions */}
           <div className={styles.actions}>
             <div className={styles.qty}>
@@ -372,11 +329,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </button>
             </div>
             <button
+              ref={addBtnRef}
               className={`${styles.addBtn} ${addedFeedback ? styles.addBtnFeedback : ''}`}
               onClick={handleAddToCart}
             >
-              {addedFeedback ? '담았습니다!' : '장바구니 담기'}
+              {addedFeedback ? '컬렉션에 담았습니다!' : '컬렉션에 담기'}
             </button>
+            <RainbowCelebration active={celebrating} originRef={addBtnRef} />
             <button
               className={`${styles.wishlistBtn} ${wished ? styles.wishlistActive : ''}`}
               onClick={() => setWished(w => !w)}
@@ -524,7 +483,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           <h2 className={styles.storyTitle}>{product.titleKo}의<br />이야기</h2>
           <p className={styles.storyText}>{product.description}</p>
           <blockquote className={styles.storyQuote}>
-            &ldquo;좋은 포스터는 숙취처럼 남는다.<br />걸어라. 취해라. 매일매일.&rdquo;
+            &ldquo;{product.tagline ? product.tagline.split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            )) : <>좋은 포스터는 숙취처럼 남는다.<br />걸어라. 취해라. 매일매일.</>}&rdquo;
           </blockquote>
         </div>
       </div>

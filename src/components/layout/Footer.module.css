@@ -1,8 +1,8 @@
 .footer {
-  background: var(--ho-bg-elevated);
-  color: #fff;
+  background: #1a1a1a;
+  color: #ccc;
   padding: var(--ho-space-3xl) var(--ho-space-xl) var(--ho-space-xl);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .inner {
@@ -14,22 +14,37 @@
 }
 
 .brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
   font-family: var(--ho-font-heading);
-  font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #fff;
+  color: #f0f0f0;
   margin-bottom: var(--ho-space-md);
 }
 
+.logoSilver {
+  font-weight: 300;
+}
+
+.logoMark {
+  width: 11px;
+  height: 20px;
+  fill: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  margin: 0 1px;
+}
+
 .brandAccent {
-  color: var(--ho-accent);
+  font-weight: 800;
+  color: #c0c0c0;
 }
 
 .brand p {
   font-size: 0.875rem;
-  color: var(--ho-text-muted);
+  color: #888;
   line-height: 1.7;
   max-width: 300px;
 }
@@ -40,33 +55,52 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: #777;
   margin-bottom: var(--ho-space-lg);
-  opacity: 0.8;
 }
 
 .col a {
   display: block;
   font-size: 0.85rem;
-  color: var(--ho-text-secondary);
+  color: #999;
   margin-bottom: 10px;
   transition: all var(--ho-transition);
 }
 
 .col a:hover {
-  color: var(--ho-text);
+  color: #f0f0f0;
   padding-left: 4px;
+}
+
+.bizInfo {
+  max-width: var(--ho-content-width);
+  margin: var(--ho-space-xl) auto 0;
+  padding-top: var(--ho-space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.7rem;
+  color: #777;
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.bizInfo a {
+  color: #777;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bizInfo a:hover {
+  color: #bbb;
 }
 
 .bottom {
   max-width: var(--ho-content-width);
-  margin: var(--ho-space-xl) auto 0;
-  padding-top: var(--ho-space-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: var(--ho-space-md) auto 0;
+  padding-top: var(--ho-space-md);
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;
-  color: var(--ho-text-muted);
+  color: #777;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

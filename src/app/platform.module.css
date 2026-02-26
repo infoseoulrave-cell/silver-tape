@@ -1,11 +1,11 @@
 /* ─── Hero ─── */
 .hero {
-  min-height: 80vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: radial-gradient(ellipse at center, var(--ho-bg-elevated) 0%, var(--ho-bg) 70%);
+  background: var(--ho-bg);
   padding: var(--ho-space-3xl) var(--ho-space-xl);
 }
 
@@ -15,18 +15,18 @@
 
 .heroTag {
   font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-lg);
 }
 
 .heroTitle {
-  font-size: clamp(4rem, 12vw, 7rem);
+  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   line-height: 0.95;
   color: var(--ho-text);
   margin-bottom: var(--ho-space-md);
@@ -66,8 +66,28 @@
 
 .heroCta:hover {
   background: var(--ho-accent-hover);
-  box-shadow: 0 0 30px rgba(191,255,0,0.2);
   color: var(--ho-bg);
+}
+
+/* ─── Trust Bar ─── */
+.trustBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ho-space-md);
+  padding: var(--ho-space-lg) var(--ho-space-md);
+  font-family: var(--ho-font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ho-text-secondary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+}
+
+.trustDot {
+  color: var(--ho-text-muted);
 }
 
 /* ─── Sections ─── */
@@ -83,11 +103,11 @@
 
 .sectionTag {
   font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: 6px;
 }
 
@@ -101,7 +121,7 @@
 /* ─── Studio Grid ─── */
 .studioGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
   gap: var(--ho-space-lg);
 }
 
@@ -109,7 +129,7 @@
   position: relative;
   padding: var(--ho-space-xl) var(--ho-space-xl) var(--ho-space-lg);
   background: var(--ho-bg-card);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0, 0, 0,0.06);
   transition: var(--ho-transition);
   display: flex;
   flex-direction: column;
@@ -117,9 +137,7 @@
 }
 
 .studioCard:hover {
-  border-color: var(--studio-accent, var(--ho-accent));
-  box-shadow: 0 0 40px rgba(191,255,0,0.06);
-  transform: translateY(-2px);
+  border-color: var(--studio-accent, rgba(0, 0, 0, 0.15));
   color: var(--ho-text);
 }
 
@@ -153,7 +171,7 @@
   justify-content: space-between;
   margin-top: var(--ho-space-lg);
   padding-top: var(--ho-space-md);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(0, 0, 0,0.06);
 }
 
 .studioEnter {
@@ -191,7 +209,7 @@
 /* ─── Brand Story ─── */
 .story {
   padding: var(--ho-space-3xl) var(--ho-space-xl);
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(0, 0, 0,0.04);
 }
 
 .storyInner {
@@ -201,11 +219,11 @@
 
 .storyTag {
   font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-md);
 }
 
@@ -228,7 +246,7 @@
 }
 
 .storyBody em {
-  color: var(--ho-accent);
+  color: var(--ho-text);
   font-style: italic;
   font-family: var(--ho-font-accent);
 }
@@ -242,49 +260,11 @@
 .storySignoff {
   margin-top: var(--ho-space-xl);
   padding-top: var(--ho-space-lg);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(0, 0, 0,0.06);
   font-family: var(--ho-font-accent);
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--ho-accent);
-}
-
-/* ─── About ─── */
-.about {
-  padding: var(--ho-space-3xl) var(--ho-space-xl);
-  text-align: center;
-  background: var(--ho-bg-elevated);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.aboutInner {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.aboutTag {
-  font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ho-accent);
-  margin-bottom: var(--ho-space-md);
-}
-
-.aboutTitle {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
-  color: var(--ho-text);
-  line-height: 1.4;
-  margin-bottom: var(--ho-space-lg);
-}
-
-.aboutDesc {
-  font-size: 0.9rem;
-  color: var(--ho-text-muted);
-  line-height: 1.8;
+  color: var(--ho-text-secondary);
 }
 
 /* ─── Responsive ─── */

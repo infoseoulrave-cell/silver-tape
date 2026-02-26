@@ -22,12 +22,12 @@
   width: 420px;
   height: 100vh;
   background: var(--ho-bg);
-  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.4);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
   z-index: 2000;
   display: flex;
   flex-direction: column;
   transition: right var(--ho-transition);
-  border-left: 1px solid rgba(255,255,255,0.06);
+  border-left: 1px solid rgba(0,0,0,0.06);
 }
 
 .drawerOpen {
@@ -40,7 +40,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--ho-space-lg) var(--ho-space-xl);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .title {
@@ -81,7 +81,7 @@
   display: flex;
   gap: var(--ho-space-md);
   padding: var(--ho-space-md) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .itemImg {
@@ -134,7 +134,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
   overflow: hidden;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .itemQty button:hover:not(:disabled) {
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.06);
 }
 
 .itemQty button:disabled {
@@ -228,7 +228,7 @@
 /* ─── Footer ─── */
 .footer {
   padding: var(--ho-space-lg) var(--ho-space-xl);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
   background: var(--ho-bg-elevated);
 }
 
@@ -274,7 +274,6 @@
 
 .checkoutBtn:hover {
   background: var(--ho-accent-hover);
-  box-shadow: 0 0 20px rgba(191,255,0,0.2);
 }
 
 .continueBtn {

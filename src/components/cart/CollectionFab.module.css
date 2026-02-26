@@ -1,0 +1,80 @@
+.fab {
+  position: fixed;
+  bottom: var(--ho-space-xl);
+  right: var(--ho-space-xl);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+
+  background: var(--ho-text);
+  color: var(--ho-bg);
+  border: none;
+  border-radius: var(--ho-radius-full);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all var(--ho-transition);
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.fab:hover {
+  background: var(--ho-accent-hover);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px) scale(1);
+}
+
+.fab:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: var(--ho-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: var(--ho-bg);
+  color: var(--ho-text);
+  font-family: var(--ho-font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: var(--ho-radius-full);
+}
+
+@media (max-width: 767px) {
+  .fab {
+    bottom: var(--ho-space-lg);
+    right: var(--ho-space-md);
+    padding: 12px 18px;
+  }
+  .label {
+    font-size: 10px;
+  }
+}

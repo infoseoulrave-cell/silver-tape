@@ -15,7 +15,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-xs);
 }
 
@@ -36,11 +36,18 @@
   margin-top: var(--ho-space-sm);
 }
 
+/* Keyframe must live inside the module so CSS Modules can resolve it */
+@keyframes stripScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .track {
   display: flex;
-  gap: 4px;
-  animation: stripScroll 40s linear infinite;
+  gap: var(--ho-space-md);
+  animation: stripScroll 60s linear infinite;
   width: max-content;
+  will-change: transform;
 }
 
 .track:hover {
@@ -51,16 +58,21 @@
   flex-shrink: 0;
   width: 300px;
   cursor: pointer;
-  transition: all var(--ho-transition);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
-  opacity: 0.8;
+  opacity: 0.85;
+  transform: translateY(-4px);
 }
 
-.card img {
+.card img,
+.card span {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   border-radius: 0;
+  display: block;
 }
 
 .info {
@@ -92,7 +104,22 @@
 }
 
 @media (max-width: 767px) {
-  .card { width: 260px; }
+  .track {
+    animation: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--ho-space-md);
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .card {
+    width: 260px;
+    scroll-snap-align: start;
+  }
+  .card:hover {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

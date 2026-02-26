@@ -3,7 +3,7 @@
   padding: var(--ho-space-3xl) var(--ho-space-xl) var(--ho-space-2xl);
   text-align: center;
   background: linear-gradient(180deg, var(--ho-bg-elevated) 0%, var(--ho-bg) 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0, 0, 0,0.06);
 }
 
 .heroContent {
@@ -13,11 +13,11 @@
 
 .heroTag {
   font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--studio-accent, var(--ho-accent));
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-md);
 }
 
@@ -79,7 +79,7 @@
   color: var(--ho-text-secondary);
   margin-bottom: var(--ho-space-xl);
   padding-bottom: var(--ho-space-md);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0,0.08);
 }
 
 .grid {

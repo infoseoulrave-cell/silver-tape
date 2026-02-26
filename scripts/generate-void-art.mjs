@@ -14,58 +14,59 @@ if (!API_TOKEN) {
 
 const OUT_DIR = join(import.meta.dirname, '..', 'public', 'images', 'products', 'void');
 
-const STYLE = 'minimalist contemporary art, muted palette, contemplative, gallery-quality, high resolution, clean composition';
+// Monochrome Conceptual + Russian Formalism — with visual density
+const STYLE = 'monochrome conceptual art, Russian Constructivist influence, gallery-quality, high resolution, stark graphic composition, intellectual rigor, museum exhibition photograph';
 
 const ARTWORKS = [
   {
     id: 'void-001',
     name: 'Silence No. 7',
-    prompt: `${STYLE}, near-monochrome abstract painting, titanium white and raw umber fields dissolving into each other, Agnes Martin inspired trembling subtle textures, barely visible horizontal lines, meditative quietude, white canvas with extremely subtle warm undertones`,
+    prompt: `${STYLE}, large square canvas with dense layered white-on-white impasto oil paint, thick visible brushstrokes and palette knife ridges casting real shadows, subtle grey undertones emerging from built-up texture, Kazimir Malevich White on White reinterpreted with extreme material presence, monochrome sculptural surface, side-lit to reveal topography of paint`,
   },
   {
     id: 'void-002',
     name: 'Negative Space',
-    prompt: `${STYLE}, white on white abstract art, barely perceptible geometric forms emerging from ivory ground, extremely subtle shadows and depth, Malevich suprematist influence, zen emptiness, almost invisible rectangles floating on pale surface`,
+    prompt: `${STYLE}, black and white photograph of an empty modernist gallery room, stark concrete walls converging to a single small square window of bright white light at the far end, strong geometric perspective lines, deep shadows and blown-out highlights, El Lissitzky Proun space meets James Turrell, architectural void as subject, grainy high-contrast film texture`,
   },
   {
     id: 'void-003',
     name: 'Gradient Prayer',
-    prompt: `${STYLE}, single seamless gradient from cerulean blue to bone white, vertical color field painting, Rothko inspired luminous color transition, transcendent atmospheric quality, no hard edges, pure smooth color blending`,
+    prompt: `${STYLE}, monumental vertical canvas with seamless gradient from absolute matte black at bottom dissolving into luminous silver-white at top, visible fine canvas weave texture throughout, Ad Reinhardt black painting meeting Mark Rothko spiritual light, meditative chromatic transition, the gradient itself as a transcendent object, soft brushed graphite surface quality`,
   },
   {
     id: 'void-004',
     name: 'Threshold',
-    prompt: `${STYLE}, geometric aperture carved from absolute darkness, single rectangular opening of dim light in center of black void, James Turrell light installation inspired, architectural minimal, deep blacks with subtle light rectangle`,
+    prompt: `${STYLE}, stark geometric composition, massive black trapezoid form dominating the frame against raw concrete grey background, sharp hard edges, Constructivist architectural model photograph, El Lissitzky Beat the Whites with the Red Wedge energy but in pure greyscale, dramatic diagonal tension, bold graphic power, suprematist spatial depth`,
   },
   {
     id: 'void-005',
     name: 'Erosion',
-    prompt: `${STYLE}, dark abstract painting with layers wearing away revealing ghost traces beneath, palimpsest texture, time and entropy made visible, dark charcoal and graphite tones with faint pale marks showing through, elegant decay`,
+    prompt: `${STYLE}, heavily textured dark abstract work, multiple layers of black ink and charcoal on torn and reassembled paper, visible rips seams and creases creating a topographic surface, burnt edges revealing layers beneath, Robert Rauschenberg black painting meets Arte Povera materiality, palimpsest of erasure and accumulation, high contrast detail photograph`,
   },
   {
     id: 'void-006',
     name: 'Monument to Absence',
-    prompt: `${STYLE}, monolithic matte black form floating against slightly darker black ground, subtle difference between two blacks, Ad Reinhardt black painting inspired, anti-monument, barely visible geometric shape in darkness`,
+    prompt: `${STYLE}, solitary geometric black monolith sculpture in empty white gallery space, perfect matte black rectangular form casting a precise shadow on polished concrete floor, minimal but imposing, Tony Smith Die meets 2001 monolith, one object in vast emptiness, architectural scale, dramatic museum lighting from above, silver gelatin print quality`,
   },
   {
     id: 'void-007',
     name: 'Meridian',
-    prompt: `${STYLE}, single precise vertical line bisecting empty white field, Barnett Newman zip painting inspired, thin dark line on pale ground, mathematical precision, vast white space divided by one perfect line`,
+    prompt: `${STYLE}, bold typographic artwork, single Russian Cyrillic character or geometric letterform rendered enormous in matte black against raw off-white ground, Alexander Rodchenko constructivist poster influence, asymmetric placement creating dynamic tension, visible ink bleed and printing texture, woodblock or letterpress materiality, graphic and intellectual`,
   },
   {
     id: 'void-008',
     name: 'Still Water',
-    prompt: `${STYLE}, perfectly still water surface in greyscale, Hiroshi Sugimoto seascape inspired, horizon line dissolving, subtle gradients from dark to light, zen calm, reflection merging with reality, monochrome photography aesthetic`,
+    prompt: `${STYLE}, Hiroshi Sugimoto inspired seascape but with more tonal complexity, black and white long-exposure ocean where water becomes smooth silk meeting overcast sky at a barely visible horizon line, rich silver-grey tonal range from deep black foreground to luminous white sky, grain and subtle tonal gradations, platinum print quality, contemplative infinite`,
   },
   {
     id: 'void-009',
     name: 'Grid Collapse',
-    prompt: `${STYLE}, precise geometric grid beginning to buckle and fold at center, gravitational distortion of mathematical order, fine black lines on white ground warping inward, entropy consuming structure, clean minimal graphic`,
+    prompt: `${STYLE}, precise black ink grid on white paper with systematic distortions, lines thickening warping and dissolving at the center creating a gravitational vortex effect, Sol LeWitt systematic drawing meets Op Art perceptual disruption, mathematical system breaking down, architectural blueprint being consumed by entropy, stark black on white, technical pen precision`,
   },
   {
     id: 'void-010',
     name: 'Last Light',
-    prompt: `${STYLE}, thin horizontal band of warm amber light at edge of otherwise completely black composition, twilight atmosphere, elegiac last moment of light before darkness, minimal landscape, liminal moment between day and night`,
+    prompt: `${STYLE}, high contrast black and white photograph of concrete brutalist architecture at twilight, a single horizontal slit window emitting a thin line of bright white light across a massive dark facade, dramatic scale between tiny light and immense darkness, Tadao Ando meets Soviet brutalism, liminal moment, architectural meditation on light and void`,
   },
 ];
 

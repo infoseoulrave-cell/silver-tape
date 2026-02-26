@@ -11,7 +11,7 @@
   width: 100%;
   text-align: center;
   background: var(--ho-bg-card);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0, 0, 0,0.08);
   padding: var(--ho-space-2xl) var(--ho-space-xl);
 }
 
@@ -88,12 +88,11 @@
 
 .primaryBtn:hover {
   background: var(--ho-accent-hover);
-  box-shadow: 0 0 20px rgba(191,255,0,0.2);
 }
 
 .secondaryBtn {
   padding: 14px 28px;
-  border: 2px solid rgba(255,255,255,0.15);
+  border: 2px solid rgba(0, 0, 0,0.15);
   font-family: var(--ho-font-heading);
   font-size: 0.8rem;
   font-weight: 700;

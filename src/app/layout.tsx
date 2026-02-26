@@ -4,6 +4,7 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
+import CollectionFab from '@/components/cart/CollectionFab';
 import '@/styles/globals.css';
 import '@/styles/animations.css';
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <CartDrawer />
+        <CollectionFab />
       </body>
     </html>
   );

@@ -43,12 +43,19 @@ export default function CategoryMasonry({ studioSlug, categories }: CategoryMaso
 
       <div className={styles.grid}>
         {cats.map(cat => {
-          const count = studioSlug
-            ? getProductsByStudioAndCategory(studioSlug, cat.id).length
+          const studioProducts = studioSlug
+            ? getProductsByStudioAndCategory(studioSlug, cat.id)
+            : null;
+          const count = studioProducts
+            ? studioProducts.length
             : getProductsByCategory(cat.id).length;
           const href = studioSlug
             ? `/studio/${studioSlug}/category/${cat.id}`
             : `/category/${cat.id}`;
+          // Use first product image from this studio's category, fallback to global cover
+          const coverImage = studioProducts && studioProducts.length > 0
+            ? studioProducts[0].artImage
+            : cat.coverImage;
           return (
             <Link
               key={cat.id}
@@ -56,7 +63,7 @@ export default function CategoryMasonry({ studioSlug, categories }: CategoryMaso
               className={`${styles.card} ${GRID_CLASS_MAP[cat.id] || ''}`}
             >
               <Image
-                src={cat.coverImage}
+                src={coverImage}
                 alt={`${cat.name} collection`}
                 fill
                 sizes="(max-width: 767px) 260px, (max-width: 1023px) 50vw, 33vw"

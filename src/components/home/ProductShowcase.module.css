@@ -20,7 +20,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ho-accent);
+  color: var(--ho-text-muted);
   margin-bottom: var(--ho-space-xs);
 }
 
@@ -49,7 +49,7 @@
   background: var(--ho-bg-card);
   overflow: hidden;
   margin-bottom: var(--ho-space-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .featuredImg {
@@ -120,7 +120,7 @@
   font-family: var(--ho-font-heading);
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--ho-accent);
+  color: var(--ho-text);
   margin-bottom: var(--ho-space-lg);
 }
 
@@ -154,7 +154,7 @@
 .grid3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  gap: var(--ho-space-md);
 }
 
 .card {
@@ -162,12 +162,11 @@
   overflow: hidden;
   cursor: pointer;
   transition: all var(--ho-transition);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .card:hover {
-  border-color: rgba(191, 255, 0, 0.15);
-  box-shadow: 0 0 30px rgba(191, 255, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .cardImgWrap {
@@ -278,14 +277,13 @@
   text-transform: uppercase;
   background: transparent;
   color: var(--ho-text);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   transition: all var(--ho-transition);
 }
 
 .btnDark:hover {
-  border-color: var(--ho-accent);
-  color: var(--ho-accent);
-  box-shadow: 0 0 20px rgba(191, 255, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.25);
+  color: var(--ho-text);
 }
 
 @media (max-width: 1023px) {

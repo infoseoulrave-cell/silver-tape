@@ -56,7 +56,6 @@
 
 .emptyBtn:hover {
   background: var(--ho-accent-hover);
-  box-shadow: 0 0 20px rgba(191,255,0,0.2);
 }
 
 /* ─── Layout ─── */
@@ -77,7 +76,7 @@
   display: flex;
   gap: var(--ho-space-lg);
   padding: var(--ho-space-lg) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0, 0, 0,0.06);
 }
 
 .itemImg {
@@ -119,7 +118,7 @@
 .itemQty {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0, 0, 0,0.1);
   overflow: hidden;
 }
 
@@ -137,7 +136,7 @@
 }
 
 .itemQty button:hover:not(:disabled) {
-  background: rgba(255,255,255,0.06);
+  background: rgba(0, 0, 0,0.06);
 }
 
 .itemQty button:disabled {
@@ -181,7 +180,7 @@
 /* ─── Summary ─── */
 .summary {
   background: var(--ho-bg-card);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0, 0, 0,0.08);
   padding: var(--ho-space-xl);
   position: sticky;
   top: 100px;
@@ -195,7 +194,7 @@
   letter-spacing: 0.05em;
   margin-bottom: var(--ho-space-lg);
   padding-bottom: var(--ho-space-md);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0,0.08);
   color: var(--ho-text);
 }
 
@@ -245,7 +244,6 @@
 
 .checkoutBtn:hover {
   background: var(--ho-accent-hover);
-  box-shadow: 0 0 20px rgba(191,255,0,0.2);
 }
 
 .continueLink {

@@ -1,30 +1,30 @@
 .bar {
-  background: var(--ho-accent);
-  color: var(--ho-bg);
+  background: var(--ho-bg-elevated);
+  color: var(--ho-text-muted);
   overflow: hidden;
-  height: 36px;
+  height: 32px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .track {
   display: flex;
   white-space: nowrap;
-  animation: ho-marquee 25s linear infinite;
+  animation: ho-marquee 40s linear infinite;
 }
 
 .item {
   font-family: var(--ho-font-heading);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0 var(--ho-space-2xl);
-  color: var(--ho-bg);
+  color: var(--ho-text-muted);
 }
 
 .accent {
-  color: var(--ho-bg);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--ho-accent);
+  text-decoration: none;
 }

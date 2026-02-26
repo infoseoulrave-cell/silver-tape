@@ -21,7 +21,7 @@ export default function ProductShowcase() {
         </div>
 
         {heroProduct && (
-          <Link href={`/products/${heroProduct.slug}`} className={styles.featuredSplit}>
+          <Link href={`/studio/${heroProduct.studioSlug}/${heroProduct.slug}`} className={styles.featuredSplit}>
             <div className={styles.featuredImg}>
               <Image
                 src={heroProduct.image}
@@ -47,7 +47,7 @@ export default function ProductShowcase() {
 
         <div className={styles.grid3}>
           {gridProducts.map((product, i) => (
-            <Link key={product.id} href={`/products/${product.slug}`} className={styles.card}>
+            <Link key={product.id} href={`/studio/${product.studioSlug}/${product.slug}`} className={styles.card}>
               <div className={styles.cardImgWrap}>
                 {i === 0 && (
                   <div className={styles.cardBadges}>

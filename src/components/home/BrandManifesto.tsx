@@ -9,12 +9,12 @@ interface Quote {
 }
 
 const QUOTES: Quote[] = [
-  { text: 'Visual', accent: 'Excess.' },
-  { text: '과잉의', accent: '미학.' },
-  { text: 'Wall', accent: 'Obsession.' },
-  { text: '벽 위의', accent: '집착.' },
-  { text: 'Get Wasted on', accent: 'Art.' },
-  { text: '예술에', accent: '취하다.' },
+  { text: 'Serious, yet', accent: 'Absurd.' },
+  { text: '진지하되,', accent: '아이러니.' },
+  { text: 'Art on', accent: 'Every Wall.' },
+  { text: '모든 벽 위에,', accent: '감각.' },
+  { text: 'Find Truth in', accent: 'Irony.' },
+  { text: '아이러니 속의', accent: '진실.' },
 ];
 
 export default function BrandManifesto() {
@@ -49,8 +49,8 @@ export default function BrandManifesto() {
         </div>
         <div className={styles.line} />
         <p className={styles.kr}>
-          좋은 포스터는 숙취처럼 남는다.<br />
-          걸어라. 취해라. 매일매일.
+          벽 위의 한 장이 시선을 멈추게 한다.<br />
+          그것이 우리가 예술을 믿는 이유다.
         </p>
       </div>
     </section>

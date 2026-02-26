@@ -48,12 +48,12 @@ export default function CartDrawer() {
       <div
         className={`${styles.drawer} ${isOpen ? styles.drawerOpen : ''}`}
         role="dialog"
-        aria-label="장바구니"
+        aria-label="내 컬렉션"
         aria-modal="true"
       >
         {/* Header */}
         <div className={styles.header}>
-          <h2 className={styles.title}>Your Tab ({totalItems})</h2>
+          <h2 className={styles.title}>My Collection ({totalItems})</h2>
           <button className={styles.close} onClick={toggleCart} aria-label="닫기">
             &times;
           </button>
@@ -62,9 +62,9 @@ export default function CartDrawer() {
         {/* Items */}
         {items.length === 0 ? (
           <div className={styles.empty}>
-            <div className={styles.emptyIcon}>&#127867;</div>
-            <div className={styles.emptyTitle}>아직 비어있어요</div>
-            <p className={styles.emptyDesc}>예술에 취할 준비가 되셨나요?</p>
+            <div className={styles.emptyIcon}>&#128444;</div>
+            <div className={styles.emptyTitle}>컬렉션이 비어있어요</div>
+            <p className={styles.emptyDesc}>당신의 벽을 위한 작품을 찾아보세요.</p>
           </div>
         ) : (
           <div className={styles.items}>
@@ -134,7 +134,7 @@ export default function CartDrawer() {
               주문하기 — CHECKOUT
             </Link>
             <button className={styles.continueBtn} onClick={toggleCart}>
-              쇼핑 계속하기
+              작품 더 둘러보기
             </button>
           </div>
         )}

@@ -1,44 +1,44 @@
 /* ============================================
    SILVERTAPE — Global Design System
    "Curated Art. Every Wall."
-   Dark Mode / Art Studio Platform
+   Light Gallery / Art Studio Platform
    ============================================ */
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Core Palette — Dark Mode */
-  --ho-bg: #0a0a0a;
-  --ho-bg-elevated: #111111;
-  --ho-bg-card: #161616;
-  --ho-bg-hover: #1a1a1a;
-  --ho-surface: #1e1e1e;
+  /* Core Palette — Gallery Light */
+  --ho-bg: #f0eeeb;
+  --ho-bg-elevated: #e8e6e3;
+  --ho-bg-card: #ffffff;
+  --ho-bg-hover: #e3e1de;
+  --ho-surface: #dbd9d6;
 
   /* Text */
-  --ho-text: #f0f0f0;
-  --ho-text-secondary: #888888;
-  --ho-text-muted: #555555;
+  --ho-text: #1a1a1a;
+  --ho-text-secondary: #555555;
+  --ho-text-muted: #999999;
 
-  /* Accents */
-  --ho-accent: #BFFF00;
-  --ho-accent-hover: #d4ff4d;
-  --ho-accent-dim: rgba(191, 255, 0, 0.15);
-  --ho-blue: #00d4ff;
-  --ho-pink: #ff2d7b;
-  --ho-purple: #a855f7;
-  --ho-orange: #ff6b35;
-  --ho-gold: #C9A96E;
+  /* Accents — Metallic Gray / Black */
+  --ho-accent: #2d2d2d;
+  --ho-accent-hover: #1a1a1a;
+  --ho-accent-dim: rgba(45, 45, 45, 0.08);
+  --ho-blue: #0099cc;
+  --ho-pink: #d9245e;
+  --ho-purple: #8b3fcf;
+  --ho-orange: #e05a2a;
+  --ho-gold: #B08F4F;
 
   /* Legacy compat */
-  --ho-red: #ff2d7b;
-  --ho-red-hover: #e0256b;
-  --ho-black: #0a0a0a;
-  --ho-dark: #f0f0f0;
-  --ho-cream: #0a0a0a;
-  --ho-offwhite: #111111;
+  --ho-red: #d9245e;
+  --ho-red-hover: #b81e50;
+  --ho-black: #1a1a1a;
+  --ho-dark: #1a1a1a;
+  --ho-cream: #f0eeeb;
+  --ho-offwhite: #e8e6e3;
   --ho-gray: #888888;
-  --ho-light: #222222;
-  --ho-border: #2a2a2a;
-  --ho-green: #BFFF00;
+  --ho-light: #e0deda;
+  --ho-border: #d0cec9;
+  --ho-green: #2d2d2d;
 
   /* Typography */
   --ho-font-heading: var(--font-space-grotesk), 'SF Pro Display', -apple-system, sans-serif;
@@ -56,11 +56,11 @@
   --ho-space-3xl: 100px;
 
   /* Shadows */
-  --ho-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --ho-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --ho-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
-  --ho-shadow-glow: 0 0 30px rgba(191, 255, 0, 0.15);
-  --ho-shadow-glow-blue: 0 0 30px rgba(0, 212, 255, 0.15);
+  --ho-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ho-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --ho-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --ho-shadow-glow: none;
+  --ho-shadow-glow-blue: none;
 
   /* Borders */
   --ho-radius-sm: 4px;
@@ -130,7 +130,7 @@ a {
 }
 
 a:hover {
-  color: var(--ho-accent);
+  color: var(--ho-text);
 }
 
 /* --- Buttons --- */
@@ -166,22 +166,16 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ho-accent);
+  background: var(--ho-text-secondary);
 }
 
 /* --- Utility Classes --- */
-.glow-text {
-  text-shadow: 0 0 40px rgba(191, 255, 0, 0.3);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--ho-accent), var(--ho-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 /* --- Responsive --- */
 @media (max-width: 767px) {
+  :root {
+    --ho-space-3xl: 60px;
+    --ho-space-2xl: 40px;
+  }
   h3 { font-size: 1.125rem; }
 }
