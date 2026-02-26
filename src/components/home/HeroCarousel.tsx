@@ -13,22 +13,22 @@ interface HeroSlide {
 
 const SLIDES: HeroSlide[] = [
   {
-    image: '/images/hero/hero-rubber-duck.png',
+    image: '/images/hero/hero-impasto-emotion.png',
     tag: 'Top Shelf — 이번 주 기대작',
-    title: 'Rubber Duck Museum',
-    subtitle: '미술관에 전시된 거대한 러버덕. 진지함과 유머의 경계.',
+    title: 'Impasto Emotion',
+    subtitle: '감정은 마르지 않는다. 물감처럼 덧칠할 뿐.',
   },
   {
-    image: '/images/hero/hero-neon-flamingo.png',
-    tag: 'Cyberpunk Nature 시리즈',
-    title: 'Neon Flamingo',
-    subtitle: '비 내리는 도쿄 골목, 핑크 네온이 밤을 물들이다.',
+    image: '/images/hero/hero-melancholy-youth.png',
+    tag: 'Neo-Pop Portrait 시리즈',
+    title: 'Melancholy Youth',
+    subtitle: '젊음은 한 번뿐이지만, 그 우울은 벽에 영원히 남는다.',
   },
   {
-    image: '/images/hero/hero-monument.png',
-    tag: 'Cinema 시리즈',
-    title: 'Monument',
-    subtitle: '광활한 사막의 아치. 영화 한 장면 같은 순간.',
+    image: '/images/hero/hero-glass-hammer.png',
+    tag: 'SENSIBILITY STAIR',
+    title: 'Glass Hammer',
+    subtitle: '힘의 도구가 유리가 될 때, 기능과 불가능 사이의 긴장.',
   },
 ];
 

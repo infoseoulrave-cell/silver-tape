@@ -1835,7 +1835,7 @@ export function getFeaturedProducts(): Product[] {
 }
 
 /** 이번 주 기대작 — 클릭률 기반 큐레이션 */
-const WEEKLY_PICK_IDS = ['fun-003', 'fun-001', 'fun-002', 'pop-001'];
+const WEEKLY_PICK_IDS = ['artsy-001', 'artsy-002', 'sens-004', 'pop-001'];
 
 export function getWeeklyPicks(): Product[] {
   return WEEKLY_PICK_IDS

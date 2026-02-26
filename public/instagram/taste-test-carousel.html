@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>SILVERTAPE — 취향 테스트 캐러셀</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 40px;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #333;
+  }
+
+  /* ─── SLIDE 1: 표지 ─── */
+  .slide-cover {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .slide-cover .top-tag {
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 40px;
+  }
+  .slide-cover h1 {
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .slide-cover h1 em {
+    font-style: normal;
+    color: #ff4444;
+  }
+  .slide-cover .sub {
+    font-size: 28px;
+    color: #999;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 60px;
+  }
+  .slide-cover .swipe {
+    font-size: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .slide-cover .swipe span {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  .slide-cover .logo {
+    position: absolute;
+    bottom: 60px;
+    font-size: 16px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  /* ─── SLIDE 2-4: 작품 선택지 ─── */
+  .slide-art {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide-art .art-image {
+    width: 100%;
+    height: 820px;
+    object-fit: cover;
+    display: block;
+  }
+  .slide-art .art-body {
+    flex: 1;
+    padding: 48px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .slide-art .art-option {
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ff4444;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .slide-art .art-title {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .slide-art .art-desc {
+    font-size: 26px;
+    color: #999;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .slide-art .art-personality {
+    font-size: 24px;
+    color: #ccc;
+    font-weight: 600;
+    padding: 20px 0;
+    border-top: 1px solid #222;
+  }
+  .slide-art .art-personality span {
+    color: #ff4444;
+  }
+  .slide-art .art-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .slide-art .art-studio {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .slide-art .art-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ─── SLIDE 5: CTA ─── */
+  .slide-cta {
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .slide-cta .result-tag {
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 40px;
+  }
+  .slide-cta h2 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .slide-cta .cta-sub {
+    font-size: 26px;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    max-width: 700px;
+  }
+  .slide-cta .cta-btn {
+    display: inline-block;
+    padding: 24px 64px;
+    border: 2px solid #fff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  .slide-cta .cta-url {
+    font-size: 20px;
+    color: #555;
+    letter-spacing: 0.1em;
+  }
+  .slide-cta .logo {
+    position: absolute;
+    bottom: 60px;
+    font-size: 16px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  /* Label */
+  .slide-num {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    color: #888;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- SLIDE 1: 표지 -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="slide slide-cover">
+  <div class="slide-num">1 / 5</div>
+  <div class="top-tag">Taste Test</div>
+  <h1>당신의 벽은<br>어떤 <em>성격</em>인가요?</h1>
+  <p class="sub">3개 작품 중 골라보세요.<br>당신의 공간 취향이 보입니다.</p>
+  <div class="swipe"><span>→ 밀어서 시작</span></div>
+  <div class="logo">SILVERTAPE</div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- SLIDE 2: Option A — Impasto Emotion -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="slide slide-art">
+  <div class="slide-num">2 / 5</div>
+  <img class="art-image" src="../images/products/artsy/artsy-001-art.png" alt="Impasto Emotion">
+  <div class="art-body">
+    <div>
+      <div class="art-option">Option A</div>
+      <div class="art-title">Impasto Emotion</div>
+      <div class="art-desc">임파스토 이모션 — 추상 표현주의</div>
+      <div class="art-personality"><span>A를 고른 당신:</span> 감정에 솔직한 사람. 벽에도 온도가 필요하다고 믿는 타입.</div>
+    </div>
+    <div class="art-meta">
+      <div class="art-studio">HANGOVER STUDIO</div>
+      <div class="art-price">₩45,000</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- SLIDE 3: Option B — Melancholy Youth -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="slide slide-art">
+  <div class="slide-num">3 / 5</div>
+  <img class="art-image" src="../images/products/artsy/artsy-002-art.png" alt="Melancholy Youth">
+  <div class="art-body">
+    <div>
+      <div class="art-option">Option B</div>
+      <div class="art-title">Melancholy Youth</div>
+      <div class="art-desc">멜랑콜리 유스 — 네오팝 인물화</div>
+      <div class="art-personality"><span>B를 고른 당신:</span> 감성적이면서 쿨한 사람. 무드보드가 곧 인테리어인 타입.</div>
+    </div>
+    <div class="art-meta">
+      <div class="art-studio">HANGOVER STUDIO</div>
+      <div class="art-price">₩45,000</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- SLIDE 4: Option C — Glass Hammer -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="slide slide-art">
+  <div class="slide-num">4 / 5</div>
+  <img class="art-image" src="../images/products/sensibility/sens-004-art.png" alt="Glass Hammer">
+  <div class="art-body">
+    <div>
+      <div class="art-option">Option C</div>
+      <div class="art-title">Glass Hammer</div>
+      <div class="art-desc">유리 해머 — 오브제 스터디</div>
+      <div class="art-personality"><span>C를 고른 당신:</span> 생각이 많은 미니멀리스트. 하나의 오브제로 공간을 말하는 타입.</div>
+    </div>
+    <div class="art-meta">
+      <div class="art-studio">SENSIBILITY STAIR</div>
+      <div class="art-price">₩48,000</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- SLIDE 5: CTA -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="slide slide-cta">
+  <div class="slide-num">5 / 5</div>
+  <div class="result-tag">Your Wall, Your Statement</div>
+  <h2>취향을 골랐다면<br>벽에 걸 차례.</h2>
+  <p class="cta-sub">프리미엄 아트 프린트 — 50장 한정 에디션.<br>당신의 벽이 당신을 말해줍니다.</p>
+  <div class="cta-btn">SILVERTAPE.ART</div>
+  <div class="cta-url">silvertape.art</div>
+  <div class="logo">SILVERTAPE</div>
+</div>
+
+</body>
+</html>
