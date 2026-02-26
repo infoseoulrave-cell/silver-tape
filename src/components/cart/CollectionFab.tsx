@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useCartStore } from '@/lib/cart-store';
 import styles from './CollectionFab.module.css';
 
 export default function CollectionFab() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const router = useRouter();
   const isOpen = useCartStore(s => s.isOpen);
   const getTotalItems = useCartStore(s => s.getTotalItems);
 
@@ -23,9 +22,9 @@ export default function CollectionFab() {
   const visible = scrolled && !isOpen;
 
   return (
-    <button
+    <Link
+      href="/cart"
       className={`${styles.fab} ${visible ? styles.visible : ''}`}
-      onClick={() => router.push('/cart')}
       aria-label={`내 컬렉션 — ${totalItems}개 작품`}
     >
       {/* Frame icon */}
@@ -37,6 +36,6 @@ export default function CollectionFab() {
       {totalItems > 0 && (
         <span className={styles.count}>{totalItems}</span>
       )}
-    </button>
+    </Link>
   );
 }

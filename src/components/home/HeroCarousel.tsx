@@ -13,22 +13,22 @@ interface HeroSlide {
 
 const SLIDES: HeroSlide[] = [
   {
-    image: '/images/hero/hero-impasto-emotion.png',
-    tag: 'Top Shelf — 이번 주 기대작',
-    title: 'Impasto Emotion',
-    subtitle: '감정은 마르지 않는다. 물감처럼 덧칠할 뿐.',
+    image: '/images/hero/hero-neon-flamingo.png',
+    tag: 'HANGOVER — Cyberpunk × Nature',
+    title: 'Neon Flamingo',
+    subtitle: '사이버펑크가 자연과 만나는 곳. 빗물 웅덩이에 핑크 빛이 반사된다.',
   },
   {
-    image: '/images/hero/hero-melancholy-youth.png',
-    tag: 'Neo-Pop Portrait 시리즈',
-    title: 'Melancholy Youth',
-    subtitle: '젊음은 한 번뿐이지만, 그 우울은 벽에 영원히 남는다.',
+    image: '/images/hero/hero-monument.png',
+    tag: 'VOID. — Anti-Monument',
+    title: 'Monument to Absence',
+    subtitle: '아무것도 기념하지 않는 기념비. 그래서 모든 것을 기념한다.',
   },
   {
-    image: '/images/hero/hero-glass-hammer.png',
-    tag: 'SENSIBILITY STAIR',
-    title: 'Glass Hammer',
-    subtitle: '힘의 도구가 유리가 될 때, 기능과 불가능 사이의 긴장.',
+    image: '/images/products/sensibility/sens-003-art.png',
+    tag: 'SENSIBILITY STAIR — Material Tension',
+    title: 'Emergency Foil',
+    subtitle: '비상 담요는 체온을 지킨다. 이 작품은 체면을 지킨다.',
   },
 ];
 
@@ -113,11 +113,11 @@ export default function HeroCarousel() {
               <h1 className={styles.title}>{slide.title}</h1>
               <p className={styles.subtitle}>{slide.subtitle}</p>
               <div className={styles.cta}>
-                <Link href="/products" className={styles.btnPrimary}>
+                <Link href="/studio/hangover" className={styles.btnPrimary}>
                   전체 작품 보기
                 </Link>
-                <Link href="/products" className={styles.btnSecondary}>
-                  이번 주 기대작
+                <Link href="#studios" className={styles.btnSecondary}>
+                  스튜디오 둘러보기
                 </Link>
               </div>
             </div>

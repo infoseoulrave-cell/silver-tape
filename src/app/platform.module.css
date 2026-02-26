@@ -121,7 +121,7 @@
 /* ─── Studio Grid ─── */
 .studioGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--ho-space-lg);
 }
 
@@ -271,6 +271,9 @@
 @media (max-width: 1023px) {
   .productGrid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .studioGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
