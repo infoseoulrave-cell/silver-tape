@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * 인스타그램 카드뉴스 30토픽 × 3장 = 90장 PNG 생성
- * 사진 배경 + 다크 오버레이 + 큰 볼드 흰색 텍스트
+ * Unsplash 검색으로 주제별 사진 매칭 + 큰 볼드 흰색 텍스트
  *
  * 사용: node scripts/generate-card-news-images.mjs
  * 필요: puppeteer
@@ -15,17 +15,18 @@ const WIDTH = 1080;
 const HEIGHT = 1350;
 
 /**
- * 30개 토픽, 각 3슬라이드
- * slide1: 표지 (테마 + 큰 제목)
- * slide2: 본문 전반부
- * slide3: 본문 후반부 + 마무리
+ * 30개 토픽, 각 3슬라이드 — 슬라이드마다 다른 검색어로 사진 매칭
  */
 const TOPICS = [
   {
-    id: 1, themeLabel: '과거의 물감', accent: '#8B4513', photoId: 10,
-    slide1: { title: '1만 9천 년 전,\n동굴 벽화의\n색은?' },
+    id: 1, themeLabel: '과거의 물감', accent: '#8B4513',
+    slide1: {
+      title: '1만 9천 년 전,\n동굴 벽화의\n색은?',
+      photoQuery: 'cave painting ancient wall art',
+    },
     slide2: {
       heading: '천연광물로 그린 최초의 그림',
+      photoQuery: 'natural mineral pigment red ochre',
       lines: [
         '라스코 동굴 벽화는 약 1만 9천 년 전 작품이다.',
         '사용한 안료는 오직 네 가지.',
@@ -38,6 +39,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '왜 이 그림들이 중요할까?',
+      photoQuery: 'prehistoric cave interior dark',
       lines: [
         '유기물 안료를 쓰지 않았기에',
         '탄소연대측정이 불가능했다.',
@@ -51,10 +53,14 @@ const TOPICS = [
     },
   },
   {
-    id: 2, themeLabel: '과거의 물감', accent: '#6C3483', photoId: 110,
-    slide1: { title: '보라색이\n금만큼\n비쌌던 시대' },
+    id: 2, themeLabel: '과거의 물감', accent: '#6C3483',
+    slide1: {
+      title: '보라색이\n금만큼\n비쌌던 시대',
+      photoQuery: 'purple royal silk fabric luxury',
+    },
     slide2: {
       heading: '뿔고둥 25만 마리의 피',
+      photoQuery: 'sea snail murex shell purple dye',
       lines: [
         '티리언 퍼플(Tyrian Purple)은',
         '뿔고둥의 점액선에서 추출한 염료.',
@@ -67,6 +73,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '"로얄 퍼플"의 탄생',
+      photoQuery: 'roman emperor statue marble',
       lines: [
         '4세기 이후 로마 제국에서는',
         '황제만이 이 색을 입을 수 있었다.',
@@ -80,10 +87,14 @@ const TOPICS = [
     },
   },
   {
-    id: 3, themeLabel: '과거의 물감', accent: '#C0392B', photoId: 169,
-    slide1: { title: '유화가\n르네상스를\n바꿨다' },
+    id: 3, themeLabel: '과거의 물감', accent: '#C0392B',
+    slide1: {
+      title: '유화가\n르네상스를\n바꿨다',
+      photoQuery: 'oil painting renaissance canvas art',
+    },
     slide2: {
       heading: '계란에서 기름으로',
+      photoQuery: 'artist paint palette oil brushes',
       lines: [
         '15세기 이전, 화가들은 템페라를 썼다.',
         '계란 노른자 + 안료.',
@@ -97,6 +108,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '유화 혁명의 상징',
+      photoQuery: 'old master painting gallery museum',
       lines: [
         "'아르놀피니의 결혼식'(1434) —",
         '유화의 가능성을 처음 보여준 작품.',
@@ -110,10 +122,14 @@ const TOPICS = [
     },
   },
   {
-    id: 4, themeLabel: '과거의 물감', accent: '#7D6608', photoId: 180,
-    slide1: { title: '물감이\n튜브에\n담기기까지' },
+    id: 4, themeLabel: '과거의 물감', accent: '#7D6608',
+    slide1: {
+      title: '물감이\n튜브에\n담기기까지',
+      photoQuery: 'paint tubes colorful art supplies',
+    },
     slide2: {
       heading: '돼지 방광에서 금속 튜브로',
+      photoQuery: 'vintage paint supplies antique',
       lines: [
         '1824년 이전, 화가들은',
         '돼지 방광에 물감을 보관했다.',
@@ -127,6 +143,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '"튜브가 없었다면\n인상파도 없었다"',
+      photoQuery: 'plein air painting outdoor landscape easel',
       lines: [
         '르누아르의 말이다.',
         '',
@@ -140,10 +157,14 @@ const TOPICS = [
     },
   },
   {
-    id: 5, themeLabel: '색의 심리학', accent: '#C0392B', photoId: 206,
-    slide1: { title: '빨강이\n심박수를\n올린다' },
+    id: 5, themeLabel: '색의 심리학', accent: '#C0392B',
+    slide1: {
+      title: '빨강이\n심박수를\n올린다',
+      photoQuery: 'red abstract art passion bold',
+    },
     slide2: {
       heading: '교감신경을 자극하는 색',
+      photoQuery: 'red light neon heartbeat energy',
       lines: [
         '빨간색을 보면 교감신경이 활성화된다.',
         '',
@@ -157,6 +178,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '빨강의 전략적 사용',
+      photoQuery: 'coca cola red brand fast food sign',
       lines: [
         '패스트푸드 브랜드의 70% 이상이',
         '빨간색 로고를 사용한다.',
@@ -170,10 +192,14 @@ const TOPICS = [
     },
   },
   {
-    id: 6, themeLabel: '색의 심리학', accent: '#1A5276', photoId: 239,
-    slide1: { title: '파랑은 왜\n신뢰의\n색일까?' },
+    id: 6, themeLabel: '색의 심리학', accent: '#1A5276',
+    slide1: {
+      title: '파랑은 왜\n신뢰의\n색일까?',
+      photoQuery: 'blue ocean calm serene water',
+    },
     slide2: {
       heading: '부교감신경과 파란색',
+      photoQuery: 'blue sky peaceful meditation',
       lines: [
         '파란색은 부교감신경을 촉진해',
         '마음을 안정시킨다.',
@@ -186,6 +212,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '세계에서 가장 인기 있는 색',
+      photoQuery: 'corporate blue technology trust office',
       lines: [
         '페이스북, 삼성, IBM, 비자, HP —',
         '글로벌 기업 로고에 파랑이 많은 이유.',
@@ -199,10 +226,14 @@ const TOPICS = [
     },
   },
   {
-    id: 7, themeLabel: '색의 심리학', accent: '#145A32', photoId: 15,
-    slide1: { title: '초록이 눈을\n편하게 하는\n과학적 이유' },
+    id: 7, themeLabel: '색의 심리학', accent: '#145A32',
+    slide1: {
+      title: '초록이 눈을\n편하게 하는\n과학적 이유',
+      photoQuery: 'green forest nature lush trees',
+    },
     slide2: {
       heading: '가시광선의 정중앙',
+      photoQuery: 'green leaves close up macro',
       lines: [
         '초록색 빛의 파장은 약 520nm.',
         '가시광선 스펙트럼의 정중앙이다.',
@@ -216,6 +247,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '자연의 색이 치유하는 힘',
+      photoQuery: 'forest bathing therapy nature walk',
       lines: [
         '도시에 녹지가 10% 늘어나면',
         '주민의 스트레스 지수가 유의미하게 감소한다.',
@@ -229,10 +261,14 @@ const TOPICS = [
     },
   },
   {
-    id: 8, themeLabel: '미술사 미스터리', accent: '#4A235A', photoId: 36,
-    slide1: { title: '모나리자 도난:\n루브르가\n빈 벽을\n전시한 날' },
+    id: 8, themeLabel: '미술사 미스터리', accent: '#4A235A',
+    slide1: {
+      title: '모나리자 도난:\n루브르가\n빈 벽을\n전시한 날',
+      photoQuery: 'mona lisa louvre museum paris',
+    },
     slide2: {
       heading: '1911년 8월 21일',
+      photoQuery: 'louvre museum interior gallery empty',
       lines: [
         '루브르 박물관 직원 빈센초 페루자.',
         '이탈리아 출신 유리 장인.',
@@ -245,6 +281,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '빈 벽을 보러 온 사람들',
+      photoQuery: 'empty picture frame wall museum',
       lines: [
         '페루자는 2년간 자기 아파트',
         '트렁크 속에 모나리자를 숨겼다.',
@@ -258,10 +295,14 @@ const TOPICS = [
     },
   },
   {
-    id: 9, themeLabel: '미술사 미스터리', accent: '#922B21', photoId: 60,
-    slide1: { title: '5억 달러의\n미술품이\n아직도\n사라진 채' },
+    id: 9, themeLabel: '미술사 미스터리', accent: '#922B21',
+    slide1: {
+      title: '5억 달러의\n미술품이\n아직도\n사라진 채',
+      photoQuery: 'dark museum gallery mysterious painting',
+    },
     slide2: {
       heading: '1990년 3월 18일, 보스턴',
+      photoQuery: 'boston museum night police lights',
       lines: [
         '새벽 1시 24분.',
         '경찰 복장의 남자 2명이',
@@ -275,6 +316,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '35년째 빈 액자',
+      photoQuery: 'empty ornate picture frame gold',
       lines: [
         '렘브란트 3점, 베르메르 1점,',
         '드가 5점, 마네 1점 등 총 13점.',
@@ -288,10 +330,14 @@ const TOPICS = [
     },
   },
   {
-    id: 10, themeLabel: '미술사 미스터리', accent: '#0E6655', photoId: 65,
-    slide1: { title: '"인상주의"\n라는 이름은\n조롱이었다' },
+    id: 10, themeLabel: '미술사 미스터리', accent: '#0E6655',
+    slide1: {
+      title: '"인상주의"\n라는 이름은\n조롱이었다',
+      photoQuery: 'impressionist painting garden flowers monet',
+    },
     slide2: {
       heading: '살롱에서 거부당한 화가들',
+      photoQuery: 'paris 19th century vintage painting salon',
       lines: [
         '1874년, 파리.',
         '모네, 르누아르, 드가, 피사로 등',
@@ -305,6 +351,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '조롱에서 혁명으로',
+      photoQuery: 'sunrise over water reflection golden light',
       lines: [
         '비평가 루이 르루아가',
         "모네의 '인상, 해돋이'를 보고 말했다.",
@@ -318,10 +365,14 @@ const TOPICS = [
     },
   },
   {
-    id: 11, themeLabel: '화가 이야기', accent: '#7D6608', photoId: 83,
-    slide1: { title: '고흐,\n생전에\n팔린 그림은\n단 1점' },
+    id: 11, themeLabel: '화가 이야기', accent: '#7D6608',
+    slide1: {
+      title: '고흐,\n생전에\n팔린 그림은\n단 1점',
+      photoQuery: 'sunflower field golden yellow van gogh',
+    },
     slide2: {
       heading: '900점의 그림, 1점의 판매',
+      photoQuery: 'starry night sky stars painting blue',
       lines: [
         '빈센트 반 고흐(1853–1890)',
         '10년 동안 약 900점의 그림을 그렸다.',
@@ -335,6 +386,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '사후의 역설',
+      photoQuery: 'wheat field golden hour countryside',
       lines: [
         '37세에 세상을 떠난 고흐.',
         '',
@@ -349,10 +401,14 @@ const TOPICS = [
     },
   },
   {
-    id: 12, themeLabel: '화가 이야기', accent: '#2C3E50', photoId: 119,
-    slide1: { title: '다빈치 vs\n미켈란젤로:\n세기의\n라이벌' },
+    id: 12, themeLabel: '화가 이야기', accent: '#2C3E50',
+    slide1: {
+      title: '다빈치 vs\n미켈란젤로:\n세기의\n라이벌',
+      photoQuery: 'florence cathedral dome renaissance italy',
+    },
     slide2: {
       heading: '1504년 피렌체의 대결',
+      photoQuery: 'palazzo vecchio florence interior fresco',
       lines: [
         '피렌체 시청사(베키오 궁전)',
         '양쪽 벽화를 동시에 의뢰받았다.',
@@ -366,6 +422,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '미완의 걸작들',
+      photoQuery: 'sistine chapel michelangelo ceiling',
       lines: [
         '다빈치는 실험적 기법이 실패해 중단.',
         '미켈란젤로는 교황의 부름으로 로마로 떠났다.',
@@ -379,10 +436,14 @@ const TOPICS = [
     },
   },
   {
-    id: 13, themeLabel: '화가 이야기', accent: '#C0392B', photoId: 142,
-    slide1: { title: '프리다 칼로:\n고통이\n만든 예술' },
+    id: 13, themeLabel: '화가 이야기', accent: '#C0392B',
+    slide1: {
+      title: '프리다 칼로:\n고통이\n만든 예술',
+      photoQuery: 'frida kahlo mexican colorful flowers',
+    },
     slide2: {
       heading: '18세, 교통사고',
+      photoQuery: 'hospital bed recovery pain dark',
       lines: [
         '1925년, 멕시코시티.',
         '버스가 전차와 충돌했다.',
@@ -396,6 +457,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '"나는 나 자신을 그린다"',
+      photoQuery: 'self portrait mirror artist studio painting',
       lines: [
         '평생 30번 이상의 수술.',
         '침대에 거울을 달고 자화상을 그렸다.',
@@ -409,10 +471,14 @@ const TOPICS = [
     },
   },
   {
-    id: 14, themeLabel: '화가 이야기', accent: '#E74C3C', photoId: 164,
-    slide1: { title: "뭉크 '절규'\n속 하늘의\n비밀" },
+    id: 14, themeLabel: '화가 이야기', accent: '#E74C3C',
+    slide1: {
+      title: "뭉크 '절규'\n속 하늘의\n비밀",
+      photoQuery: 'dramatic red sunset sky fire clouds',
+    },
     slide2: {
       heading: '1883년 화산 폭발',
+      photoQuery: 'volcano eruption lava fire night',
       lines: [
         '인도네시아 크라카타우 화산 대폭발.',
         'TNT 200메가톤 — 히로시마 원폭의 1만 배.',
@@ -426,6 +492,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '뭉크가 본 하늘',
+      photoQuery: 'blood red sunset over fjord norway',
       lines: [
         '노르웨이 오슬로, 에케베르그 언덕.',
         '',
@@ -439,10 +506,14 @@ const TOPICS = [
     },
   },
   {
-    id: 15, themeLabel: '디지털 vs 필름', accent: '#1C2833', photoId: 250,
-    slide1: { title: '필름은 화학,\n디지털은\n전기' },
+    id: 15, themeLabel: '디지털 vs 필름', accent: '#1C2833',
+    slide1: {
+      title: '필름은 화학,\n디지털은\n전기',
+      photoQuery: 'vintage film camera analog photography',
+    },
     slide2: {
       heading: '완전히 다른 기록 방식',
+      photoQuery: 'film negative strip darkroom light',
       lines: [
         '필름 — 빛이 은염(할로겐화은) 입자에',
         '화학 반응을 일으켜 상을 기록.',
@@ -456,6 +527,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '그레인 vs 노이즈',
+      photoQuery: 'film grain texture vintage photo',
       lines: [
         '필름의 그레인(grain):',
         '은 입자 크기의 자연스러운 불규칙성.',
@@ -470,10 +542,14 @@ const TOPICS = [
     },
   },
   {
-    id: 16, themeLabel: '디지털 vs 필름', accent: '#7D3C98', photoId: 256,
-    slide1: { title: 'MZ세대가\n필름을\n다시 찾는 이유' },
+    id: 16, themeLabel: '디지털 vs 필름', accent: '#7D3C98',
+    slide1: {
+      title: 'MZ세대가\n필름을\n다시 찾는 이유',
+      photoQuery: 'young person disposable film camera retro',
+    },
     slide2: {
       heading: '숫자로 보는 필름 부활',
+      photoQuery: 'film rolls 35mm colorful kodak fuji',
       lines: [
         '한국후지필름 일회용 카메라',
         '판매량 전년 대비 200% 증가.',
@@ -487,6 +563,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '"있는 그대로"의 가치',
+      photoQuery: 'film photography nostalgic candid moment',
       lines: [
         '스마트폰의 AI 보정에 피로감.',
         '지나치게 선명하고 완벽한 이미지.',
@@ -500,10 +577,14 @@ const TOPICS = [
     },
   },
   {
-    id: 17, themeLabel: '사진 예술', accent: '#2C3E50', photoId: 274,
-    slide1: { title: '흑백사진이\n더 감성적인\n이유' },
+    id: 17, themeLabel: '사진 예술', accent: '#2C3E50',
+    slide1: {
+      title: '흑백사진이\n더 감성적인\n이유',
+      photoQuery: 'black and white portrait dramatic light',
+    },
     slide2: {
       heading: '색을 빼면 감정이 들어온다',
+      photoQuery: 'black white shadows contrast architecture',
       lines: [
         '색을 제거하면',
         '빛과 그림자, 형태에 집중하게 된다.',
@@ -517,6 +598,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '흑백으로 시대를 기록한 거장들',
+      photoQuery: 'vintage black white street photography',
       lines: [
         '앙리 카르티에 브레송 —',
         '"결정적 순간"을 포착한 사진의 시인.',
@@ -530,10 +612,14 @@ const TOPICS = [
     },
   },
   {
-    id: 18, themeLabel: '사진 예술', accent: '#4A235A', photoId: 287,
-    slide1: { title: '세계에서\n가장 비싼\n사진 작품' },
+    id: 18, themeLabel: '사진 예술', accent: '#4A235A',
+    slide1: {
+      title: '세계에서\n가장 비싼\n사진 작품',
+      photoQuery: 'luxury art auction gallery expensive',
+    },
     slide2: {
       heading: 'TOP 3 사진 경매가',
+      photoQuery: 'photography exhibition gallery white wall',
       lines: [
         '1위. 만 레이',
         "'Le Violon d'Ingres' — 1,240만 달러(2022)",
@@ -547,6 +633,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '사진도 회화와 같은 예술',
+      photoQuery: 'camera lens artistic creative photography',
       lines: [
         '1세기 반 전, 사진이 처음 등장했을 때',
         '화가들은 "기계의 복제"라며 반발했다.',
@@ -560,10 +647,14 @@ const TOPICS = [
     },
   },
   {
-    id: 19, themeLabel: '작품이 주는 효과', accent: '#7D3C98', photoId: 306,
-    slide1: { title: '미술치료:\n우울 점수\n55→12' },
+    id: 19, themeLabel: '작품이 주는 효과', accent: '#7D3C98',
+    slide1: {
+      title: '미술치료:\n우울 점수\n55→12',
+      photoQuery: 'art therapy painting watercolor healing',
+    },
     slide2: {
       heading: '임상 연구 결과',
+      photoQuery: 'watercolor brush painting gentle colors',
       lines: [
         '설암 수술 경험 성인 여성 대상 연구.',
         '',
@@ -577,6 +668,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '그리는 행위 자체가 치유',
+      photoQuery: 'hands painting colors creative expression',
       lines: [
         '미술치료의 핵심은',
         '작품의 완성도가 아니다.',
@@ -591,10 +683,14 @@ const TOPICS = [
     },
   },
   {
-    id: 20, themeLabel: '작품이 주는 효과', accent: '#1A5276', photoId: 316,
-    slide1: { title: '병원에\n그림을 걸면\n생기는 일' },
+    id: 20, themeLabel: '작품이 주는 효과', accent: '#1A5276',
+    slide1: {
+      title: '병원에\n그림을 걸면\n생기는 일',
+      photoQuery: 'hospital corridor calm light artwork',
+    },
     slide2: {
       heading: '의료 환경과 예술',
+      photoQuery: 'medical hospital interior modern bright',
       lines: [
         '건보 일산병원 —',
         '36점의 미술작품을 복도와 병실에 전시.',
@@ -608,6 +704,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '코크란 연합의 결론',
+      photoQuery: 'peaceful healing nature light serene',
       lines: [
         '국제 의료 연구 기관 코크란 연합.',
         '',
@@ -621,10 +718,14 @@ const TOPICS = [
     },
   },
   {
-    id: 21, themeLabel: '작품이 주는 효과', accent: '#145A32', photoId: 326,
-    slide1: { title: '사무실 그림이\n창의력을\n높인다' },
+    id: 21, themeLabel: '작품이 주는 효과', accent: '#145A32',
+    slide1: {
+      title: '사무실 그림이\n창의력을\n높인다',
+      photoQuery: 'modern creative office plants artwork',
+    },
     slide2: {
       heading: '엑서터 대학의 실험',
+      photoQuery: 'office workspace desk plants productive',
       lines: [
         '영국 엑서터 대학교(2010) 연구.',
         '',
@@ -638,6 +739,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '예술이 회복시키는 것',
+      photoQuery: 'art on wall creative space inspiration',
       lines: [
         '화면만 보는 디지털 피로 시대.',
         '',
@@ -651,10 +753,14 @@ const TOPICS = [
     },
   },
   {
-    id: 22, themeLabel: '현대미술 이슈', accent: '#7D6608', photoId: 338,
-    slide1: { title: '2025 경매\nTOP 3\n전부 클림트' },
+    id: 22, themeLabel: '현대미술 이슈', accent: '#7D6608',
+    slide1: {
+      title: '2025 경매\nTOP 3\n전부 클림트',
+      photoQuery: 'gold leaf texture luxury klimt art',
+    },
     slide2: {
       heading: '구스타프 클림트의 해',
+      photoQuery: 'art auction hammer gavel bidding',
       lines: [
         '1위. "엘리자베스 레더러의 초상"',
         '2억 3,630만 달러 (약 3,250억 원)',
@@ -668,6 +774,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '왜 지금 클림트인가',
+      photoQuery: 'ornate gold frame museum painting',
       lines: [
         '세 작품 모두 같은 컬렉션에서 나왔다.',
         '나치에 약탈당했다 반환된 작품들.',
@@ -681,10 +788,14 @@ const TOPICS = [
     },
   },
   {
-    id: 23, themeLabel: '현대미술 이슈', accent: '#1C2833', photoId: 350,
-    slide1: { title: 'AI가\n그린 그림,\n예술일까?' },
+    id: 23, themeLabel: '현대미술 이슈', accent: '#1C2833',
+    slide1: {
+      title: 'AI가\n그린 그림,\n예술일까?',
+      photoQuery: 'artificial intelligence digital art robot',
+    },
     slide2: {
       heading: '2022년, 논쟁의 시작',
+      photoQuery: 'digital art creation computer screen',
       lines: [
         'AI 이미지 생성 도구 Midjourney로 만든',
         '"Théâtre D\'Opéra Spatial"이',
@@ -697,6 +808,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '도구냐, 창작자냐',
+      photoQuery: 'human hand vs robot hand technology',
       lines: [
         '화가들의 반발 → 저작권 소송 연쇄 발생.',
         '',
@@ -711,10 +823,14 @@ const TOPICS = [
     },
   },
   {
-    id: 24, themeLabel: '현대미술 이슈', accent: '#4A235A', photoId: 370,
-    slide1: { title: '현대미술이\n어려운\n진짜 이유' },
+    id: 24, themeLabel: '현대미술 이슈', accent: '#4A235A',
+    slide1: {
+      title: '현대미술이\n어려운\n진짜 이유',
+      photoQuery: 'modern art gallery abstract sculpture',
+    },
     slide2: {
       heading: '기준이 바뀌었다',
+      photoQuery: 'marcel duchamp fountain urinal art',
       lines: [
         '19세기까지 미술의 기준:',
         '"얼마나 잘 그렸는가."',
@@ -729,6 +845,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '정답이 아니라 질문을 감상하는 것',
+      photoQuery: 'contemporary art installation space',
       lines: [
         '현대미술은 "아름다움"을',
         '보여주지 않을 수도 있다.',
@@ -743,10 +860,14 @@ const TOPICS = [
     },
   },
   {
-    id: 25, themeLabel: '미술품 있는 집', accent: '#7D6608', photoId: 399,
-    slide1: { title: '그림 한 점이\n거실을\n바꾼다' },
+    id: 25, themeLabel: '미술품 있는 집', accent: '#7D6608',
+    slide1: {
+      title: '그림 한 점이\n거실을\n바꾼다',
+      photoQuery: 'living room art painting wall interior',
+    },
     slide2: {
       heading: '가장 쉬운 인테리어 변화',
+      photoQuery: 'hanging picture frame on wall home',
       lines: [
         '가구를 바꾸면 시간과 비용이 크다.',
         '벽지를 바꾸면 공사가 필요하다.',
@@ -760,6 +881,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '걸기만 해도 갤러리',
+      photoQuery: 'gallery wall home decor frames arrangement',
       lines: [
         '눈높이(바닥에서 145~155cm)에 맞춰 걸면',
         '자연스러운 시선 유도.',
@@ -774,10 +896,14 @@ const TOPICS = [
     },
   },
   {
-    id: 26, themeLabel: '미술품 있는 집', accent: '#2C3E50', photoId: 403,
-    slide1: { title: '미니멀리즘\n인테리어의\n함정' },
+    id: 26, themeLabel: '미술품 있는 집', accent: '#2C3E50',
+    slide1: {
+      title: '미니멀리즘\n인테리어의\n함정',
+      photoQuery: 'minimalist white room interior clean',
+    },
     slide2: {
       heading: '비우기만 하면 미니멀?',
+      photoQuery: 'empty white wall bare room simple',
       lines: [
         '미니멀리즘의 오해:',
         '"아무것도 없는 것"이 미니멀.',
@@ -791,6 +917,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '텅 빈 벽 vs 작품 있는 벽',
+      photoQuery: 'japanese tokonoma minimal art alcove',
       lines: [
         '미니멀한 공간에 작품 한 점을 걸면',
         '그 작품이 공간 전체를 정의한다.',
@@ -804,10 +931,14 @@ const TOPICS = [
     },
   },
   {
-    id: 27, themeLabel: '미술품 있는 집', accent: '#1A5276', photoId: 416,
-    slide1: { title: '북유럽에\n그림이\n필수인 이유' },
+    id: 27, themeLabel: '미술품 있는 집', accent: '#1A5276',
+    slide1: {
+      title: '북유럽에\n그림이\n필수인 이유',
+      photoQuery: 'scandinavian interior cozy warm hygge',
+    },
     slide2: {
       heading: '긴 겨울, 짧은 낮',
+      photoQuery: 'nordic winter dark house warm light',
       lines: [
         '스칸디나비아의 겨울은 길다.',
         '스웨덴 북부 — 하루 해가 3시간.',
@@ -821,6 +952,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '히게(Hygge)와 벽의 작품',
+      photoQuery: 'candles warm blanket cozy home decor',
       lines: [
         '덴마크의 "히게" 문화 —',
         '아늑하고 따뜻한 분위기를 만드는 생활 철학.',
@@ -835,10 +967,14 @@ const TOPICS = [
     },
   },
   {
-    id: 28, themeLabel: '아트 라이프 팁', accent: '#6C3483', photoId: 429,
-    slide1: { title: '나만의\n갤러리 월\n만들기' },
+    id: 28, themeLabel: '아트 라이프 팁', accent: '#6C3483',
+    slide1: {
+      title: '나만의\n갤러리 월\n만들기',
+      photoQuery: 'gallery wall frames pictures home',
+    },
     slide2: {
       heading: '5단계 가이드',
+      photoQuery: 'measuring wall tape frames planning',
       lines: [
         '1단계: 벽 면적 측정',
         '→ 프레임 배치 레이아웃 결정',
@@ -852,6 +988,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '완성의 디테일',
+      photoQuery: 'picture light spotlight art wall lamp',
       lines: [
         '4단계: 중심 작품부터 걸기',
         '→ 가장 큰 작품을 중앙에 먼저 배치',
@@ -866,10 +1003,14 @@ const TOPICS = [
     },
   },
   {
-    id: 29, themeLabel: '아트 라이프 팁', accent: '#0E6655', photoId: 433,
-    slide1: { title: '그림으로\n계절을\n바꾸는 법' },
+    id: 29, themeLabel: '아트 라이프 팁', accent: '#0E6655',
+    slide1: {
+      title: '그림으로\n계절을\n바꾸는 법',
+      photoQuery: 'four seasons nature spring summer autumn',
+    },
     slide2: {
       heading: '같은 벽, 다른 그림',
+      photoQuery: 'pastel spring flowers painting cherry blossom',
       lines: [
         '봄 — 파스텔 톤의 꽃 · 자연 작품',
         '→ 벚꽃, 연두, 라벤더',
@@ -883,6 +1024,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '4계절 인테리어 비법',
+      photoQuery: 'winter minimalist monochrome snow landscape',
       lines: [
         '겨울 — 모노톤 · 미니멀 작품',
         '→ 눈, 은색, 고요한 풍경',
@@ -896,10 +1038,14 @@ const TOPICS = [
     },
   },
   {
-    id: 30, themeLabel: '아트 라이프 팁', accent: '#922B21', photoId: 437,
-    slide1: { title: '카페에\n그림 한 점이면\n분위기가\n달라진다' },
+    id: 30, themeLabel: '아트 라이프 팁', accent: '#922B21',
+    slide1: {
+      title: '카페에\n그림 한 점이면\n분위기가\n달라진다',
+      photoQuery: 'cafe interior artwork cozy design',
+    },
     slide2: {
       heading: '공간 브랜딩의 가장 쉬운 방법',
+      photoQuery: 'coffee shop wall art painting decor',
       lines: [
         '작품이 있는 카페 vs 없는 카페.',
         '',
@@ -912,6 +1058,7 @@ const TOPICS = [
     },
     slide3: {
       heading: '최고의 ROI 인테리어',
+      photoQuery: 'restaurant interior design stylish modern',
       lines: [
         '인테리어 공사 — 수백만 원.',
         '가구 교체 — 수십~수백만 원.',
@@ -926,14 +1073,29 @@ const TOPICS = [
   },
 ];
 
-/** 이미지 사전 다운로드 → base64 (최대 3회 재시도) */
+/** Unsplash napi로 검색 → 첫 번째 결과의 raw URL 반환 */
+async function searchUnsplashUrl(query, idx = 0) {
+  try {
+    const url = `https://unsplash.com/napi/search/photos?query=${encodeURIComponent(query)}&per_page=5&page=1`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const photo = data.results?.[idx % (data.results?.length || 1)];
+    if (!photo?.urls?.raw) return null;
+    return `${photo.urls.raw}&w=${WIDTH}&h=${HEIGHT}&fit=crop&q=80`;
+  } catch {
+    return null;
+  }
+}
+
+/** 이미지 URL → base64 (최대 3회 재시도) */
 async function downloadAsBase64(url, retries = 3) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const res = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(25000) });
-      if (!res.ok) { continue; }
+      if (!res.ok) continue;
       const buf = await res.arrayBuffer();
-      if (buf.byteLength < 10000) { continue; }
+      if (buf.byteLength < 10000) continue;
       const base64 = Buffer.from(buf).toString('base64');
       const ct = res.headers.get('content-type') || 'image/jpeg';
       return `data:${ct};base64,${base64}`;
@@ -953,60 +1115,7 @@ function darken(hex, amount) {
   return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
 }
 
-/** 슬라이드 1: 표지 */
-function slide1Html(topic, imageDataUri) {
-  const bg = imageDataUri
-    ? `url('${imageDataUri}')`
-    : `linear-gradient(160deg, ${topic.accent} 0%, ${darken(topic.accent, 0.5)} 100%)`;
-  const titleHtml = topic.slide1.title.replace(/\n/g, '<br>');
-  return baseHtml(topic, bg, `
-    <span class="theme">${topic.themeLabel}</span>
-    <div class="theme-line"></div>
-    <h1 class="cover-title">${titleHtml}</h1>
-    <div class="footer">
-      <span class="brand">Silvertape</span>
-      <span class="number">${topic.id} / 30</span>
-    </div>
-  `);
-}
-
-/** 슬라이드 2: 본문 전반 */
-function slide2Html(topic, imageDataUri) {
-  const bg = imageDataUri
-    ? `url('${imageDataUri}')`
-    : `linear-gradient(160deg, ${topic.accent} 0%, ${darken(topic.accent, 0.5)} 100%)`;
-  const linesHtml = topic.slide2.lines.map(l => l === '' ? '<div class="spacer"></div>' : `<p>${l}</p>`).join('\n');
-  return baseHtml(topic, bg, `
-    <span class="theme">${topic.themeLabel}</span>
-    <div class="theme-line"></div>
-    <h2 class="sub-heading">${topic.slide2.heading}</h2>
-    <div class="body-lines">${linesHtml}</div>
-    <div class="footer">
-      <span class="brand">Silvertape</span>
-      <span class="number">${topic.id}-2 / 30</span>
-    </div>
-  `);
-}
-
-/** 슬라이드 3: 본문 후반 */
-function slide3Html(topic, imageDataUri) {
-  const bg = imageDataUri
-    ? `url('${imageDataUri}')`
-    : `linear-gradient(160deg, ${topic.accent} 0%, ${darken(topic.accent, 0.5)} 100%)`;
-  const linesHtml = topic.slide3.lines.map(l => l === '' ? '<div class="spacer"></div>' : `<p>${l}</p>`).join('\n');
-  return baseHtml(topic, bg, `
-    <span class="theme">${topic.themeLabel}</span>
-    <div class="theme-line"></div>
-    <h2 class="sub-heading">${topic.slide3.heading.replace(/\n/g, '<br>')}</h2>
-    <div class="body-lines">${linesHtml}</div>
-    <div class="footer">
-      <span class="brand">Silvertape</span>
-      <span class="number">${topic.id}-3 / 30</span>
-    </div>
-  `);
-}
-
-/** 공통 HTML 래퍼 */
+/** 공통 HTML — 더 큰 글씨, 더 굵은 텍스트 */
 function baseHtml(topic, bgImage, content) {
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -1047,9 +1156,9 @@ function baseHtml(topic, bgImage, content) {
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(0,0,0,0.45) 0%,
-      rgba(0,0,0,0.50) 30%,
-      rgba(0,0,0,0.70) 100%
+      rgba(0,0,0,0.42) 0%,
+      rgba(0,0,0,0.48) 30%,
+      rgba(0,0,0,0.68) 100%
     );
   }
 
@@ -1064,82 +1173,82 @@ function baseHtml(topic, bgImage, content) {
 
   .theme {
     font-family: 'Outfit', 'Noto Sans KR', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #fff;
-    opacity: 0.9;
+    opacity: 0.92;
     margin-bottom: 14px;
   }
 
   .theme-line {
-    width: 48px;
-    height: 4px;
-    background: rgba(255,255,255,0.7);
-    margin-bottom: 48px;
+    width: 52px;
+    height: 5px;
+    background: rgba(255,255,255,0.75);
+    margin-bottom: 44px;
     border-radius: 2px;
   }
 
-  /* 표지 큰 제목 */
+  /* 표지 큰 제목 — 더 크게 */
   .cover-title {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 72px;
+    font-size: 82px;
     font-weight: 900;
-    line-height: 1.22;
+    line-height: 1.18;
     color: #fff;
     text-shadow:
-      0 3px 6px rgba(0,0,0,0.7),
-      0 6px 24px rgba(0,0,0,0.4);
+      0 3px 8px rgba(0,0,0,0.8),
+      0 8px 32px rgba(0,0,0,0.4);
     letter-spacing: -0.02em;
     flex: 1;
     display: flex;
     align-items: center;
   }
 
-  /* 본문 소제목 */
+  /* 본문 소제목 — 더 크게 */
   .sub-heading {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 46px;
+    font-size: 52px;
     font-weight: 900;
-    line-height: 1.28;
-    margin-bottom: 44px;
+    line-height: 1.24;
+    margin-bottom: 40px;
     color: #fff;
     text-shadow:
-      0 2px 5px rgba(0,0,0,0.7),
-      0 4px 16px rgba(0,0,0,0.4);
+      0 3px 6px rgba(0,0,0,0.8),
+      0 6px 20px rgba(0,0,0,0.4);
     letter-spacing: -0.01em;
   }
 
-  /* 본문 텍스트 */
+  /* 본문 텍스트 — 더 크게 */
   .body-lines {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 30px;
-    line-height: 1.65;
+    gap: 6px;
+    font-size: 34px;
+    line-height: 1.6;
     font-weight: 700;
     color: #fff;
     text-shadow:
-      0 1px 3px rgba(0,0,0,0.8),
-      0 2px 12px rgba(0,0,0,0.3);
+      0 2px 4px rgba(0,0,0,0.8),
+      0 4px 16px rgba(0,0,0,0.3);
   }
   .body-lines p { margin: 0; }
-  .body-lines .spacer { height: 16px; }
+  .body-lines .spacer { height: 14px; }
 
   .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.18);
   }
 
   .brand {
     font-family: 'Outfit', sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
     letter-spacing: 0.35em;
     text-transform: uppercase;
@@ -1149,7 +1258,7 @@ function baseHtml(topic, bgImage, content) {
 
   .number {
     font-family: 'Outfit', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: #fff;
     opacity: 0.5;
@@ -1168,6 +1277,56 @@ function baseHtml(topic, bgImage, content) {
 </html>`;
 }
 
+function makeBgCss(dataUri, topic) {
+  return dataUri
+    ? `url('${dataUri}')`
+    : `linear-gradient(160deg, ${topic.accent} 0%, ${darken(topic.accent, 0.5)} 100%)`;
+}
+
+function slide1Html(topic, img) {
+  const bg = makeBgCss(img, topic);
+  const titleHtml = topic.slide1.title.replace(/\n/g, '<br>');
+  return baseHtml(topic, bg, `
+    <span class="theme">${topic.themeLabel}</span>
+    <div class="theme-line"></div>
+    <h1 class="cover-title">${titleHtml}</h1>
+    <div class="footer">
+      <span class="brand">Silvertape</span>
+      <span class="number">${topic.id} / 30</span>
+    </div>
+  `);
+}
+
+function slide2Html(topic, img) {
+  const bg = makeBgCss(img, topic);
+  const linesHtml = topic.slide2.lines.map(l => l === '' ? '<div class="spacer"></div>' : `<p>${l}</p>`).join('\n');
+  return baseHtml(topic, bg, `
+    <span class="theme">${topic.themeLabel}</span>
+    <div class="theme-line"></div>
+    <h2 class="sub-heading">${topic.slide2.heading}</h2>
+    <div class="body-lines">${linesHtml}</div>
+    <div class="footer">
+      <span class="brand">Silvertape</span>
+      <span class="number">${topic.id}-2 / 30</span>
+    </div>
+  `);
+}
+
+function slide3Html(topic, img) {
+  const bg = makeBgCss(img, topic);
+  const linesHtml = topic.slide3.lines.map(l => l === '' ? '<div class="spacer"></div>' : `<p>${l}</p>`).join('\n');
+  return baseHtml(topic, bg, `
+    <span class="theme">${topic.themeLabel}</span>
+    <div class="theme-line"></div>
+    <h2 class="sub-heading">${topic.slide3.heading.replace(/\n/g, '<br>')}</h2>
+    <div class="body-lines">${linesHtml}</div>
+    <div class="footer">
+      <span class="brand">Silvertape</span>
+      <span class="number">${topic.id}-3 / 30</span>
+    </div>
+  `);
+}
+
 async function main() {
   let puppeteer;
   try {
@@ -1179,24 +1338,51 @@ async function main() {
 
   await mkdir(OUT_DIR, { recursive: true });
 
-  console.log(`\n카드뉴스 ${TOPICS.length}토픽 × 3장 = ${TOPICS.length * 3}장 생성 시작...`);
+  const totalImages = TOPICS.length * 3;
+  console.log(`\n카드뉴스 ${TOPICS.length}토픽 × 3장 = ${totalImages}장 생성 시작...`);
   console.log(`출력: ${OUT_DIR}\n`);
 
-  // 1단계: 사진 사전 다운로드 (하나씩 순차)
-  console.log('사진 다운로드 중 (30장)...');
-  const imageMap = new Map();
+  // 1단계: Unsplash에서 주제별 사진 URL 검색 (90개)
+  console.log('Unsplash에서 주제별 사진 검색 중...');
+  /** Map<string, string> — key: "topicId-slideNum", value: image URL */
+  const photoUrls = new Map();
   for (const topic of TOPICS) {
-    const url = `https://picsum.photos/id/${topic.photoId}/${WIDTH}/${HEIGHT}`;
-    const dataUri = await downloadAsBase64(url);
-    if (dataUri) {
-      imageMap.set(topic.id, dataUri);
-      process.stdout.write(`✓`);
-    } else {
-      process.stdout.write(`✗`);
+    const queries = [
+      { key: `${topic.id}-1`, q: topic.slide1.photoQuery },
+      { key: `${topic.id}-2`, q: topic.slide2.photoQuery },
+      { key: `${topic.id}-3`, q: topic.slide3.photoQuery },
+    ];
+    for (const { key, q } of queries) {
+      const url = await searchUnsplashUrl(q, topic.id % 5);
+      if (url) {
+        photoUrls.set(key, url);
+        process.stdout.write('.');
+      } else {
+        process.stdout.write('x');
+      }
+      // Rate limit: 100ms between searches
+      await new Promise(r => setTimeout(r, 100));
     }
   }
-  console.log(`\n사진 ${imageMap.size}/${TOPICS.length}장 다운로드 완료\n`);
+  console.log(`\nURL ${photoUrls.size}/${totalImages}개 확보\n`);
 
+  // 2단계: 사진 다운로드 (순차, base64)
+  console.log('사진 다운로드 중...');
+  const imageMap = new Map();
+  let dlCount = 0;
+  for (const [key, url] of photoUrls) {
+    const dataUri = await downloadAsBase64(url);
+    if (dataUri) {
+      imageMap.set(key, dataUri);
+      dlCount++;
+      process.stdout.write('✓');
+    } else {
+      process.stdout.write('✗');
+    }
+  }
+  console.log(`\n사진 ${dlCount}/${photoUrls.size}장 다운로드 완료\n`);
+
+  // 3단계: Puppeteer로 PNG 생성
   const browser = await puppeteer.default.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -1206,21 +1392,16 @@ async function main() {
   await page.setViewport({ width: WIDTH, height: HEIGHT, deviceScaleFactor: 1 });
 
   let success = 0;
-  const total = TOPICS.length * 3;
-
   for (const topic of TOPICS) {
-    const img = imageMap.get(topic.id) || null;
     const slides = [
-      { html: slide1Html(topic, img), suffix: '1' },
-      { html: slide2Html(topic, img), suffix: '2' },
-      { html: slide3Html(topic, img), suffix: '3' },
+      { html: slide1Html(topic, imageMap.get(`${topic.id}-1`)), suffix: '1' },
+      { html: slide2Html(topic, imageMap.get(`${topic.id}-2`)), suffix: '2' },
+      { html: slide3Html(topic, imageMap.get(`${topic.id}-3`)), suffix: '3' },
     ];
 
     for (const slide of slides) {
       try {
         await page.setContent(slide.html, { waitUntil: 'domcontentloaded', timeout: 15000 });
-
-        // 폰트 로딩 대기 (최대 5초)
         await Promise.race([
           page.evaluate(() => document.fonts.ready),
           new Promise(r => setTimeout(r, 5000)),
@@ -1248,7 +1429,7 @@ async function main() {
   }
 
   await browser.close();
-  console.log(`\n완료! ${success}/${total}장 생성됨 → ${OUT_DIR}\n`);
+  console.log(`\n완료! ${success}/${totalImages}장 생성됨 → ${OUT_DIR}\n`);
 }
 
 main().catch((e) => {

@@ -6,6 +6,7 @@ import ProductShowcase from '@/components/home/ProductShowcase';
 import GalleryStrip from '@/components/home/GalleryStrip';
 import BrandManifesto from '@/components/home/BrandManifesto';
 import ProductCard from '@/components/product/ProductCard';
+import CardNewsSection from '@/components/home/CardNewsSection';
 import Newsletter from '@/components/home/Newsletter';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import styles from './platform.module.css';
@@ -66,6 +67,11 @@ export default function PlatformHome() {
       {/* Bestseller Strip */}
       <ScrollReveal>
         <GalleryStrip />
+      </ScrollReveal>
+
+      {/* Art Insight — Card News */}
+      <ScrollReveal>
+        <CardNewsSection />
       </ScrollReveal>
 
       {/* Studios */}

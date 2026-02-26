@@ -1,0 +1,213 @@
+/* ─── Card News Section ─── */
+.section {
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  padding: var(--ho-space-2xl) var(--ho-space-xl);
+}
+
+.header {
+  margin-bottom: var(--ho-space-lg);
+}
+
+.tag {
+  font-family: var(--ho-font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ho-text-muted);
+  margin-bottom: 6px;
+}
+
+.title {
+  font-family: var(--ho-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ho-text);
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--ho-text-muted);
+}
+
+/* ─── Topic Pills ─── */
+.pillScroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: var(--ho-space-lg);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pillScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.pill {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--ho-radius-full);
+  background: var(--ho-bg-card);
+  font-family: var(--ho-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ho-text-secondary);
+  cursor: pointer;
+  transition: var(--ho-transition-fast);
+  white-space: nowrap;
+}
+
+.pill:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.pillActive {
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ─── Viewer ─── */
+.viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--ho-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--ho-shadow-lg);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Arrows ─── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  color: #222;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--ho-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.arrow:hover {
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrowLeft {
+  left: 12px;
+}
+
+.arrowRight {
+  right: 12px;
+}
+
+/* ─── Dots ─── */
+.dots {
+  display: flex;
+  gap: 8px;
+  margin-top: var(--ho-space-md);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: var(--ho-transition-fast);
+  padding: 0;
+}
+
+.dotActive {
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ─── Topic Info ─── */
+.topicInfo {
+  text-align: center;
+  margin-top: var(--ho-space-md);
+}
+
+.topicLabel {
+  font-family: var(--ho-font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.topicTitle {
+  font-family: var(--ho-font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ho-text);
+  margin-top: 4px;
+}
+
+.topicCount {
+  font-family: var(--ho-font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ho-text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 767px) {
+  .section {
+    padding: var(--ho-space-xl) var(--ho-space-md);
+  }
+
+  .imageWrapper {
+    max-width: 100%;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .arrowLeft {
+    left: 8px;
+  }
+
+  .arrowRight {
+    right: 8px;
+  }
+}
