@@ -4,7 +4,8 @@ const MESSAGES = [
   { text: '이상 무료배송', accent: '5만원', accentFirst: true },
   { text: '매주 금요일 신작 공개', accent: '// NEW DROPS', accentFirst: false },
   { text: '한정판은 한 번 품절되면', accent: '끝', accentFirst: false, suffix: '입니다' },
-  { text: 'HANGOVER 스튜디오', accent: 'NOW OPEN', accentFirst: false },
+  { text: 'VOID. 스튜디오', accent: 'NEW', accentFirst: false },
+  { text: 'Tape Art to Your Wall', accent: '//  SILVERTAPE', accentFirst: false },
 ];
 
 export default function AnnouncementBar() {

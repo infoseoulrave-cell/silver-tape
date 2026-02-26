@@ -27,9 +27,9 @@ export default function Header() {
           SILVER<span className={styles.logoAccent}>TAPE</span>
         </Link>
         <nav className={styles.nav}>
-          <Link href="/studio/hangover" className={styles.navLink}>Studios</Link>
-          <Link href="/studio/hangover" className={styles.navLink}>New Drops</Link>
-          <Link href="/about" className={styles.navLink}>About</Link>
+          <Link href="/#studios" className={styles.navLink}>Studios</Link>
+          <Link href="/studio/hangover" className={styles.navLink}>HANGOVER</Link>
+          <Link href="/studio/void" className={styles.navLink}>VOID.</Link>
         </nav>
         <button className={styles.cartBtn} onClick={toggleCart} aria-label="장바구니 열기">
           Cart

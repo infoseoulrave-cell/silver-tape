@@ -188,6 +188,67 @@
   gap: var(--ho-space-lg);
 }
 
+/* ─── Brand Story ─── */
+.story {
+  padding: var(--ho-space-3xl) var(--ho-space-xl);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.storyInner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.storyTag {
+  font-family: var(--ho-font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: var(--ho-space-md);
+}
+
+.storyTitle {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--ho-text);
+  line-height: 1.3;
+  margin-bottom: var(--ho-space-xl);
+}
+
+.storyBody {
+  font-size: 0.95rem;
+  color: var(--ho-text-secondary);
+  line-height: 2;
+}
+
+.storyBody p {
+  margin-bottom: var(--ho-space-md);
+}
+
+.storyBody em {
+  color: var(--ho-accent);
+  font-style: italic;
+  font-family: var(--ho-font-accent);
+}
+
+.storyBody strong {
+  color: var(--ho-text);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.storySignoff {
+  margin-top: var(--ho-space-xl);
+  padding-top: var(--ho-space-lg);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-family: var(--ho-font-accent);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ho-accent);
+}
+
 /* ─── About ─── */
 .about {
   padding: var(--ho-space-3xl) var(--ho-space-xl);

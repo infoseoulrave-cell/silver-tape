@@ -10,16 +10,14 @@ export default function Footer() {
             SILVER<span className={styles.brandAccent}>TAPE</span>
           </div>
           <p>
-            아트 스튜디오 중계 플랫폼.<br />
-            Curated Art. Every Wall.<br />
-            모든 벽에 예술을.
+            Tape Art to Your Wall.<br />
+            모든 벽에 센세이션을.
           </p>
         </div>
         <div className={styles.col}>
           <h4>스튜디오</h4>
           <Link href="/studio/hangover">HANGOVER</Link>
-          <Link href="/studio/hangover">신작</Link>
-          <Link href="/studio/hangover">베스트셀러</Link>
+          <Link href="/studio/void">VOID.</Link>
         </div>
         <div className={styles.col}>
           <h4>안내</h4>
