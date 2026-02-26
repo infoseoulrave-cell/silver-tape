@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CATEGORIES } from '@/data/categories';
-import { getProductsByCategory } from '@/data/products';
+import { getProductsByCategory, getProductsByStudioAndCategory } from '@/data/products';
+import type { Category } from '@/types/product';
 import styles from './CategoryMasonry.module.css';
 
 const GRID_CLASS_MAP: Record<string, string> = {
@@ -22,22 +23,36 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   witty: '두 번 생각하고, 한 번 미소 짓다',
 };
 
-export default function CategoryMasonry() {
+interface CategoryMasonryProps {
+  studioSlug?: string;
+  categories?: Category[];
+}
+
+export default function CategoryMasonry({ studioSlug, categories }: CategoryMasonryProps) {
+  const cats = categories ?? CATEGORIES;
+
   return (
     <section className={styles.section}>
-      <div className={styles.header}>
-        <div className={styles.tag}>The Menu</div>
-        <h2 className={styles.title}>The Menu</h2>
-        <p className={styles.sub}>취향대로 골라, 벽에 걸어.</p>
-      </div>
+      {!studioSlug && (
+        <div className={styles.header}>
+          <div className={styles.tag}>Collections</div>
+          <h2 className={styles.title}>Collections</h2>
+          <p className={styles.sub}>취향대로 골라, 벽에 걸어.</p>
+        </div>
+      )}
 
       <div className={styles.grid}>
-        {CATEGORIES.map(cat => {
-          const count = getProductsByCategory(cat.id).length;
+        {cats.map(cat => {
+          const count = studioSlug
+            ? getProductsByStudioAndCategory(studioSlug, cat.id).length
+            : getProductsByCategory(cat.id).length;
+          const href = studioSlug
+            ? `/studio/${studioSlug}/category/${cat.id}`
+            : `/category/${cat.id}`;
           return (
             <Link
               key={cat.id}
-              href={`/category/${cat.id}`}
+              href={href}
               className={`${styles.card} ${GRID_CLASS_MAP[cat.id] || ''}`}
             >
               <Image

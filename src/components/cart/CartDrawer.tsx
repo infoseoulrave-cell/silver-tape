@@ -81,6 +81,9 @@ export default function CartDrawer() {
                   />
                   <div className={styles.itemInfo}>
                     <div>
+                      {item.studioName && (
+                        <div className={styles.itemStudio}>{item.studioName}</div>
+                      )}
                       <div className={styles.itemName}>{item.productTitle}</div>
                       <div className={styles.itemMeta}>
                         {item.size} / {item.frame === 'none' ? '프린트' : item.frame} / {item.artworkBg}

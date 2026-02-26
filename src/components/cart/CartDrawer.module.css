@@ -99,6 +99,16 @@
   justify-content: space-between;
 }
 
+.itemStudio {
+  font-family: var(--ho-font-heading);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ho-accent);
+  margin-bottom: 2px;
+}
+
 .itemName {
   font-family: var(--ho-font-heading);
   font-size: 0.875rem;

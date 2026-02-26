@@ -24,12 +24,11 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          HANG<span className={styles.logoAccent}>O</span>VER
+          SILVER<span className={styles.logoAccent}>TAPE</span>
         </Link>
         <nav className={styles.nav}>
-          <Link href="/products" className={styles.navLink}>Fresh Pour</Link>
-          <Link href="/products" className={styles.navLink}>Collections</Link>
-          <Link href="/products" className={styles.navLink}>Most Wasted</Link>
+          <Link href="/studio/hangover" className={styles.navLink}>Studios</Link>
+          <Link href="/studio/hangover" className={styles.navLink}>New Drops</Link>
           <Link href="/about" className={styles.navLink}>About</Link>
         </nav>
         <button className={styles.cartBtn} onClick={toggleCart} aria-label="장바구니 열기">

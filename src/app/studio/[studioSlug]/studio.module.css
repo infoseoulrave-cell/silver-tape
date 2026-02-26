@@ -1,0 +1,96 @@
+.hero {
+  position: relative;
+  padding: var(--ho-space-3xl) var(--ho-space-xl) var(--ho-space-2xl);
+  text-align: center;
+  background: linear-gradient(180deg, var(--ho-bg-elevated) 0%, var(--ho-bg) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.heroContent {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.heroTag {
+  font-family: var(--ho-font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--studio-accent, var(--ho-accent));
+  margin-bottom: var(--ho-space-md);
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ho-text);
+  margin-bottom: var(--ho-space-sm);
+}
+
+.heroTagline {
+  font-family: var(--ho-font-accent);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-md);
+}
+
+.heroDesc {
+  font-size: 0.9rem;
+  color: var(--ho-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--ho-space-lg);
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ho-space-md);
+  font-family: var(--ho-font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ho-text-secondary);
+}
+
+.heroDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--studio-accent, var(--ho-accent));
+}
+
+.section {
+  max-width: var(--ho-content-width);
+  margin: 0 auto;
+  padding: var(--ho-space-2xl) var(--ho-space-xl);
+}
+
+.sectionTitle {
+  font-family: var(--ho-font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ho-text-secondary);
+  margin-bottom: var(--ho-space-xl);
+  padding-bottom: var(--ho-space-md);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.grid {
+  /* ProductGrid handles its own layout */
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: var(--ho-space-2xl) var(--ho-space-md) var(--ho-space-xl);
+  }
+  .section {
+    padding: var(--ho-space-xl) var(--ho-space-md);
+  }
+}

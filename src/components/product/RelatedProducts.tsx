@@ -1,21 +1,25 @@
 import type { Product } from '@/types/product';
-import { PRODUCTS } from '@/data/products';
+import { getProductsByStudio } from '@/data/products';
 import ProductCard from './ProductCard';
 import styles from './ProductDetail.module.css';
 
 interface RelatedProductsProps {
   currentProduct: Product;
+  studioSlug?: string;
 }
 
-export default function RelatedProducts({ currentProduct }: RelatedProductsProps) {
-  const related = PRODUCTS
+export default function RelatedProducts({ currentProduct, studioSlug }: RelatedProductsProps) {
+  const slug = studioSlug ?? currentProduct.studioSlug;
+  const studioProducts = getProductsByStudio(slug);
+
+  const related = studioProducts
     .filter(p => p.id !== currentProduct.id)
     .filter(p => p.category === currentProduct.category)
     .slice(0, 4);
 
-  // If not enough from same category, fill with other products
+  // If not enough from same category, fill with other products from same studio
   if (related.length < 4) {
-    const others = PRODUCTS
+    const others = studioProducts
       .filter(p => p.id !== currentProduct.id && p.category !== currentProduct.category)
       .slice(0, 4 - related.length);
     related.push(...others);
@@ -25,11 +29,11 @@ export default function RelatedProducts({ currentProduct }: RelatedProductsProps
     <div className={styles.related}>
       <div className={styles.relatedHeader}>
         <div className={styles.relatedTag}>You May Also Like</div>
-        <h2 className={styles.relatedTitle}>함께 취해볼 작품들</h2>
+        <h2 className={styles.relatedTitle}>함께 감상할 작품들</h2>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--ho-space-lg)' }}>
         {related.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} studioSlug={slug} />
         ))}
       </div>
     </div>

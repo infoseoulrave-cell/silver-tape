@@ -24,17 +24,17 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'HANGOVER — Get Wasted on Art',
-    template: '%s | HANGOVER',
+    default: 'SILVERTAPE — Curated Art. Every Wall.',
+    template: '%s | SILVERTAPE',
   },
-  description: 'AI가 만든 프리미엄 그래픽 아트 포스터. 크롬, 모뉴먼트, 텍스처, 시네마, 미스 — 벽 위의 숙취.',
-  keywords: ['art poster', 'AI art', 'graphic art', 'poster shop', '포스터', '아트 포스터', 'HANGOVER'],
+  description: '아트 스튜디오 중계 플랫폼. 다양한 스튜디오의 작품을 만나고, 포스터와 프린트로 소장하세요.',
+  keywords: ['art poster', 'AI art', 'art platform', 'poster shop', '포스터', '아트 포스터', 'SILVERTAPE', '아트 플랫폼'],
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    siteName: 'HANGOVER',
-    title: 'HANGOVER — Get Wasted on Art',
-    description: 'AI가 만든 프리미엄 그래픽 아트 포스터 스토어',
+    siteName: 'SILVERTAPE',
+    title: 'SILVERTAPE — Curated Art. Every Wall.',
+    description: '아트 스튜디오 중계 플랫폼. 모든 벽에 예술을.',
   },
 };
 

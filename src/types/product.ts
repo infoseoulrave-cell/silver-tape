@@ -25,6 +25,8 @@ export interface Product {
   titleKo: string;
   category: CategoryId;
   artist: string;
+  studioId: string;
+  studioSlug: string;
   description: string;
   descriptionKo: string;
   image: string;

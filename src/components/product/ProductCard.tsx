@@ -7,17 +7,19 @@ import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
   product: Product;
+  studioSlug?: string;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, studioSlug }: ProductCardProps) {
   const basePrice = SIZE_OPTIONS[0].printPrice + SIZE_OPTIONS[0].frameAddon;
+  const slug = studioSlug ?? product.studioSlug;
 
   return (
-    <Link href={`/products/${product.slug}`} className={styles.card}>
+    <Link href={`/studio/${slug}/${product.slug}`} className={styles.card}>
       <div className={styles.imageWrap}>
         <Image
           src={product.image}
-          alt={`${product.title} — HANGOVER 포스터`}
+          alt={`${product.title} — ${product.artist}`}
           width={600}
           height={800}
           className={styles.image}

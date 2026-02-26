@@ -91,6 +91,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       productId: product.id,
       productTitle: product.title,
       productImage: currentImage,
+      studioId: product.studioId,
+      studioName: product.artist,
+      studioSlug: product.studioSlug,
       size: currentSize,
       frame: currentFrame,
       artworkBg: product.matVariants[currentArtBg]?.name ?? 'Ink Black',
@@ -122,7 +125,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <div className={styles.innerLip}>
                   <Image
                     src={currentImage}
-                    alt={`${product.title} — HANGOVER 포스터`}
+                    alt={`${product.title} — ${product.artist}`}
                     width={760}
                     height={1000}
                     className={styles.artworkImg}

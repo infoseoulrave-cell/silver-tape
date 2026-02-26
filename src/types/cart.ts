@@ -5,6 +5,9 @@ export interface CartItem {
   productId: string;
   productTitle: string;
   productImage: string;
+  studioId: string;
+  studioName: string;
+  studioSlug: string;
   size: string;
   frame: FrameColor;
   artworkBg: string;
