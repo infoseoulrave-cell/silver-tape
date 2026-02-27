@@ -7,8 +7,8 @@ export const STUDIOS: Studio[] = [
     name: 'HANGOVER',
     nameKo: '행오버',
     accentColor: '#2d2d2d',
-    description: 'AI-generated graphic art posters. Visual Excess. Wall Obsession.',
-    descriptionKo: 'AI가 만든 그래픽 아트 포스터. 예술에 취하다.',
+    description: 'Graphic art posters that hit different. Visual Excess. Wall Obsession.',
+    descriptionKo: '감각을 자극하는 그래픽 아트 포스터. 과잉의 미학, 벽에 대한 집착.',
     tagline: 'Get Wasted on Art',
     taglineKo: '예술에 취하다',
     socialLinks: {

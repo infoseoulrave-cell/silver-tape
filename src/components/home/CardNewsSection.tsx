@@ -34,7 +34,7 @@ const TOPICS: CardNewsTopic[] = [
   { id: 20, themeLabel: '작품이 주는 효과', title: '병원에 그림을 걸면 생기는 일', accent: '#1A5276' },
   { id: 21, themeLabel: '작품이 주는 효과', title: '사무실 그림이 창의력을 높인다', accent: '#145A32' },
   { id: 22, themeLabel: '현대미술 이슈', title: '2025 경매 TOP 3 전부 클림트', accent: '#7D6608' },
-  { id: 23, themeLabel: '현대미술 이슈', title: 'AI가 그린 그림, 예술일까?', accent: '#1C2833' },
+  { id: 23, themeLabel: '현대미술 이슈', title: '디지털 아트, 예술일까?', accent: '#1C2833' },
   { id: 24, themeLabel: '현대미술 이슈', title: '현대미술이 어려운 진짜 이유', accent: '#4A235A' },
   { id: 25, themeLabel: '미술품 있는 집', title: '그림 한 점이 거실을 바꾼다', accent: '#7D6608' },
   { id: 26, themeLabel: '미술품 있는 집', title: '미니멀리즘 인테리어의 함정', accent: '#2C3E50' },
@@ -71,13 +71,19 @@ export default function CardNewsSection() {
     }
   }, [activeSlide, activeTopic]);
 
-  // Scroll topic pills into view
+  // Scroll topic pills into view (horizontal only, don't scroll page)
+  const hasInteracted = useRef(false);
   useEffect(() => {
+    if (!hasInteracted.current) {
+      hasInteracted.current = true;
+      return;
+    }
     const el = scrollRef.current;
     if (!el) return;
     const btn = el.children[activeTopic] as HTMLElement;
     if (btn) {
-      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      const left = btn.offsetLeft - el.offsetWidth / 2 + btn.offsetWidth / 2;
+      el.scrollTo({ left, behavior: 'smooth' });
     }
   }, [activeTopic]);
 

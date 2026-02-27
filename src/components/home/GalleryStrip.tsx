@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import styles from './GalleryStrip.module.css';
 
 interface StripItem {
@@ -24,69 +24,99 @@ const STRIP_ITEMS: StripItem[] = [
 ];
 
 export default function GalleryStrip() {
-  const items = [...STRIP_ITEMS, ...STRIP_ITEMS];
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-  const [enabled, setEnabled] = useState(true);
-  const posRef = useRef(0);
-  const rafRef = useRef<number>(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragState = useRef({ startX: 0, scrollLeft: 0, moved: false });
 
-  const animate = useCallback(() => {
-    if (!trackRef.current) return;
-    if (enabled && !paused) {
-      posRef.current -= 0.5;
-      const halfWidth = trackRef.current.scrollWidth / 2;
-      if (Math.abs(posRef.current) >= halfWidth) posRef.current = 0;
-      trackRef.current.style.transform = `translateX(${posRef.current}px)`;
-    }
-    rafRef.current = requestAnimationFrame(animate);
-  }, [paused, enabled]);
-
-  useEffect(() => {
-    const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => {
-      setEnabled(!mqReduce.matches);
-    };
-    update();
-    mqReduce.addEventListener('change', update);
-    return () => {
-      mqReduce.removeEventListener('change', update);
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setIsDragging(true);
+    dragState.current = {
+      startX: e.pageX - el.offsetLeft,
+      scrollLeft: el.scrollLeft,
+      moved: false,
     };
   }, []);
 
-  useEffect(() => {
-    if (!enabled) {
-      posRef.current = 0;
-      if (trackRef.current) trackRef.current.style.transform = 'translateX(0px)';
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      return;
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - dragState.current.startX) * 1.5;
+    if (Math.abs(walk) > 5) dragState.current.moved = true;
+    scrollRef.current.scrollLeft = dragState.current.scrollLeft - walk;
+  }, [isDragging]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    if (dragState.current.moved) {
+      e.preventDefault();
     }
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [animate, enabled]);
+  }, []);
+
+  const scroll = useCallback((dir: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = dir === 'left' ? -320 : 320;
+    el.scrollBy({ left: amount, behavior: 'smooth' });
+  }, []);
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <div className={styles.tag}>Bestsellers</div>
-        <h2 className={styles.title}>Most Wasted</h2>
+        <div className={styles.headerTop}>
+          <div>
+            <div className={styles.tag}>Bestsellers</div>
+            <h2 className={styles.title}>Most Wasted</h2>
+          </div>
+          <div className={styles.arrows}>
+            <button
+              className={styles.arrowBtn}
+              onClick={() => scroll('left')}
+              aria-label="Previous"
+            >
+              &#8249;
+            </button>
+            <button
+              className={styles.arrowBtn}
+              onClick={() => scroll('right')}
+              aria-label="Next"
+            >
+              &#8250;
+            </button>
+          </div>
+        </div>
         <p className={styles.sub}>벽에서 가장 빨리 사라지는 작품들.</p>
       </div>
 
       <div
-        className={styles.track}
-        ref={trackRef}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        className={`${styles.track} ${isDragging ? styles.trackDragging : ''}`}
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
       >
-        {items.map((item, i) => (
-          <Link key={i} href={item.href} className={styles.card} prefetch={false}>
+        {STRIP_ITEMS.map((item, i) => (
+          <Link
+            key={i}
+            href={item.href}
+            className={styles.card}
+            prefetch={false}
+            onClick={handleClick}
+            draggable={false}
+          >
             <Image
               src={item.image}
               alt={`${item.title} poster`}
               width={300}
               height={400}
-              sizes="(max-width: 767px) 260px, 300px"
+              sizes="(max-width: 767px) 220px, 300px"
+              draggable={false}
             />
             <div className={styles.info}>
               <div className={styles.cardSub}>{item.sub}</div>

@@ -5,7 +5,7 @@ import styles from '../info.module.css';
 
 export const metadata: Metadata = {
   title: 'SILVERTAPE 소개 — Curated Art. Every Wall.',
-  description: 'SILVERTAPE는 AI 아트 스튜디오 중계 플랫폼입니다. 큐레이팅된 디지털 아트를 프리미엄 프린트로 만나보세요.',
+  description: 'SILVERTAPE는 독립 아트 스튜디오 중계 플랫폼입니다. 큐레이팅된 디지털 아트를 프리미엄 프린트로 만나보세요.',
 };
 
 export default function AboutPage() {
@@ -24,8 +24,8 @@ export default function AboutPage() {
         </p>
         <p>
           <strong>SILVERTAPE</strong>는 그 질문에서 시작된 아트 스튜디오 플랫폼입니다.
-          AI가 그린 비전, 인간이 큐레이팅한 감각, 프리미엄 프린트의 물성 &mdash;
-          세 개의 레이어가 하나의 실버 테이프로 당신의 벽 위에 고정됩니다.
+          각기 다른 시선을 가진 스튜디오들이 큐레이팅한 감각, 프리미엄 프린트의 물성 &mdash;
+          이 두 레이어가 하나의 실버 테이프로 당신의 벽 위에 고정됩니다.
         </p>
 
         <h2>우리가 하는 일</h2>
@@ -41,7 +41,7 @@ export default function AboutPage() {
             <div className={styles.featureIcon}>&#9670;</div>
             <div className={styles.featureTitle}>CURATED</div>
             <div className={styles.featureDesc}>
-              AI가 생성하고 인간이 큐레이팅합니다. 수천 장 중 선별된 작품만을 제공합니다.
+              엄격한 큐레이션을 거친 작품만을 제공합니다. 수천 장 중 선별된 작품들.
             </div>
           </div>
           <div className={styles.feature}>
@@ -67,7 +67,7 @@ export default function AboutPage() {
         <ul>
           <li>
             <Link href="/studio/hangover"><strong>HANGOVER</strong></Link> &mdash;
-            AI가 만든 그래픽 아트 포스터. 예술에 취하다.
+            감각을 자극하는 그래픽 아트 포스터. 예술에 취하다.
           </li>
           <li>
             <Link href="/studio/void"><strong>VOID.</strong></Link> &mdash;

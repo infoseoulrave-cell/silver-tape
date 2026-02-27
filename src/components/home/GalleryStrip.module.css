@@ -5,8 +5,15 @@
 }
 
 .header {
-  text-align: center;
-  margin-bottom: var(--ho-space-xl);
+  max-width: var(--ho-content-width);
+  margin: 0 auto var(--ho-space-xl);
+  padding: 0 var(--ho-space-xl);
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .tag {
@@ -36,17 +43,56 @@
   margin-top: var(--ho-space-sm);
 }
 
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrowBtn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  font-size: 1.4rem;
+  color: var(--ho-text-secondary);
+  cursor: pointer;
+  transition: all var(--ho-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.arrowBtn:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  color: var(--ho-text);
+}
+
 .track {
   display: flex;
   gap: var(--ho-space-md);
-  width: max-content;
-  will-change: transform;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 var(--ho-space-xl);
+  cursor: grab;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.trackDragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
 }
 
 .card {
   flex-shrink: 0;
   width: 300px;
-  cursor: pointer;
+  scroll-snap-align: start;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -62,10 +108,20 @@
   object-fit: cover;
   border-radius: 0;
   display: block;
+  pointer-events: none;
 }
 
 .info {
   padding: var(--ho-space-md) 0;
+}
+
+.cardSub {
+  font-family: var(--ho-font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--ho-text-muted);
+  margin-bottom: 2px;
 }
 
 .cardTitle {
@@ -77,15 +133,6 @@
   letter-spacing: 0.05em;
 }
 
-.cardSub {
-  font-family: var(--ho-font-heading);
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--ho-text-muted);
-  margin-top: 2px;
-}
-
 .cardPrice {
   font-family: var(--ho-font-heading);
   font-size: 0.9rem;
@@ -95,6 +142,12 @@
 }
 
 @media (max-width: 767px) {
+  .header {
+    padding: 0 var(--ho-space-md);
+  }
+  .track {
+    padding: 0 var(--ho-space-md);
+  }
   .card {
     width: 220px;
   }

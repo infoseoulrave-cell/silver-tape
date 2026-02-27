@@ -400,7 +400,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <path d="M2 12l10 5 10-5"/>
                 </svg>
               </div>
-              <div className={styles.trustText}>AI 생성 프리미엄 아트</div>
+              <div className={styles.trustText}>큐레이션 프리미엄 아트</div>
             </div>
             <div className={styles.trustItem}>
               <div className={styles.trustIcon}>
@@ -456,7 +456,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <tr><td>용지</td><td>프리미엄 아트지 220gsm, 매트 피니시</td></tr>
                     <tr><td>인쇄</td><td>12색 지클레 프린트, 아카이벌 잉크</td></tr>
                     <tr><td>내구성</td><td>100년+ 색상 보존 (아카이벌 등급)</td></tr>
-                    <tr><td>생성</td><td>AI (Flux 1.1 Pro) + 사후 보정</td></tr>
+                    <tr><td>제작</td><td>디지털 원본 + 전문 보정</td></tr>
                     <tr><td>해상도</td><td>300 DPI 이상</td></tr>
                     <tr><td>에디션</td><td>한정판 {product.editionSize}부</td></tr>
                   </tbody>

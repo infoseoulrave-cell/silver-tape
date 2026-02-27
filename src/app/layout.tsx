@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: '%s | SILVERTAPE',
   },
   description: '아트 스튜디오 중계 플랫폼. 다양한 스튜디오의 작품을 만나고, 포스터와 프린트로 소장하세요.',
-  keywords: ['art poster', 'AI art', 'art platform', 'poster shop', '포스터', '아트 포스터', 'SILVERTAPE', '아트 플랫폼'],
+  keywords: ['art poster', 'curated art', 'art platform', 'poster shop', '포스터', '아트 포스터', 'SILVERTAPE', '아트 플랫폼'],
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
