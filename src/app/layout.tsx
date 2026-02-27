@@ -25,6 +25,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 const SITE_URL = 'https://silvertape.art';
+const ALT_URL = 'https://silver-tape.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,6 +66,10 @@ export const metadata: Metadata = {
     description: '큐레이션 스튜디오가 엄선한 프리미엄 아트 프린트. 당신의 공간을 갤러리로 만들어 드립니다.',
     images: [`${SITE_URL}/og-image.png`],
   },
+  other: {
+    'og:url': SITE_URL,
+    'al:web:url': ALT_URL,
+  },
 };
 
 export default function RootLayout({
@@ -93,7 +98,7 @@ export default function RootLayout({
               name: 'SILVERTAPE',
               alternateName: '실버테이프',
               url: SITE_URL,
-              logo: `${SITE_URL}/logo-header.png`,
+              logo: `${SITE_URL}/logo-header.webp`,
               contactPoint: { '@type': 'ContactPoint', email: 'hello@silvertape.art', contactType: 'customer service' },
               description: '큐레이션 아트 프린트 플랫폼. 모든 벽에 예술을.',
             }),

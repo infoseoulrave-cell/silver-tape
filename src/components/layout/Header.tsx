@@ -40,10 +40,10 @@ export default function Header() {
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} onClick={closeMenu}>
             <Image
-              src="/logo-header.png"
+              src="/logo-header.webp"
               alt="SILVERTAPE"
-              width={614}
-              height={72}
+              width={942}
+              height={264}
               className={styles.logoImg}
               priority
             />
