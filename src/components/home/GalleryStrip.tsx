@@ -44,16 +44,13 @@ export default function GalleryStrip() {
   }, [paused, enabled]);
 
   useEffect(() => {
-    const mqMobile = window.matchMedia('(max-width: 767px)');
     const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => {
-      setEnabled(!mqMobile.matches && !mqReduce.matches);
+      setEnabled(!mqReduce.matches);
     };
     update();
-    mqMobile.addEventListener('change', update);
     mqReduce.addEventListener('change', update);
     return () => {
-      mqMobile.removeEventListener('change', update);
       mqReduce.removeEventListener('change', update);
     };
   }, []);
@@ -84,7 +81,7 @@ export default function GalleryStrip() {
         onMouseLeave={() => setPaused(false)}
       >
         {items.map((item, i) => (
-          <Link key={i} href={item.href} className={styles.card}>
+          <Link key={i} href={item.href} className={styles.card} prefetch={false}>
             <Image
               src={item.image}
               alt={`${item.title} poster`}
