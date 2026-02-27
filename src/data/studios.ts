@@ -49,6 +49,22 @@ export const STUDIOS: Studio[] = [
     isActive: true,
     createdAt: '2026-02-26',
   },
+  {
+    id: 'phantom-reel',
+    slug: 'phantom-reel',
+    name: 'PHANTOM REEL',
+    nameKo: '팬텀 릴',
+    accentColor: '#2A6B7C',
+    description: 'Recovered transmissions from nowhere. Surreal conceptual photography through the lens of vintage film — lunar archives, liminal spaces, and material studies that feel found, not made.',
+    descriptionKo: '어디에도 없는 곳에서 수신된 필름. 빈티지 필름의 렌즈를 통해 바라본 초현실 컨셉츄얼 포토그래피 — 달의 기록, 리미널 스페이스, 발견된 듯한 물성 스터디.',
+    tagline: 'Found Footage from Nowhere',
+    taglineKo: '어디에도 없는 곳에서 발견된 필름',
+    socialLinks: {
+      instagram: 'https://instagram.com/phantom.reel',
+    },
+    isActive: true,
+    createdAt: '2026-02-27',
+  },
 ];
 
 export function getStudioBySlug(slug: string): Studio | undefined {

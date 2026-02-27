@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCartStore } from '@/lib/cart-store';
 import styles from './Header.module.css';
 
@@ -28,17 +29,21 @@ export default function Header() {
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} onClick={closeMenu}>
-            <span className={styles.logoSilver}>SILVER</span>
-            <svg className={styles.logoMark} viewBox="0 0 14 24" aria-hidden="true">
-              <rect x="3" y="0" width="8" height="24" rx="1.5" transform="rotate(-14 7 12)" />
-            </svg>
-            <span className={styles.logoTape}>TAPE</span>
+            <Image
+              src="/logo-header.png"
+              alt="SILVERTAPE"
+              width={253}
+              height={72}
+              className={styles.logoImg}
+              priority
+            />
           </Link>
           <nav className={styles.nav}>
             <Link href="/#studios" className={styles.navLink}>Studios</Link>
             <Link href="/studio/hangover" className={styles.navLink}>HANGOVER</Link>
             <Link href="/studio/void" className={styles.navLink}>VOID.</Link>
             <Link href="/studio/sensibility" className={styles.navLink}>SENSIBILITY STAIR</Link>
+            <Link href="/studio/phantom-reel" className={styles.navLink}>PHANTOM REEL</Link>
           </nav>
           <div className={styles.actions}>
             <button className={styles.cartBtn} onClick={toggleCart} aria-label="내 컬렉션 열기">
@@ -66,6 +71,7 @@ export default function Header() {
         <Link href="/studio/hangover" className={styles.mobileLink} onClick={closeMenu}>HANGOVER</Link>
         <Link href="/studio/void" className={styles.mobileLink} onClick={closeMenu}>VOID.</Link>
         <Link href="/studio/sensibility" className={styles.mobileLink} onClick={closeMenu}>SENSIBILITY STAIR</Link>
+        <Link href="/studio/phantom-reel" className={styles.mobileLink} onClick={closeMenu}>PHANTOM REEL</Link>
         <div className={styles.mobileDivider} />
         <Link href="/about" className={styles.mobileLinkSm} onClick={closeMenu}>플랫폼 소개</Link>
         <Link href="/faq" className={styles.mobileLinkSm} onClick={closeMenu}>자주 묻는 질문</Link>

@@ -30,39 +30,17 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 2px;
-  font-family: var(--ho-font-heading);
-  font-size: 1.35rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ho-text);
-  transition: all var(--ho-transition);
+  transition: opacity var(--ho-transition);
 }
 
 .logo:hover {
-  color: var(--ho-text);
+  opacity: 0.8;
 }
 
-.logo:hover .logoMark {
-  transform: rotate(-6deg);
-  fill: var(--ho-accent);
-}
-
-.logoSilver {
-  font-weight: 300;
-}
-
-.logoMark {
-  width: 10px;
-  height: 18px;
-  fill: var(--ho-accent);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  flex-shrink: 0;
-  margin: 0 1px;
-}
-
-.logoTape {
-  font-weight: 800;
+.logoImg {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav {
@@ -246,6 +224,7 @@
 .mobileMenuOpen .mobileLink:nth-child(2) { transition-delay: 0.1s; }
 .mobileMenuOpen .mobileLink:nth-child(3) { transition-delay: 0.15s; }
 .mobileMenuOpen .mobileLink:nth-child(4) { transition-delay: 0.2s; }
+.mobileMenuOpen .mobileLink:nth-child(5) { transition-delay: 0.25s; }
 
 .mobileLink:hover {
   color: var(--ho-accent);
