@@ -14,7 +14,7 @@ interface StripItem {
 }
 
 const STRIP_ITEMS: StripItem[] = [
-  { image: '/images/gallery-strip/strip-1.jpg', title: 'Impasto Emotion', sub: '추상 표현주의', price: '\u20A945,000', href: '/studio/hangover/impasto-emotion' },
+  { image: '/images/gallery-strip/strip-1.jpg', title: 'Echoes of Crimson', sub: '추상 표현주의', price: '\u20A945,000', href: '/studio/hangover/echoes-of-crimson' },
 { image: '/images/gallery-strip/strip-3.jpg', title: 'Glass Hammer', sub: 'S.STAIR 오브제', price: '\u20A948,000', href: '/studio/sensibility/glass-hammer' },
   { image: '/images/gallery-strip/strip-4.jpg', title: 'Goldfish Cosmonaut', sub: '마이크로 오디세이', price: '\u20A938,000', href: '/studio/hangover/goldfish-cosmonaut' },
   { image: '/images/gallery-strip/strip-5.jpg', title: 'Cactus Symphony', sub: '보태니컬 부조리', price: '\u20A955,000', href: '/studio/hangover/cactus-symphony' },
