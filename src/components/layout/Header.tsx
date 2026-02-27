@@ -32,7 +32,7 @@ export default function Header() {
             <Image
               src="/logo-header.png"
               alt="SILVERTAPE"
-              width={253}
+              width={614}
               height={72}
               className={styles.logoImg}
               priority
