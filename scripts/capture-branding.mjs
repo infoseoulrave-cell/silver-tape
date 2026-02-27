@@ -233,7 +233,7 @@ async function main() {
 
   // 4. OG Image 1200×630
   console.log('[4/4] OG Image 1200×630');
-  const heroPath = path.join(ROOT, 'public/images/hero/hero-melancholy-youth.png');
+  const heroPath = path.join(ROOT, 'public/images/products/sensibility/sens-001-art.png');
   const heroBase64 = imgToBase64(heroPath);
   const ogPath = path.join(ROOT, 'public/og-image.png');
   await capture(browser, ogImageHtml(heroBase64), 1200, 630, ogPath);
