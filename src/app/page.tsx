@@ -43,7 +43,7 @@ export default function PlatformHome() {
           <span className={styles.trustDot}>&middot;</span>
           <span>7일 이내 교환/반품</span>
           <span className={styles.trustDot}>&middot;</span>
-          <span>3개 큐레이션 스튜디오</span>
+          <span>4개 큐레이션 스튜디오</span>
         </div>
       </ScrollReveal>
 

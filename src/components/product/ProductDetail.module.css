@@ -43,30 +43,6 @@
   z-index: 5;
 }
 
-.galleryZoom {
-  position: absolute;
-  bottom: var(--ho-space-md);
-  right: var(--ho-space-md);
-  width: 40px;
-  height: 40px;
-  background: rgba(0,0,0,0.08);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--ho-transition);
-  font-size: 1rem;
-  z-index: 5;
-  border: 1px solid rgba(0,0,0,0.1);
-  color: var(--ho-text-secondary);
-}
-
-.galleryZoom:hover {
-  background: rgba(0,0,0,0.12);
-  color: var(--ho-text);
-  border-color: rgba(0,0,0,0.15);
-}
 
 /* ─── Frame Assembly ─── */
 .frameAssembly {

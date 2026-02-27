@@ -49,20 +49,23 @@
   padding: 0 2px;
 }
 
+.studio {
+  font-family: var(--ho-font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ho-text-muted);
+  margin-bottom: 3px;
+}
+
 .name {
   font-family: var(--ho-font-heading);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  margin-bottom: 2px;
-  color: var(--ho-text);
-}
-
-.category {
-  font-size: 0.75rem;
-  color: var(--ho-text-muted);
-  text-transform: capitalize;
   margin-bottom: var(--ho-space-sm);
+  color: var(--ho-text);
 }
 
 .price {

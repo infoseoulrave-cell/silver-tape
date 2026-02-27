@@ -62,7 +62,7 @@ export default function AboutPage() {
 
         <h2>입점 스튜디오</h2>
         <p>
-          현재 SILVERTAPE에는 세 개의 스튜디오가 입점해 있습니다.
+          현재 SILVERTAPE에는 네 개의 스튜디오가 입점해 있습니다.
         </p>
         <ul>
           <li>
@@ -76,6 +76,10 @@ export default function AboutPage() {
           <li>
             <Link href="/studio/sensibility"><strong>SENSIBILITY STAIR</strong></Link> &mdash;
             감각을 깨우는 시각적 충돌. 대비와 물성의 스터디.
+          </li>
+          <li>
+            <Link href="/studio/phantom-reel"><strong>PHANTOM REEL</strong></Link> &mdash;
+            어디에도 없는 곳에서 수신된 필름. 초현실 컨셉츄얼 포토그래피.
           </li>
         </ul>
 

@@ -15,7 +15,7 @@ export default function ProductCard({ product, studioSlug }: ProductCardProps) {
   const slug = studioSlug ?? product.studioSlug;
 
   return (
-    <Link href={`/studio/${slug}/${product.slug}`} className={styles.card}>
+    <Link href={`/studio/${slug}/${product.slug}`} className={styles.card} prefetch={false}>
       <div className={styles.imageWrap}>
         <Image
           src={product.image}
@@ -27,8 +27,8 @@ export default function ProductCard({ product, studioSlug }: ProductCardProps) {
         {product.featured && <span className={styles.badge}>Exclusive</span>}
       </div>
       <div className={styles.info}>
+        <p className={styles.studio}>{product.artist.replace(/ AI$/, '')}</p>
         <h3 className={styles.name}>{product.title}</h3>
-        <p className={styles.category}>{product.category}</p>
         <p className={styles.price}>{formatKRW(basePrice)}</p>
       </div>
     </Link>

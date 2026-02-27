@@ -14,13 +14,13 @@ interface StripItem {
 }
 
 const STRIP_ITEMS: StripItem[] = [
-  { image: '/images/gallery-strip/strip-1.jpg', title: 'Echoes of Crimson', sub: '추상 표현주의', price: '\u20A945,000', href: '/studio/hangover/echoes-of-crimson' },
-{ image: '/images/gallery-strip/strip-3.jpg', title: 'Glass Hammer', sub: 'S.STAIR 오브제', price: '\u20A948,000', href: '/studio/sensibility/glass-hammer' },
-  { image: '/images/gallery-strip/strip-4.jpg', title: 'Goldfish Cosmonaut', sub: '마이크로 오디세이', price: '\u20A938,000', href: '/studio/hangover/goldfish-cosmonaut' },
-  { image: '/images/gallery-strip/strip-5.jpg', title: 'Cactus Symphony', sub: '보태니컬 부조리', price: '\u20A955,000', href: '/studio/hangover/cactus-symphony' },
-  { image: '/images/gallery-strip/strip-6.jpg', title: 'Red Turtleneck', sub: '네오팝 인물화', price: '\u20A938,000', href: '/studio/hangover/red-turtleneck' },
-  { image: '/images/gallery-strip/strip-7.jpg', title: 'Salt Walker', sub: '시네마 시리즈', price: '\u20A942,000', href: '/studio/hangover/salt-walker' },
-  { image: '/images/gallery-strip/strip-8.jpg', title: 'Chrome Primate', sub: '크롬 초현실', price: '\u20A952,000', href: '/studio/hangover/chrome-primate' },
+  { image: '/images/gallery-strip/strip-1.jpg', title: 'Echoes of Crimson', sub: 'HANGOVER', price: '\u20A945,000', href: '/studio/hangover/echoes-of-crimson' },
+  { image: '/images/gallery-strip/strip-3.jpg', title: 'Glass Hammer', sub: 'SENSIBILITY STAIR', price: '\u20A948,000', href: '/studio/sensibility/glass-hammer' },
+  { image: '/images/gallery-strip/strip-4.jpg', title: 'Goldfish Cosmonaut', sub: 'HANGOVER', price: '\u20A938,000', href: '/studio/hangover/goldfish-cosmonaut' },
+  { image: '/images/gallery-strip/strip-5.jpg', title: 'Cactus Symphony', sub: 'HANGOVER', price: '\u20A955,000', href: '/studio/hangover/cactus-symphony' },
+  { image: '/images/gallery-strip/strip-6.jpg', title: 'Red Turtleneck', sub: 'HANGOVER', price: '\u20A938,000', href: '/studio/hangover/red-turtleneck' },
+  { image: '/images/gallery-strip/strip-7.jpg', title: 'Salt Walker', sub: 'HANGOVER', price: '\u20A942,000', href: '/studio/hangover/salt-walker' },
+  { image: '/images/gallery-strip/strip-8.jpg', title: 'Chrome Primate', sub: 'HANGOVER', price: '\u20A952,000', href: '/studio/hangover/chrome-primate' },
 ];
 
 export default function GalleryStrip() {
@@ -89,8 +89,8 @@ export default function GalleryStrip() {
               sizes="(max-width: 767px) 260px, 300px"
             />
             <div className={styles.info}>
-              <div className={styles.cardTitle}>{item.title}</div>
               <div className={styles.cardSub}>{item.sub}</div>
+              <div className={styles.cardTitle}>{item.title}</div>
               <div className={styles.cardPrice}>{item.price}</div>
             </div>
           </Link>

@@ -23,7 +23,7 @@ const SLIDES: HeroSlide[] = [
     subtitle: '가만히 있기를 거부하는 초현실적 정물. 모든 오브제가 서로를 모순한다 — 그것이 요점이다.',
     primaryHref: '/studio/sensibility',
     primaryLabel: '전체 작품 보기',
-    secondaryHref: '#studios',
+    secondaryHref: '/studios',
     secondaryLabel: '스튜디오 둘러보기',
   },
   {
@@ -33,7 +33,7 @@ const SLIDES: HeroSlide[] = [
     subtitle: '유리로 만든 망치. 깨지기 쉬운 힘에 대한 조용한 질문.',
     primaryHref: '/studio/sensibility',
     primaryLabel: '전체 작품 보기',
-    secondaryHref: '#studios',
+    secondaryHref: '/studios',
     secondaryLabel: '스튜디오 둘러보기',
   },
   {
@@ -43,7 +43,7 @@ const SLIDES: HeroSlide[] = [
     subtitle: '비상 담요는 체온을 지킨다. 이 작품은 체면을 지킨다.',
     primaryHref: '/studio/sensibility',
     primaryLabel: '전체 작품 보기',
-    secondaryHref: '#studios',
+    secondaryHref: '/studios',
     secondaryLabel: '스튜디오 둘러보기',
   },
 ];

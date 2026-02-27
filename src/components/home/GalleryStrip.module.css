@@ -78,8 +78,10 @@
 }
 
 .cardSub {
-  font-family: var(--ho-font-body);
-  font-size: 0.75rem;
+  font-family: var(--ho-font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: var(--ho-text-muted);
   margin-top: 2px;
 }

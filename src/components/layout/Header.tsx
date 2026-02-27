@@ -39,11 +39,9 @@ export default function Header() {
             />
           </Link>
           <nav className={styles.nav}>
-            <Link href="/#studios" className={styles.navLink}>Studios</Link>
-            <Link href="/studio/hangover" className={styles.navLink}>HANGOVER</Link>
-            <Link href="/studio/void" className={styles.navLink}>VOID.</Link>
-            <Link href="/studio/sensibility" className={styles.navLink}>SENSIBILITY STAIR</Link>
-            <Link href="/studio/phantom-reel" className={styles.navLink}>PHANTOM REEL</Link>
+            <Link href="/shop" className={styles.navLink}>Shop</Link>
+            <Link href="/studios" className={styles.navLink}>Studios</Link>
+            <Link href="/about" className={styles.navLink}>About</Link>
           </nav>
           <div className={styles.actions}>
             <button className={styles.cartBtn} onClick={toggleCart} aria-label="내 컬렉션 열기">
@@ -67,14 +65,9 @@ export default function Header() {
         aria-label="모바일 내비게이션"
         aria-hidden={!menuOpen}
       >
-        <Link href="/#studios" className={styles.mobileLink} onClick={closeMenu}>Studios</Link>
-        <Link href="/studio/hangover" className={styles.mobileLink} onClick={closeMenu}>HANGOVER</Link>
-        <Link href="/studio/void" className={styles.mobileLink} onClick={closeMenu}>VOID.</Link>
-        <Link href="/studio/sensibility" className={styles.mobileLink} onClick={closeMenu}>SENSIBILITY STAIR</Link>
-        <Link href="/studio/phantom-reel" className={styles.mobileLink} onClick={closeMenu}>PHANTOM REEL</Link>
-        <div className={styles.mobileDivider} />
-        <Link href="/about" className={styles.mobileLinkSm} onClick={closeMenu}>플랫폼 소개</Link>
-        <Link href="/faq" className={styles.mobileLinkSm} onClick={closeMenu}>자주 묻는 질문</Link>
+        <Link href="/shop" className={styles.mobileLink} onClick={closeMenu}>Shop</Link>
+        <Link href="/studios" className={styles.mobileLink} onClick={closeMenu}>Studios</Link>
+        <Link href="/about" className={styles.mobileLink} onClick={closeMenu}>About</Link>
       </nav>
     </>
   );
