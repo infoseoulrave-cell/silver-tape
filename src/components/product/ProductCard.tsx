@@ -29,7 +29,7 @@ export default function ProductCard({ product, studioSlug }: ProductCardProps) {
       <div className={styles.info}>
         <p className={styles.studio}>{product.artist}</p>
         <h3 className={styles.name}>{product.title}</h3>
-        <p className={styles.price}>{formatKRW(basePrice)}</p>
+        <p className={styles.price}>{formatKRW(basePrice)}~</p>
       </div>
     </Link>
   );

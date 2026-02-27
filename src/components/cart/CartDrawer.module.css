@@ -139,8 +139,8 @@
 }
 
 .itemQty button {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   background: none;
   border: none;
   cursor: pointer;
@@ -206,9 +206,9 @@
 }
 
 .emptyIcon {
-  font-size: 3rem;
   margin-bottom: var(--ho-space-lg);
   opacity: 0.3;
+  color: var(--ho-text-muted);
 }
 
 .emptyTitle {

@@ -541,7 +541,11 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           onClick={(e) => {
             if (e.target === e.currentTarget) setLightboxOpen(false);
           }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') setLightboxOpen(false);
+          }}
           role="dialog"
+          aria-modal="true"
           aria-label="이미지 확대 보기"
         >
           <button

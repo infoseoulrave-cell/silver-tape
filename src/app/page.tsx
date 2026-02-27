@@ -26,6 +26,7 @@ export default function PlatformHome() {
 
   return (
     <main>
+      <h1 className="sr-only">SILVERTAPE — 큐레이션 아트 프린트 플랫폼</h1>
       {/* Hero Carousel — full-bleed visual impact */}
       <HeroCarousel />
 

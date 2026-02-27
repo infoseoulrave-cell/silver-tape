@@ -62,7 +62,12 @@ export default function CartDrawer() {
         {/* Items */}
         {items.length === 0 ? (
           <div className={styles.empty}>
-            <div className={styles.emptyIcon}>&#128444;</div>
+            <div className={styles.emptyIcon}>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <rect x="6" y="8" width="36" height="32" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                <rect x="12" y="14" width="24" height="18" rx="1" stroke="currentColor" strokeWidth="1" strokeDasharray="3 2" />
+              </svg>
+            </div>
             <div className={styles.emptyTitle}>컬렉션이 비어있어요</div>
             <p className={styles.emptyDesc}>당신의 벽을 위한 작품을 찾아보세요.</p>
           </div>

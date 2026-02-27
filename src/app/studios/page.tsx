@@ -5,6 +5,7 @@ import { getActiveStudios } from '@/data/studios';
 import { getProductsByStudio } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 import styles from './studios.module.css';
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function StudiosPage() {
 
   return (
     <main className={styles.page}>
+      <Breadcrumb items={[{ label: '홈', href: '/' }, { label: 'Studios' }]} />
       <div className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>Studios</h1>
@@ -37,10 +39,17 @@ export default function StudiosPage() {
             <div className={styles.container}>
               <ScrollReveal>
                 <div className={styles.studioHeader}>
-                  <div
-                    className={styles.studioAccent}
-                    style={{ background: studio.accentColor }}
-                  />
+                  {studio.logo && (
+                    <div className={styles.studioLogoWrap}>
+                      <Image
+                        src={studio.logo}
+                        alt={`${studio.name} logo`}
+                        width={120}
+                        height={120}
+                        className={styles.studioLogo}
+                      />
+                    </div>
+                  )}
                   <div className={styles.studioInfo}>
                     <div className={styles.studioTag}>STUDIO</div>
                     <h2 className={styles.studioName}>{studio.name}</h2>

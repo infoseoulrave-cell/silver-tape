@@ -1,0 +1,309 @@
+{
+  "timestamp": "2026-02-27T02:55:38.333Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-26T23:07:13.112Z",
+    "activeFeatures": [
+      "home",
+      "cart",
+      "hangover-web",
+      "product",
+      "checkout",
+      "orders",
+      "data",
+      "instagram",
+      "[id]",
+      "card-news"
+    ],
+    "primaryFeature": "home",
+    "features": {
+      "home": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:16.854Z",
+          "lastUpdated": "2026-02-26T23:06:39.161Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\home\\CardNewsSection.tsx"
+      },
+      "cart": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:53.330Z",
+          "lastUpdated": "2026-02-26T20:23:53.330Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\cart\\CollectionFab.tsx"
+      },
+      "hangover-web": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:07.377Z",
+          "lastUpdated": "2026-02-26T23:07:13.112Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\page.tsx"
+      },
+      "product": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:23.320Z",
+          "lastUpdated": "2026-02-26T21:33:42.748Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\product\\ProductDetailClient.tsx"
+      },
+      "checkout": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:57.813Z",
+          "lastUpdated": "2026-02-26T21:34:05.119Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\checkout\\page.tsx"
+      },
+      "orders": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:34:26.428Z",
+          "lastUpdated": "2026-02-26T21:34:33.799Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\api\\orders\\route.ts"
+      },
+      "data": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:02.362Z",
+          "lastUpdated": "2026-02-26T22:06:32.262Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\data\\card-news.ts"
+      },
+      "instagram": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:13.013Z",
+          "lastUpdated": "2026-02-26T21:56:13.013Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\layout.tsx"
+      },
+      "[id]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:19.276Z",
+          "lastUpdated": "2026-02-26T21:57:19.631Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\card-news\\[id]\\page.tsx"
+      },
+      "card-news": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:34.477Z",
+          "lastUpdated": "2026-02-26T21:56:45.153Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\card-news\\page.tsx"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-26T20:23:16.854Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-26T23:07:13.112Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-26T20:23:16.854Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:23.620Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:53.330Z",
+        "feature": "cart",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:07.377Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:23.320Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:31.757Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:42.748Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:57.813Z",
+        "feature": "checkout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:05.119Z",
+        "feature": "checkout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:26.428Z",
+        "feature": "orders",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:33.799Z",
+        "feature": "orders",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:02.362Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:13.013Z",
+        "feature": "instagram",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:19.276Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:34.477Z",
+        "feature": "card-news",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:45.153Z",
+        "feature": "card-news",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:03.526Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:17.462Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:19.631Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T22:06:32.262Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T22:16:25.780Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:06:39.161Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:07:07.949Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:07:13.112Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

@@ -1,0 +1,729 @@
+{
+  "timestamp": "2026-02-27T05:43:20.919Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-27T05:43:01.895Z",
+    "activeFeatures": [
+      "home",
+      "cart",
+      "hangover-web",
+      "product",
+      "checkout",
+      "orders",
+      "data",
+      "instagram",
+      "[id]",
+      "card-news",
+      "layout",
+      "shop",
+      "studios",
+      "about",
+      "terms",
+      "faq"
+    ],
+    "primaryFeature": "home",
+    "features": {
+      "home": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:16.854Z",
+          "lastUpdated": "2026-02-27T05:36:03.796Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\components\\home\\GalleryStrip.tsx"
+      },
+      "cart": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T20:23:53.330Z",
+          "lastUpdated": "2026-02-26T20:23:53.330Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\components\\cart\\CollectionFab.tsx"
+      },
+      "hangover-web": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:07.377Z",
+          "lastUpdated": "2026-02-27T05:33:23.764Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\layout.tsx"
+      },
+      "product": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:23.320Z",
+          "lastUpdated": "2026-02-27T05:33:48.383Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\components\\product\\ProductDetailClient.tsx"
+      },
+      "checkout": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:33:57.813Z",
+          "lastUpdated": "2026-02-26T21:34:05.119Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\checkout\\page.tsx"
+      },
+      "orders": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:34:26.428Z",
+          "lastUpdated": "2026-02-26T21:34:33.799Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\api\\orders\\route.ts"
+      },
+      "data": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:02.362Z",
+          "lastUpdated": "2026-02-27T05:34:25.710Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\data\\card-news.ts"
+      },
+      "instagram": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:13.013Z",
+          "lastUpdated": "2026-02-26T21:56:13.013Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\layout.tsx"
+      },
+      "[id]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:19.276Z",
+          "lastUpdated": "2026-02-26T21:57:19.631Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\card-news\\[id]\\page.tsx"
+      },
+      "card-news": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-26T21:56:34.477Z",
+          "lastUpdated": "2026-02-26T21:56:45.153Z"
+        },
+        "lastFile": "c:\\Users\\A\\hangover-web\\src\\app\\instagram\\card-news\\page.tsx"
+      },
+      "layout": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:01:51.578Z",
+          "lastUpdated": "2026-02-27T05:43:01.895Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\components\\layout\\Footer.tsx"
+      },
+      "shop": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:17:29.320Z",
+          "lastUpdated": "2026-02-27T05:17:29.320Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\shop\\page.tsx"
+      },
+      "studios": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:18:00.749Z",
+          "lastUpdated": "2026-02-27T05:18:00.749Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\studios\\page.tsx"
+      },
+      "about": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:20:48.417Z",
+          "lastUpdated": "2026-02-27T05:33:14.238Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\about\\page.tsx"
+      },
+      "terms": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:33:57.134Z",
+          "lastUpdated": "2026-02-27T05:33:57.134Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\terms\\page.tsx"
+      },
+      "faq": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-27T05:34:07.089Z",
+          "lastUpdated": "2026-02-27T05:34:07.089Z"
+        },
+        "lastFile": "C:\\Users\\A\\hangover-web\\src\\app\\faq\\page.tsx"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-26T20:23:16.854Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-27T05:43:01.895Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-26T20:23:16.854Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:23.620Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T20:23:53.330Z",
+        "feature": "cart",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:07.377Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:23.320Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:31.757Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:42.748Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:33:57.813Z",
+        "feature": "checkout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:05.119Z",
+        "feature": "checkout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:26.428Z",
+        "feature": "orders",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:34:33.799Z",
+        "feature": "orders",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:02.362Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:13.013Z",
+        "feature": "instagram",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:19.276Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:34.477Z",
+        "feature": "card-news",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:56:45.153Z",
+        "feature": "card-news",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:03.526Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:17.462Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T21:57:19.631Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T22:06:32.262Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T22:16:25.780Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:06:39.161Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:07:07.949Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-26T23:07:13.112Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T02:58:57.795Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T02:59:03.427Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:09:39.546Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:52:10.718Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:53:25.216Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:53:41.154Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:53:50.799Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:57:24.854Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:57:31.704Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:57:38.731Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:57:56.965Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:58:09.165Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T03:58:16.639Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T04:38:33.085Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T04:39:37.304Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:01:51.578Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:02:00.438Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:02:07.332Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:02:14.003Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:08:46.072Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:10:35.634Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:11:03.928Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:11:35.865Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:16:36.014Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:16:42.662Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:16:57.599Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:17:29.320Z",
+        "feature": "shop",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:18:00.749Z",
+        "feature": "studios",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:18:30.009Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:08.659Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:18.050Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:23.996Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:28.832Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:38.913Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:19:47.680Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:20:48.417Z",
+        "feature": "about",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:31:58.294Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:02.924Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:07.645Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:11.917Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:20.042Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:30.834Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:40.050Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:32:53.716Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:14.238Z",
+        "feature": "about",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:23.764Z",
+        "feature": "hangover-web",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:31.471Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:40.064Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:48.383Z",
+        "feature": "product",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:33:57.134Z",
+        "feature": "terms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:34:07.089Z",
+        "feature": "faq",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:34:25.710Z",
+        "feature": "data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:35:35.341Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:35:41.512Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:36:03.796Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-27T05:43:01.895Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

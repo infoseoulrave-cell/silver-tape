@@ -11,6 +11,21 @@
   margin: 0 auto;
 }
 
+.heroLogoWrap {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto var(--ho-space-lg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.heroLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .heroTag {
   font-family: var(--ho-font-heading);
   font-size: 0.7rem;

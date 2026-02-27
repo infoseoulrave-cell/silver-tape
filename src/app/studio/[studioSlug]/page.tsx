@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ProductGrid from '@/components/product/ProductGrid';
 import { getStudioBySlug, STUDIOS } from '@/data/studios';
@@ -44,6 +45,17 @@ export default async function StudioPage({ params }: StudioPageProps) {
       {/* Studio Hero */}
       <div className={styles.hero} style={{ '--studio-accent': studio.accentColor } as React.CSSProperties}>
         <div className={styles.heroContent}>
+          {studio.logo && (
+            <div className={styles.heroLogoWrap}>
+              <Image
+                src={studio.logo}
+                alt={`${studio.name} logo`}
+                width={100}
+                height={100}
+                className={styles.heroLogo}
+              />
+            </div>
+          )}
           <div className={styles.heroTag}>STUDIO</div>
           <h1 className={styles.heroTitle}>{studio.name}</h1>
           <p className={styles.heroTagline}>{studio.tagline}</p>

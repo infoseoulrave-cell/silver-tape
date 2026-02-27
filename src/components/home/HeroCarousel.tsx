@@ -66,17 +66,22 @@ export default function HeroCarousel() {
     setCurrent(prev => (prev - 1 + SLIDES.length) % SLIDES.length);
   }, []);
 
+  const stopAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
   const startAutoPlay = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    stopAutoPlay();
     intervalRef.current = setInterval(goNext, 6000);
-  }, [goNext]);
+  }, [goNext, stopAutoPlay]);
 
   useEffect(() => {
     startAutoPlay();
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [startAutoPlay]);
+    return () => stopAutoPlay();
+  }, [startAutoPlay, stopAutoPlay]);
 
   // Touch swipe support
   useEffect(() => {
@@ -112,7 +117,12 @@ export default function HeroCarousel() {
   };
 
   return (
-    <section className={styles.hero} ref={heroRef}>
+    <section
+      className={styles.hero}
+      ref={heroRef}
+      onMouseEnter={stopAutoPlay}
+      onMouseLeave={startAutoPlay}
+    >
       {SLIDES.map((slide, i) => (
         <div
           key={i}

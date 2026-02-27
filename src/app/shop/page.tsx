@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PRODUCTS, getFeaturedProducts } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Breadcrumb from '@/components/ui/Breadcrumb';
 import styles from './shop.module.css';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function ShopPage() {
 
   return (
     <main className={styles.page}>
+      <Breadcrumb items={[{ label: '홈', href: '/' }, { label: 'Shop' }]} />
       <div className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>Shop</h1>

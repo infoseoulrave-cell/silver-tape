@@ -22,6 +22,16 @@ export default function Header() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
+  // Close mobile menu on Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [menuOpen]);
+
   const totalItems = mounted ? getTotalItems() : 0;
 
   return (
@@ -68,6 +78,12 @@ export default function Header() {
         <Link href="/shop" className={styles.mobileLink} onClick={closeMenu}>Shop</Link>
         <Link href="/studios" className={styles.mobileLink} onClick={closeMenu}>Studios</Link>
         <Link href="/about" className={styles.mobileLink} onClick={closeMenu}>About</Link>
+        <button
+          className={styles.mobileLink}
+          onClick={() => { closeMenu(); toggleCart(); }}
+        >
+          Collection{totalItems > 0 ? ` (${totalItems})` : ''}
+        </button>
       </nav>
     </>
   );
