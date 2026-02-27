@@ -25,6 +25,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://silvertape.art'),
   title: {
     default: 'SILVERTAPE — Curated Art. Every Wall.',
     template: '%s | SILVERTAPE',
@@ -36,7 +37,21 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     siteName: 'SILVERTAPE',
     title: 'SILVERTAPE — Curated Art. Every Wall.',
-    description: '아트 스튜디오 중계 플랫폼. 모든 벽에 예술을.',
+    description: '큐레이션 스튜디오가 엄선한 프리미엄 아트 프린트. 당신의 공간을 갤러리로 만들어 드립니다.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'SILVERTAPE — 모든 벽에 예술을',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SILVERTAPE — Curated Art. Every Wall.',
+    description: '큐레이션 스튜디오가 엄선한 프리미엄 아트 프린트. 당신의 공간을 갤러리로 만들어 드립니다.',
+    images: ['/og-image.png'],
   },
 };
 
