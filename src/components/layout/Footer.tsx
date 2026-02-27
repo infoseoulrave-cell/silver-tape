@@ -26,6 +26,7 @@ export default function Footer() {
           <Link href="/studio/hangover">HANGOVER</Link>
           <Link href="/studio/void">VOID.</Link>
           <Link href="/studio/sensibility">SENSIBILITY STAIR</Link>
+          <Link href="/studio/phantom-reel">PHANTOM REEL</Link>
         </div>
         <div className={styles.col}>
           <h4>안내</h4>
