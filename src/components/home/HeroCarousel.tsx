@@ -17,11 +17,11 @@ interface HeroSlide {
 
 const SLIDES: HeroSlide[] = [
   {
-    image: '/images/hero/hero-melancholy-youth.png',
-    tag: 'HANGOVER — Neo-Pop Portrait',
-    title: 'Melancholy Youth',
-    subtitle: '감성적이면서 쿨한 네오팝 인물화. 무드보드가 곧 인테리어인 당신을 위해.',
-    primaryHref: '/studio/hangover',
+    image: '/images/products/sensibility/sens-001-art.png',
+    tag: 'SENSIBILITY STAIR — Surreal Still Life',
+    title: 'Irrational Table',
+    subtitle: '가만히 있기를 거부하는 초현실적 정물. 모든 오브제가 서로를 모순한다 — 그것이 요점이다.',
+    primaryHref: '/studio/sensibility',
     primaryLabel: '전체 작품 보기',
     secondaryHref: '#studios',
     secondaryLabel: '스튜디오 둘러보기',
