@@ -6,6 +6,7 @@ import styles from '../info.module.css';
 export const metadata: Metadata = {
   title: 'SILVERTAPE 소개 — Curated Art. Every Wall.',
   description: 'SILVERTAPE는 독립 아트 스튜디오 중계 플랫폼입니다. 큐레이팅된 디지털 아트를 프리미엄 프린트로 만나보세요.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {
@@ -70,7 +71,7 @@ export default function AboutPage() {
             감각을 자극하는 그래픽 아트 포스터. 예술에 취하다.
           </li>
           <li>
-            <Link href="/studio/void"><strong>VOID.</strong></Link> &mdash;
+            <Link href="/studio/void"><strong>MONORO.</strong></Link> &mdash;
             관조적 미니멀리즘. 본질만 남긴 디지털 아트.
           </li>
           <li>
@@ -78,7 +79,7 @@ export default function AboutPage() {
             감각을 깨우는 시각적 충돌. 대비와 물성의 스터디.
           </li>
           <li>
-            <Link href="/studio/phantom-reel"><strong>PHANTOM REEL</strong></Link> &mdash;
+            <Link href="/studio/phantom-reel"><strong>ONE WAY TICKET</strong></Link> &mdash;
             어디에도 없는 곳에서 수신된 필름. 초현실 컨셉츄얼 포토그래피.
           </li>
         </ul>

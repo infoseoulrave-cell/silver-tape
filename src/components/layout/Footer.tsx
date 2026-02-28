@@ -24,9 +24,9 @@ export default function Footer() {
         <div className={styles.col}>
           <h4>스튜디오</h4>
           <Link href="/studio/hangover">HANGOVER</Link>
-          <Link href="/studio/void">VOID.</Link>
+          <Link href="/studio/void">MONORO.</Link>
           <Link href="/studio/sensibility">SENSIBILITY STAIR</Link>
-          <Link href="/studio/phantom-reel">PHANTOM REEL</Link>
+          <Link href="/studio/phantom-reel">ONE WAY TICKET</Link>
         </div>
         <div className={styles.col}>
           <h4>안내</h4>

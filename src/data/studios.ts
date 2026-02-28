@@ -21,8 +21,8 @@ export const STUDIOS: Studio[] = [
   {
     id: 'void',
     slug: 'void',
-    name: 'VOID.',
-    nameKo: '보이드',
+    name: 'MONORO.',
+    nameKo: '모노로',
     logo: '/images/studios/void-logo.webp',
     accentColor: '#A0A0B0',
     description: 'Contemplative minimalism. Art stripped to its irreducible essence.',
@@ -30,7 +30,7 @@ export const STUDIOS: Studio[] = [
     tagline: 'Less Is Everything',
     taglineKo: '비움의 미학',
     socialLinks: {
-      instagram: 'https://instagram.com/void.studio',
+      instagram: 'https://instagram.com/monoro.studio',
     },
     isActive: true,
     createdAt: '2026-02-26',
@@ -55,8 +55,8 @@ export const STUDIOS: Studio[] = [
   {
     id: 'phantom-reel',
     slug: 'phantom-reel',
-    name: 'PHANTOM REEL',
-    nameKo: '팬텀 릴',
+    name: 'ONE WAY TICKET',
+    nameKo: '원웨이 티켓',
     logo: '/images/studios/phantom-reel-logo.webp',
     accentColor: '#2A6B7C',
     description: 'Recovered transmissions from nowhere. Surreal conceptual photography through the lens of vintage film — lunar archives, liminal spaces, and material studies that feel found, not made.',
@@ -64,7 +64,7 @@ export const STUDIOS: Studio[] = [
     tagline: 'Found Footage from Nowhere',
     taglineKo: '어디에도 없는 곳에서 발견된 필름',
     socialLinks: {
-      instagram: 'https://instagram.com/phantom.reel',
+      instagram: 'https://instagram.com/onewayticket.studio',
     },
     isActive: true,
     createdAt: '2026-02-27',
