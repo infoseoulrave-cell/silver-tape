@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
 import CollectionFab from '@/components/cart/CollectionFab';
 import MetaPixel from '@/components/analytics/MetaPixel';
+import NoticePopup from '@/components/ui/NoticePopup';
 import '@/styles/globals.css';
 import '@/styles/animations.css';
 
@@ -26,6 +27,8 @@ const playfairDisplay = Playfair_Display({
 
 const SITE_URL = 'https://silvertape.art';
 const ALT_URL = 'https://silver-tape.com';
+/** 링크 미리보기(OG) 이미지 바꿨을 때 썸네일 갱신용. 이미지 수정 후 숫자만 올리면 됨 */
+const OG_IMAGE_VERSION = '2';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
     description: '큐레이션 스튜디오가 엄선한 프리미엄 아트 프린트. 당신의 공간을 갤러리로 만들어 드립니다.',
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
+        url: `/og-thumbnail.png?v=${OG_IMAGE_VERSION}`,
         width: 1200,
         height: 630,
         alt: 'SILVERTAPE — 모든 벽에 예술을',
@@ -64,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SILVERTAPE — Curated Art. Every Wall.',
     description: '큐레이션 스튜디오가 엄선한 프리미엄 아트 프린트. 당신의 공간을 갤러리로 만들어 드립니다.',
-    images: [`${SITE_URL}/og-image.png`],
+    images: [`/og-thumbnail.png?v=${OG_IMAGE_VERSION}`],
   },
   other: {
     'og:url': SITE_URL,
@@ -81,6 +84,12 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <meta name="naver-site-verification" content="b315dfbb8bea426160b8e2c02fb3a483cf53e65c" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5L568YWY1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P5L568YWY1');gtag('config','G-P5L568VMY1');`,
+          }}
+        />
         <link
           rel="stylesheet"
           as="style"
@@ -111,6 +120,7 @@ export default function RootLayout({
         <CartDrawer />
         <CollectionFab />
         <MetaPixel />
+        <NoticePopup />
       </body>
     </html>
   );
