@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useCartStore } from '@/lib/cart-store';
+import { trackPurchase } from '@/lib/meta-pixel-events';
 import { formatKRW } from '@/lib/format';
 import type { Order } from '@/types/order';
 import styles from './success.module.css';
@@ -53,6 +54,12 @@ function SuccessContent() {
         }
 
         clearCart();
+
+        // Meta Pixel — Purchase (client-side, dedup with server CAPI)
+        trackPurchase({
+          orderId: orderId!,
+          value: Number(amount),
+        });
       } catch {
         setError('결제 확인 중 오류가 발생했습니다.');
       } finally {

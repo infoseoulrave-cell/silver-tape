@@ -65,3 +65,21 @@ export function trackInitiateCheckout(params: {
     currency: params.currency ?? 'KRW',
   });
 }
+
+/** 구매 완료 — 서버 CAPI와 event_id=purchase_{orderId}로 중복 제거 */
+export function trackPurchase(params: {
+  orderId: string;
+  value: number;
+  numItems?: number;
+  contentIds?: string[];
+  currency?: string;
+}) {
+  fbq('track', 'Purchase', {
+    content_ids: params.contentIds ?? [],
+    content_type: 'product',
+    value: params.value,
+    currency: params.currency ?? 'KRW',
+    num_items: params.numItems ?? 1,
+    order_id: params.orderId,
+  });
+}
