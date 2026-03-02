@@ -83,6 +83,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <meta name="facebook-domain-verification" content="1g2ckb61jlb4697qky4p7wtay5y7ak" />
         <meta name="naver-site-verification" content="b315dfbb8bea426160b8e2c02fb3a483cf53e65c" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5L568YWY1" />
         <script
