@@ -1,0 +1,95 @@
+.page {
+  min-height: calc(100vh - 120px);
+  display: grid;
+  place-items: center;
+  padding: 48px 20px;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(0, 0, 0, 0.12), transparent 45%),
+    linear-gradient(155deg, #f2f2f2, #d6d6d6);
+}
+
+.card {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: #0e2f45;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 29px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+  color: #4c4c4c;
+  font-size: 14px;
+}
+
+.error {
+  margin: 8px 0 14px;
+  font-size: 13px;
+  color: #9f1b2d;
+  background: #fde8ed;
+  border: 1px solid #f5bcc9;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: #444;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 10px;
+  padding: 12px 13px;
+  font: inherit;
+  background: #fff;
+}
+
+.button {
+  border: none;
+  border-radius: 10px;
+  background: #0e2f45;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #555;
+  text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getActiveStudios } from '@/data/studios';
 import styles from './Footer.module.css';
 
 const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '';
@@ -23,10 +24,9 @@ export default function Footer() {
         </div>
         <div className={styles.col}>
           <h4>스튜디오</h4>
-          <Link href="/studio/hangover">HANGOVER</Link>
-          <Link href="/studio/void">MONORO.</Link>
-          <Link href="/studio/sensibility">SENSIBILITY STAIR</Link>
-          <Link href="/studio/phantom-reel">ONE WAY TICKET</Link>
+          {getActiveStudios().map(s => (
+            <Link key={s.id} href={`/studio/${s.slug}`}>{s.name}</Link>
+          ))}
         </div>
         <div className={styles.col}>
           <h4>안내</h4>

@@ -102,10 +102,10 @@ export async function sendPurchaseEvent(
   };
 
   try {
-    const res = await fetch(`${ENDPOINT}?access_token=${ACCESS_TOKEN}`, {
+    const res = await fetch(ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ ...payload, access_token: ACCESS_TOKEN }),
     });
 
     if (!res.ok) {
@@ -150,10 +150,10 @@ export async function sendInitiateCheckoutEvent(
   };
 
   try {
-    const res = await fetch(`${ENDPOINT}?access_token=${ACCESS_TOKEN}`, {
+    const res = await fetch(ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ ...payload, access_token: ACCESS_TOKEN }),
     });
 
     if (!res.ok) {

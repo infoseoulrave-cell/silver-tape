@@ -8,83 +8,15 @@
  *   node scripts/naver-rename-seo.mjs dry       → 변경 내용만 출력 (실제 반영 X)
  */
 
-import { readFileSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import bcrypt from 'bcryptjs';
+import { loadEnv, getToken, parseProducts, TAG_KO, BASE } from './lib/naver-common.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(__dirname, '..');
-const envContent = readFileSync(resolve(ROOT, '.env.local'), 'utf-8');
-const env = {};
-for (const line of envContent.split('\n')) {
-  const t = line.trim();
-  if (!t || t.startsWith('#')) continue;
-  const i = t.indexOf('=');
-  if (i > 0) env[t.slice(0, i).trim()] = t.slice(i + 1).trim();
-}
-
+const env = loadEnv();
 const CID = env.NAVER_COMMERCE_APP_ID;
 const CS = env.NAVER_COMMERCE_APP_SECRET;
-const BASE = 'https://api.commerce.naver.com/external';
 
 const MODE = process.argv[2] || 'full'; // full | test | dry
 
-async function getToken() {
-  const ts = Date.now();
-  const hashed = bcrypt.hashSync(`${CID}_${ts}`, CS);
-  const sign = Buffer.from(hashed).toString('base64');
-  const body = new URLSearchParams({
-    client_id: CID, timestamp: String(ts), client_secret_sign: sign,
-    grant_type: 'client_credentials', type: 'SELF',
-  });
-  const res = await fetch(`${BASE}/v1/oauth2/token`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body.toString(),
-  });
-  return (await res.json()).access_token;
-}
-
-// products.ts 파싱
-const productsSource = readFileSync(resolve(ROOT, 'src', 'data', 'products.ts'), 'utf-8');
-const productBlocks = productsSource.split(/\n\s*\{[\s\n]*id:/g).slice(1);
-const products = [];
-for (const block of productBlocks) {
-  const get = (key) => {
-    const m = block.match(new RegExp(`${key}:\\s*'([^']*)'`));
-    return m ? m[1] : '';
-  };
-  const tagsMatch = block.match(/tags:\s*\[([^\]]*)\]/);
-  const tags = tagsMatch
-    ? tagsMatch[1].match(/'([^']*)'/g)?.map(t => t.replace(/'/g, '')) || []
-    : [];
-  products.push({
-    id: get('id'),
-    slug: get('slug'),
-    title: get('title'),
-    titleKo: get('titleKo'),
-    category: get('category'),
-    artist: get('artist'),
-    tags,
-  });
-}
-
-// 태그 → 한국어
-const TAG_KO = {
-  expressionism: '표현주의', abstract: '추상화', impasto: '임파스토',
-  emotion: '감성아트', portrait: '초상화', 'neo-pop': '네오팝',
-  figurative: '구상화', landscape: '풍경화', surreal: '초현실',
-  minimal: '미니멀', geometric: '기하학', nature: '자연풍경',
-  urban: '도시감성', retro: '레트로', vintage: '빈티지',
-  typography: '타이포', space: '우주', architecture: '건축',
-  pop: '팝아트', 'still-life': '정물', car: '자동차',
-  animal: '동물', flower: '플라워', neon: '네온',
-  chrome: '크롬', modern: '모던아트', contemporary: '현대미술',
-  monochrome: '모노톤', halftone: '하프톤', calligraphy: '캘리',
-  ink: '수묵', film: '필름', lunar: '달', liminal: '리미널',
-  material: '물성', collage: '콜라주', contradiction: '오브제',
-};
+const products = parseProducts();
 
 // 카테고리별 스타일 키워드
 const CAT_STYLE = {
@@ -113,7 +45,6 @@ function buildSeoName(product, isFrame) {
   // 태그 키워드 2개
   const tagKws = product.tags.map(t => TAG_KO[t]).filter(Boolean);
   const tag1 = tagKws[0] || '';
-  const tag2 = tagKws[1] || '';
 
   const space = SPACES[(num - 1) % SPACES.length];
   const gift = GIFTS[(num - 1) % GIFTS.length];
@@ -139,7 +70,7 @@ function buildSeoName(product, isFrame) {
   }
 }
 
-const token = await getToken();
+const token = await getToken(CID, CS);
 console.log('토큰 발급 완료\n');
 
 // 등록 상품 조회

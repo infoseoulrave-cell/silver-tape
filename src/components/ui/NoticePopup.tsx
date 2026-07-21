@@ -67,13 +67,14 @@ export default function NoticePopup() {
         }}
       >
         {/* 상단 바 */}
-        <div style={{ background: '#111', padding: '20px 24px', textAlign: 'center' }}>
+        <div style={{ background: '#111', padding: '24px 24px 20px', textAlign: 'center' }}>
           <p style={{
             color: '#888',
             fontSize: '11px',
             letterSpacing: '3px',
-            margin: '0 0 6px',
+            margin: '0 0 8px',
             fontFamily: 'var(--font-space-grotesk), sans-serif',
+            textTransform: 'uppercase' as const,
           }}>
             SILVERTAPE NOTICE
           </p>
@@ -84,7 +85,7 @@ export default function NoticePopup() {
             margin: 0,
             fontFamily: 'var(--font-space-grotesk), Pretendard, sans-serif',
           }}>
-            안내드립니다
+            잠시 쉬어가는 중이에요
           </h2>
         </div>
 
@@ -92,25 +93,54 @@ export default function NoticePopup() {
         <div style={{ padding: '28px 24px 20px' }}>
           <p style={{
             fontSize: '15px',
-            lineHeight: 1.8,
+            lineHeight: 1.85,
             color: '#333',
-            margin: '0 0 8px',
+            margin: '0 0 6px',
             wordBreak: 'keep-all',
             fontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
           }}>
-            현재 홈페이지 <strong>결제 시스템 점검 중</strong>으로,
-            사이트 내 직접 결제가 일시적으로 불가합니다.
+            오픈 초기, 예상보다 훨씬 많은 분들이 SILVERTAPE를 찾아주셨습니다.
           </p>
           <p style={{
             fontSize: '15px',
-            lineHeight: 1.8,
+            lineHeight: 1.85,
             color: '#333',
-            margin: '0 0 20px',
+            margin: '0 0 6px',
             wordBreak: 'keep-all',
             fontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
           }}>
-            구매를 원하시는 분은 <strong>네이버 스마트스토어</strong>를
-            이용해 주세요. 기본 사이즈(20×30cm) 프린트 및 액자 상품을 만나보실 수 있습니다.
+            여러분의 관심이 저희의 준비보다 앞서간 탓에,
+            홈페이지에 <strong>일시적인 오류</strong>가 발생했어요.
+          </p>
+          <p style={{
+            fontSize: '15px',
+            lineHeight: 1.85,
+            color: '#333',
+            margin: '0 0 22px',
+            wordBreak: 'keep-all',
+            fontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
+          }}>
+            지금 빠르게 수정하고 있으며,
+            곧 더 안정적인 모습으로 돌아오겠습니다.
+          </p>
+
+          {/* 구분선 */}
+          <div style={{
+            height: '1px',
+            background: 'linear-gradient(to right, transparent, #ddd, transparent)',
+            margin: '0 0 20px',
+          }} />
+
+          <p style={{
+            fontSize: '13.5px',
+            lineHeight: 1.7,
+            color: '#666',
+            margin: '0 0 16px',
+            wordBreak: 'keep-all',
+            fontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
+          }}>
+            지금 바로 구매를 원하시는 분은
+            네이버 스마트스토어를 이용해 주세요.
           </p>
 
           {/* 네이버 스토어 버튼 */}
@@ -153,12 +183,12 @@ export default function NoticePopup() {
 
           <p style={{
             fontSize: '12px',
-            color: '#999',
+            color: '#aaa',
             textAlign: 'center',
-            margin: '12px 0 0',
+            margin: '14px 0 0',
             fontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
           }}>
-            빠른 시일 내에 정상화하겠습니다. 감사합니다.
+            불편을 드려 죄송합니다. 찾아주셔서 감사해요.
           </p>
         </div>
 

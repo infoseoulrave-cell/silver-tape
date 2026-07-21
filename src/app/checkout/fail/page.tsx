@@ -24,8 +24,7 @@ const ERROR_MESSAGES: Record<string, string> = {
 function FailContent() {
   const searchParams = useSearchParams();
   const errorCode = searchParams.get('code') ?? 'UNKNOWN';
-  const rawMessage = searchParams.get('message');
-  const errorMessage = rawMessage ?? ERROR_MESSAGES[errorCode] ?? ERROR_MESSAGES.UNKNOWN;
+  const errorMessage = ERROR_MESSAGES[errorCode] ?? ERROR_MESSAGES.UNKNOWN;
 
   const isCancel = errorCode === 'PAY_PROCESS_CANCELED' || errorCode === 'USER_CANCEL';
 

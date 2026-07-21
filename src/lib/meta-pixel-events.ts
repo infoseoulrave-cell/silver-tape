@@ -81,5 +81,5 @@ export function trackPurchase(params: {
     currency: params.currency ?? 'KRW',
     num_items: params.numItems ?? 1,
     order_id: params.orderId,
-  });
+  }, { eventID: `purchase_${params.orderId}` });
 }

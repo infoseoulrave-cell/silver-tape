@@ -1,0 +1,148 @@
+.page {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 30px 16px 56px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  border-radius: 9999px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.08;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+.backBtn {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  color: #111;
+  font-weight: 600;
+  background: #fff;
+}
+
+.success,
+.error {
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.success {
+  background: #e7f7ed;
+  border: 1px solid #b9e2c5;
+  color: #14663a;
+}
+
+.error {
+  background: #fde8ed;
+  border: 1px solid #f2bcc8;
+  color: #9f1b2d;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.grid2,
+.grid3 {
+  display: grid;
+  gap: 10px;
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: #444;
+}
+
+.field input,
+.field select,
+.field textarea {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  color: #111;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.checkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.checkRow label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.submitBtn {
+  border: none;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  height: 44px;
+}
+
+@media (max-width: 900px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}

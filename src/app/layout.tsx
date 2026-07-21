@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { Space_Grotesk, Playfair_Display } from 'next/font/google';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Header from '@/components/layout/Header';
@@ -6,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
 import CollectionFab from '@/components/cart/CollectionFab';
 import MetaPixel from '@/components/analytics/MetaPixel';
+import PageViewTracker from '@/components/analytics/PageViewTracker';
 import NoticePopup from '@/components/ui/NoticePopup';
 import '@/styles/globals.css';
 import '@/styles/animations.css';
@@ -121,6 +123,9 @@ export default function RootLayout({
         <CartDrawer />
         <CollectionFab />
         <MetaPixel />
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
         <NoticePopup />
       </body>
     </html>

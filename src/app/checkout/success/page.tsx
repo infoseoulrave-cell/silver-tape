@@ -6,8 +6,19 @@ import Link from 'next/link';
 import { useCartStore } from '@/lib/cart-store';
 import { trackPurchase } from '@/lib/meta-pixel-events';
 import { formatKRW } from '@/lib/format';
-import type { Order } from '@/types/order';
 import styles from './success.module.css';
+
+interface ConfirmedOrder {
+  orderId: string;
+  totalAmount: number;
+  paymentMethod: string | null;
+  status: string;
+  shipping: {
+    name: string;
+    address: string;
+    addressDetail: string;
+  };
+}
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -15,7 +26,7 @@ function SuccessContent() {
   const orderId = searchParams.get('orderId');
   const amount = searchParams.get('amount');
   const clearCart = useCartStore(s => s.clearCart);
-  const [order, setOrder] = useState<Order | null>(null);
+  const [order, setOrder] = useState<ConfirmedOrder | null>(null);
   const [error, setError] = useState('');
   const [confirming, setConfirming] = useState(true);
 
@@ -28,7 +39,6 @@ function SuccessContent() {
       }
 
       try {
-        // 서버에서 결제 승인 처리
         const res = await fetch('/api/payment/confirm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -39,27 +49,27 @@ function SuccessContent() {
           }),
         });
 
+        const data = await res.json();
+
         if (!res.ok) {
-          const data = await res.json();
           setError(data.error ?? '결제 승인에 실패했습니다.');
           setConfirming(false);
           return;
         }
 
-        // 주문 정보 조회
-        const orderRes = await fetch(`/api/orders/${orderId}`);
-        if (orderRes.ok) {
-          const orderData = await orderRes.json();
-          setOrder(orderData);
+        if (data?.order) {
+          setOrder(data.order as ConfirmedOrder);
         }
 
         clearCart();
 
-        // Meta Pixel — Purchase (client-side, dedup with server CAPI)
-        trackPurchase({
-          orderId: orderId!,
-          value: Number(amount),
-        });
+        const numericAmount = Number(data?.order?.totalAmount ?? amount);
+        if (!isNaN(numericAmount) && numericAmount > 0) {
+          trackPurchase({
+            orderId,
+            value: numericAmount,
+          });
+        }
       } catch {
         setError('결제 확인 중 오류가 발생했습니다.');
       } finally {
