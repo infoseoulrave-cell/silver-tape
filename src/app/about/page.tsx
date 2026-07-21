@@ -63,7 +63,7 @@ export default function AboutPage() {
 
         <h2>입점 스튜디오</h2>
         <p>
-          현재 SILVERTAPE에는 네 개의 스튜디오가 입점해 있습니다.
+          현재 SILVERTAPE에는 다섯 개의 스튜디오가 입점해 있습니다.
         </p>
         <ul>
           <li>
@@ -81,6 +81,10 @@ export default function AboutPage() {
           <li>
             <Link href="/studio/phantom-reel"><strong>ONE WAY TICKET</strong></Link> &mdash;
             어디에도 없는 곳에서 수신된 필름. 초현실 컨셉츄얼 포토그래피.
+          </li>
+          <li>
+            <Link href="/studio/oneof23"><strong>1OF23</strong></Link> &mdash;
+            1of23 갤러리 큐레이션. 스물세 개의 시선으로 고른 아트프린트.
           </li>
         </ul>
 

@@ -69,6 +69,21 @@ export const STUDIOS: Studio[] = [
     isActive: true,
     createdAt: '2026-02-27',
   },
+  {
+    id: 'oneof23',
+    slug: 'oneof23',
+    name: '1OF23',
+    nameKo: '원오브투웬티쓰리',
+    logo: '/images/studios/oneof23-logo.webp',
+    accentColor: '#B7B7BD',
+    description: '1of23 gallery curation. Twenty-three curated viewpoints, one wall at a time.',
+    descriptionKo: '1of23 갤러리 큐레이션. 스물세 개의 시선으로 고른 아트프린트 컬렉션.',
+    tagline: 'Twenty-Three Ways to See',
+    taglineKo: '스물세 가지 시선',
+    socialLinks: {},
+    isActive: true,
+    createdAt: '2026-07-21',
+  },
 ];
 
 export function getStudioBySlug(slug: string): Studio | undefined {
