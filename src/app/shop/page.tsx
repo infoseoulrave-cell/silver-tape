@@ -11,8 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function ShopPage() {
-  const featured = getFeaturedProducts().slice(0, 8);
-  const newest = [...PRODUCTS].reverse().slice(0, 8);
+  // 1OF23(1of23.com 이관 작품)만 표시
+  const galleryProducts = PRODUCTS.filter(p => p.studioSlug === 'oneof23');
+  const featured = getFeaturedProducts().filter(p => p.studioSlug === 'oneof23').slice(0, 8);
+  const newest = [...galleryProducts].reverse().slice(0, 8);
 
   // Deduplicate featured from newest
   const featuredIds = new Set(featured.map(p => p.id));
@@ -46,6 +48,7 @@ export default function ShopPage() {
       </section>
 
       {/* Popular / Featured */}
+      {featured.length > 0 && (
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
@@ -61,6 +64,7 @@ export default function ShopPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* All Works */}
       <section className={styles.section}>
@@ -68,10 +72,10 @@ export default function ShopPage() {
           <div className={styles.sectionHeader}>
             <div className={styles.tag}>All Works</div>
             <h2 className={styles.sectionTitle}>전체 작품</h2>
-            <p className={styles.sectionSub}>{PRODUCTS.length}점</p>
+            <p className={styles.sectionSub}>{galleryProducts.length}점</p>
           </div>
           <div className={styles.grid}>
-            {PRODUCTS.map((product, i) => (
+            {galleryProducts.map((product, i) => (
               <ScrollReveal key={product.id} delay={i < 8 ? i * 60 : 0}>
                 <ProductCard product={product} />
               </ScrollReveal>
