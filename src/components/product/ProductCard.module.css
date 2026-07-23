@@ -11,24 +11,39 @@
   position: relative;
   overflow: hidden;
   margin-bottom: var(--ho-space-md);
-  background: var(--ho-bg-card);
+  background: #faf9f7;
   aspect-ratio: 3 / 4;
-  border: 1px solid rgba(0,0,0,0.04);
 }
 
-.image {
-  width: 100%;
-  height: 100%;
+.art {
+  position: absolute;
+  /* silver-frame.png 아트 윈도우 영역 (1200×1600 기준 176,176–1024,1424) */
+  left: 14.67%;
+  top: 11%;
+  width: 70.67%;
+  height: 78%;
+  overflow: hidden;
+}
+
+.artImage {
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.card:hover .image {
-  transform: scale(1.02);
+.card:hover .artImage {
+  transform: scale(1.04);
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
 }
 
 .card:hover .imageWrap {
-  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .badge {
