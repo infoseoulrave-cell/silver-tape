@@ -17,11 +17,11 @@
 
 .art {
   position: absolute;
-  /* silver-frame.png 아트 윈도우 영역 (1200×1600 기준 112,112–1088,1488) */
-  left: 9.333%;
-  top: 7%;
-  width: 81.333%;
-  height: 86%;
+  /* silver-frame.png 아트 윈도우보다 약간 크게 — 프레임 테두리 아래로 겹쳐 틈 제거 */
+  left: 8.9%;
+  top: 6.55%;
+  width: 82.2%;
+  height: 86.9%;
   overflow: hidden;
   background: #ffffff;
 }
